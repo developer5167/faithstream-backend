@@ -1,0 +1,1108 @@
+2026-01-27 15:34:27.970 IST [17964] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-01-27 15:34:27.972 IST [17964] LOG:  listening on IPv6 address "::1", port 5432
+2026-01-27 15:34:27.972 IST [17964] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-01-27 15:34:27.973 IST [17964] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-01-27 15:34:27.995 IST [17976] LOG:  database system was shut down at 2026-01-26 15:17:13 IST
+2026-01-27 15:34:28.004 IST [17964] LOG:  database system is ready to accept connections
+2026-01-27 17:18:06.009 IST [53240] FATAL:  database "kcs" does not exist
+2026-01-27 19:22:18.535 IST [18088] ERROR:  duplicate key value violates unique constraint "users_email_key"
+2026-01-27 19:22:18.535 IST [18088] DETAIL:  Key (email)=($2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a) already exists.
+2026-01-27 19:22:18.535 IST [18088] STATEMENT:  INSERT INTO users (id, name, email, password_hash, artist_status)
+	VALUES
+	(
+	  '22222222-2222-2222-2222-222222222222',
+	  'John Worship',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'REQUESTED'
+	),
+	(
+	  '33333333-3333-3333-3333-333333333333',
+	  'Mary Singer',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'APPROVED'
+	);
+2026-01-27 19:23:17.278 IST [18088] ERROR:  syntax error at end of input at character 227
+2026-01-27 19:23:17.278 IST [18088] STATEMENT:  INSERT INTO users (id, name, email, password_hash, artist_status)
+	VALUES
+	(
+	  '22222222-2222-2222-2222-222222222222',
+	  'John Worship',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'REQUESTED'
+	),
+2026-01-27 19:23:24.065 IST [18088] ERROR:  duplicate key value violates unique constraint "users_email_key"
+2026-01-27 19:23:24.065 IST [18088] DETAIL:  Key (email)=($2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a) already exists.
+2026-01-27 19:23:24.065 IST [18088] STATEMENT:  INSERT INTO users (id, name, email, password_hash, artist_status)
+	VALUES
+	(
+	  '22222222-2222-2222-2222-222222222222',
+	  'John Worship',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'REQUESTED'
+	),
+	(
+	  '33333333-3333-3333-3333-333333333333',
+	  'Mary Singer',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'APPROVED'
+	);
+2026-01-27 19:24:48.445 IST [18088] ERROR:  VALUES lists must all be the same length at character 252
+2026-01-27 19:24:48.445 IST [18088] STATEMENT:  INSERT INTO users (id, name, email, password_hash, artist_status)
+	VALUES
+	(
+	  '22222222-2222-2222-2222-222222222222',
+	  'John Worship',
+	  'nihar@gmail.com'
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'REQUESTED'
+	),
+	(
+	  '33333333-3333-3333-3333-333333333333',
+	  'Mary Singer',
+	  'suresh@gmail.com',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'APPROVED'
+	);
+2026-01-27 19:25:16.647 IST [18088] ERROR:  syntax error at or near "'33333333-3333-3333-3333-333333333333'" at character 5
+2026-01-27 19:25:16.647 IST [18088] STATEMENT:  (
+	  '33333333-3333-3333-3333-333333333333',
+	  'Mary Singer',
+	  'suresh@gmail.com',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'APPROVED'
+	)
+2026-01-27 19:25:25.103 IST [18088] ERROR:  INSERT has more expressions than target columns at character 236
+2026-01-27 19:25:25.103 IST [18088] STATEMENT:  
+	INSERT INTO users (id, name, email, password_hash, artist_status)
+	VALUES
+	
+	(
+	  '33333333-3333-3333-3333-333333333333',
+	  'Mary Singer',
+	  'suresh@gmail.com',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'APPROVED'
+	)
+2026-01-27 19:26:27.566 IST [18088] ERROR:  INSERT has more expressions than target columns at character 236
+2026-01-27 19:26:27.566 IST [18088] STATEMENT:  
+	INSERT INTO users (id, name, email, password_hash, artist_status)
+	VALUES
+	
+	(
+	  '33333333-3333-3333-3333-333333333333',
+	  'Mary Singer',
+	  'suresh@gmail.com',
+	  '$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFQ4D8ZfGZ3g8GJZQYFf5MZ2E5lK1n5a',
+	  false,
+	  'APPROVED'
+	)
+2026-01-27 19:29:05.117 IST [18088] ERROR:  syntax error at or near "INTO" at character 31
+2026-01-27 19:29:05.117 IST [18088] STATEMENT:  select * from users
+	
+	
+	
+	INSERT INTO subscriptions (
+	  id,
+	  user_id,
+	  provider,
+	  status,
+	  started_at,
+	  expires_at
+	)
+	VALUES
+	(
+	  'fffffff1-ffff-ffff-ffff-fffffffffff1',
+	  '22222222-2222-2222-2222-222222222222',
+	  'RAZORPAY',
+	  'ACTIVE',
+	  now() - interval '10 days',
+	  now() + interval '20 days'
+	);
+	
+	
+	
+	
+2026-01-27 19:29:34.244 IST [18088] ERROR:  insert or update on table "admin_actions" violates foreign key constraint "admin_actions_admin_id_fkey"
+2026-01-27 19:29:34.244 IST [18088] DETAIL:  Key (admin_id)=(11111111-1111-1111-1111-111111111111) is not present in table "users".
+2026-01-27 19:29:34.244 IST [18088] STATEMENT:  INSERT INTO admin_actions (
+	  admin_id,
+	  action_type,
+	  target_id,
+	  description
+	)
+	VALUES
+	(
+	  '11111111-1111-1111-1111-111111111111',
+	  'SONG_APPROVED',
+	  'ccccccc2-cccc-cccc-cccc-ccccccccccc2',
+	  'Approved song Blessed Assurance'
+	);
+	
+2026-01-27 20:18:48.100 IST [2100] ERROR:  column sd.song_a_id does not exist at character 216
+2026-01-27 20:18:48.100 IST [2100] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:18:48.100 IST [2100] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_a_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:18:49.126 IST [2215] ERROR:  column sd.song_a_id does not exist at character 216
+2026-01-27 20:18:49.126 IST [2215] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:18:49.126 IST [2215] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_a_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:18:51.158 IST [2258] ERROR:  column sd.song_a_id does not exist at character 216
+2026-01-27 20:18:51.158 IST [2258] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:18:51.158 IST [2258] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_a_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:18:55.186 IST [2329] ERROR:  column sd.song_a_id does not exist at character 216
+2026-01-27 20:18:55.186 IST [2329] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:18:55.186 IST [2329] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_a_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:21:20.763 IST [4586] ERROR:  column sd.song_b_id does not exist at character 330
+2026-01-27 20:21:20.763 IST [4586] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:21:20.763 IST [4586] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:21:21.791 IST [4686] ERROR:  column sd.song_b_id does not exist at character 330
+2026-01-27 20:21:21.791 IST [4686] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:21:21.791 IST [4686] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:21:23.814 IST [4687] ERROR:  column sd.song_b_id does not exist at character 330
+2026-01-27 20:21:23.814 IST [4687] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:21:23.814 IST [4687] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:21:27.850 IST [4755] ERROR:  column sd.song_b_id does not exist at character 330
+2026-01-27 20:21:27.850 IST [4755] HINT:  Perhaps you meant to reference the column "sd.song_id".
+2026-01-27 20:21:27.850 IST [4755] STATEMENT:  SELECT 
+	      sd.*,
+	      s1.title as song_a_title,
+	      ap1.artist_name as artist_a_name,
+	      s2.title as song_b_title,
+	      ap2.artist_name as artist_b_name
+	    FROM song_disputes sd
+	    LEFT JOIN songs s1 ON sd.song_id = s1.id
+	    LEFT JOIN artist_profiles ap1 ON s1.artist_user_id = ap1.user_id
+	    LEFT JOIN songs s2 ON sd.song_b_id = s2.id
+	    LEFT JOIN artist_profiles ap2 ON s2.artist_user_id = ap2.user_id
+	    WHERE sd.status='OPEN'
+2026-01-27 20:34:05.864 IST [17964] LOG:  received smart shutdown request
+2026-01-27 20:34:05.866 IST [17964] LOG:  background worker "logical replication launcher" (PID 17982) exited with exit code 1
+2026-01-27 20:34:05.866 IST [17977] LOG:  shutting down
+2026-01-27 20:34:05.879 IST [17964] LOG:  database system is shut down
+2026-01-29 15:50:33.117 IST [17021] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-01-29 15:50:33.120 IST [17021] LOG:  listening on IPv6 address "::1", port 5432
+2026-01-29 15:50:33.120 IST [17021] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-01-29 15:50:33.121 IST [17021] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-01-29 15:50:33.145 IST [17022] LOG:  database system was shut down at 2026-01-27 20:34:05 IST
+2026-01-29 15:50:33.155 IST [17021] LOG:  database system is ready to accept connections
+2026-01-29 20:40:04.142 IST [17021] LOG:  received smart shutdown request
+2026-01-29 20:40:04.145 IST [17021] LOG:  background worker "logical replication launcher" (PID 17028) exited with exit code 1
+2026-01-29 20:40:04.145 IST [17023] LOG:  shutting down
+2026-01-29 20:40:04.161 IST [17021] LOG:  database system is shut down
+2026-02-02 12:54:15.136 IST [9950] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-02 12:54:15.140 IST [9950] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-02 12:54:15.140 IST [9950] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-02 12:54:15.140 IST [9950] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-02 12:54:15.165 IST [9962] LOG:  database system was shut down at 2026-02-01 16:14:45 IST
+2026-02-02 12:54:15.175 IST [9950] LOG:  database system is ready to accept connections
+2026-02-02 14:02:39.879 IST [47425] ERROR:  relation "user_tokens" does not exist at character 13
+2026-02-02 14:02:39.879 IST [47425] STATEMENT:  INSERT INTO user_tokens (user_id, token, created_at)
+	     VALUES ($1, $2, NOW())
+	     ON CONFLICT (user_id, token) DO NOTHING
+2026-02-02 14:09:08.833 IST [47835] ERROR:  foreign key constraint "user_tokens_user_id_fkey" cannot be implemented
+2026-02-02 14:09:08.833 IST [47835] DETAIL:  Key columns "user_id" and "id" are of incompatible types: integer and uuid.
+2026-02-02 14:09:08.833 IST [47835] STATEMENT:  CREATE TABLE user_tokens (
+	  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+	  token TEXT NOT NULL,
+	  created_at TIMESTAMP DEFAULT NOW(),
+	  PRIMARY KEY (user_id, token)
+	);
+2026-02-02 23:07:29.697 IST [77599] ERROR:  column ap.profile_image_url does not exist at character 93
+2026-02-02 23:07:29.697 IST [77599] STATEMENT:  SELECT 
+	       u.id,
+	       COALESCE(ap.artist_name, u.name) as name,
+	       ap.bio,
+	       ap.profile_image_url as image,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, ap.artist_name, u.name, ap.bio, ap.profile_image_url, u.created_at
+	     ORDER BY song_count DESC, u.created_at DESC
+	     LIMIT $1
+2026-02-02 23:09:48.020 IST [78229] ERROR:  column "profile_image_url" of relation "artist_profiles" contains null values
+2026-02-02 23:09:48.020 IST [78229] STATEMENT:  alter table artist_profiles add column profile_image_url varchar not null
+2026-02-03 00:00:53.207 IST [9950] LOG:  received smart shutdown request
+2026-02-03 00:00:53.211 IST [9950] LOG:  background worker "logical replication launcher" (PID 9968) exited with exit code 1
+2026-02-03 00:00:53.211 IST [9963] LOG:  shutting down
+2026-02-03 00:00:53.233 IST [9950] LOG:  database system is shut down
+2026-02-04 19:17:14.567 IST [28132] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-04 19:17:14.570 IST [28132] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-04 19:17:14.570 IST [28132] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-04 19:17:14.571 IST [28132] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-04 19:17:14.599 IST [28144] LOG:  database system was shut down at 2026-02-03 20:24:10 IST
+2026-02-04 19:17:14.606 IST [28132] LOG:  database system is ready to accept connections
+2026-02-04 20:06:05.375 IST [54996] ERROR:  relation "idx_recently_played_user_played_at" already exists
+2026-02-04 20:06:05.375 IST [54996] STATEMENT:  -- Create recently_played table to track user's recently played songs
+	CREATE TABLE IF NOT EXISTS recently_played (
+	  id SERIAL PRIMARY KEY,
+	  user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	  song_id uuid NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	  played_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	  UNIQUE(user_id, song_id)
+	);
+	
+	-- Create index for faster queries
+	CREATE INDEX idx_recently_played_user_played_at ON recently_played(user_id, played_at DESC);
+	CREATE INDEX idx_recently_played_song ON recently_played(song_id);
+	
+	-- Add comment
+	COMMENT ON TABLE recently_played IS 'Stores user recently played songs history';
+	
+2026-02-05 13:04:12.240 IST [89465] FATAL:  lock file "postmaster.pid" already exists
+2026-02-05 13:04:12.240 IST [89465] HINT:  Is another postmaster (PID 28132) running in data directory "/usr/local/var/postgres@14"?
+2026-02-05 13:04:15.037 IST [28132] LOG:  received fast shutdown request
+2026-02-05 13:04:15.038 IST [28132] LOG:  aborting any active transactions
+2026-02-05 13:04:15.045 IST [28132] LOG:  background worker "logical replication launcher" (PID 28150) exited with exit code 1
+2026-02-05 13:04:15.046 IST [28145] LOG:  shutting down
+2026-02-05 13:04:15.064 IST [28132] LOG:  database system is shut down
+2026-02-05 13:04:18.180 IST [89705] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-05 13:04:18.183 IST [89705] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-05 13:04:18.183 IST [89705] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-05 13:04:18.185 IST [89705] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-05 13:04:18.211 IST [89706] LOG:  database system was shut down at 2026-02-05 13:04:15 IST
+2026-02-05 13:04:18.219 IST [89705] LOG:  database system is ready to accept connections
+2026-02-05 18:08:48.824 IST [11477] ERROR:  foreign key constraint "favorites_user_id_fkey" cannot be implemented
+2026-02-05 18:08:48.824 IST [11477] DETAIL:  Key columns "user_id" and "id" are of incompatible types: integer and uuid.
+2026-02-05 18:08:48.824 IST [11477] STATEMENT:  -- Create favorites table
+	CREATE TABLE IF NOT EXISTS favorites (
+	    id SERIAL PRIMARY KEY,
+	    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    song_id INTEGER NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(user_id, song_id)
+	);
+	
+	CREATE INDEX idx_favorites_user_id ON favorites(user_id);
+	CREATE INDEX idx_favorites_song_id ON favorites(song_id);
+	
+	-- Create playlists table
+	CREATE TABLE IF NOT EXISTS playlists (
+	    id SERIAL PRIMARY KEY,
+	    name VARCHAR(255) NOT NULL,
+	    description TEXT,
+	    image_url TEXT,
+	    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    is_public BOOLEAN DEFAULT false,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+	
+	CREATE INDEX idx_playlists_user_id ON playlists(user_id);
+	
+	-- Create playlist_songs junction table
+	CREATE TABLE IF NOT EXISTS playlist_songs (
+	    id SERIAL PRIMARY KEY,
+	    playlist_id INTEGER NOT NULL REFERENCES playlists(id) ON DELETE CASCADE,
+	    song_id INTEGER NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	    position INTEGER DEFAULT 0,
+	    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(playlist_id, song_id)
+	);
+	
+	CREATE INDEX idx_playlist_songs_playlist_id ON playlist_songs(playlist_id);
+	CREATE INDEX idx_playlist_songs_song_id ON playlist_songs(song_id);
+	
+	-- Create trigger to update playlists updated_at
+	CREATE OR REPLACE FUNCTION update_playlist_updated_at()
+	RETURNS TRIGGER AS $$
+	BEGIN
+	    NEW.updated_at = CURRENT_TIMESTAMP;
+	    RETURN NEW;
+	END;
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER trigger_update_playlist_timestamp
+	BEFORE UPDATE ON playlists
+	FOR EACH ROW
+	EXECUTE FUNCTION update_playlist_updated_at();
+	
+2026-02-05 18:09:33.615 IST [12422] ERROR:  foreign key constraint "playlists_user_id_fkey" cannot be implemented
+2026-02-05 18:09:33.615 IST [12422] DETAIL:  Key columns "user_id" and "id" are of incompatible types: integer and uuid.
+2026-02-05 18:09:33.615 IST [12422] STATEMENT:  -- Create favorites table
+	CREATE TABLE IF NOT EXISTS favorites (
+	    id SERIAL PRIMARY KEY,
+	    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    song_id UUID NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(user_id, song_id)
+	);
+	
+	CREATE INDEX idx_favorites_user_id ON favorites(user_id);
+	CREATE INDEX idx_favorites_song_id ON favorites(song_id);
+	
+	-- Create playlists table
+	CREATE TABLE IF NOT EXISTS playlists (
+	    id SERIAL PRIMARY KEY,
+	    name VARCHAR(255) NOT NULL,
+	    description TEXT,
+	    image_url TEXT,
+	    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    is_public BOOLEAN DEFAULT false,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+	
+	CREATE INDEX idx_playlists_user_id ON playlists(user_id);
+	
+	-- Create playlist_songs junction table
+	CREATE TABLE IF NOT EXISTS playlist_songs (
+	    id SERIAL PRIMARY KEY,
+	    playlist_id INTEGER NOT NULL REFERENCES playlists(id) ON DELETE CASCADE,
+	    song_id INTEGER NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	    position INTEGER DEFAULT 0,
+	    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(playlist_id, song_id)
+	);
+	
+	CREATE INDEX idx_playlist_songs_playlist_id ON playlist_songs(playlist_id);
+	CREATE INDEX idx_playlist_songs_song_id ON playlist_songs(song_id);
+	
+	-- Create trigger to update playlists updated_at
+	CREATE OR REPLACE FUNCTION update_playlist_updated_at()
+	RETURNS TRIGGER AS $$
+	BEGIN
+	    NEW.updated_at = CURRENT_TIMESTAMP;
+	    RETURN NEW;
+	END;
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER trigger_update_playlist_timestamp
+	BEFORE UPDATE ON playlists
+	FOR EACH ROW
+	EXECUTE FUNCTION update_playlist_updated_at();
+	
+2026-02-05 18:34:59.831 IST [47360] ERROR:  relation "artists" does not exist at character 357
+2026-02-05 18:34:59.831 IST [47360] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artists a ON s.artist_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:39:20.082 IST [52033] ERROR:  relation "artists_profiles" does not exist at character 357
+2026-02-05 18:39:20.082 IST [52033] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artists_profiles a ON s.artist_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:40:50.537 IST [54103] ERROR:  relation "artists_profiles" does not exist at character 15
+2026-02-05 18:40:50.537 IST [54103] STATEMENT:  select * from artists_profiles
+	
+2026-02-05 18:40:54.987 IST [54103] ERROR:  relation "artists_profile" does not exist at character 15
+2026-02-05 18:40:54.987 IST [54103] STATEMENT:  select * from artists_profile
+	
+2026-02-05 18:41:49.262 IST [55382] ERROR:  column s.artist_id does not exist at character 378
+2026-02-05 18:41:49.262 IST [55382] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:43:02.895 IST [56708] ERROR:  column s.duration does not exist at character 69
+2026-02-05 18:43:02.895 IST [56708] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,              
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:44:06.042 IST [58075] ERROR:  column s.release_date does not exist at character 87
+2026-02-05 18:44:06.042 IST [58075] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,              
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:45:09.171 IST [59246] ERROR:  column s.play_count does not exist at character 103
+2026-02-05 18:45:09.171 IST [59246] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, 
+	        s.genre, s.published_at, s.play_count, s.file_key,
+	        s.image_url, s.created_at,              
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:45:35.253 IST [59767] ERROR:  column s.file_key does not exist at character 104
+2026-02-05 18:45:35.253 IST [59767] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, 
+	        s.genre, s.published_at,  s.file_key,
+	        s.image_url, s.created_at,              
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:46:09.938 IST [60482] ERROR:  column s.image_url does not exist at character 111
+2026-02-05 18:46:09.938 IST [60482] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, 
+	        s.genre, s.published_at,
+	        s.image_url, s.created_at,              
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:46:35.868 IST [60963] ERROR:  column a.name does not exist at character 166
+2026-02-05 18:46:35.868 IST [60963] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, 
+	        s.genre, s.published_at,
+	        s.cover_image_url, s.created_at,              
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:47:15.361 IST [61808] ERROR:  column a.username does not exist at character 189
+2026-02-05 18:47:15.361 IST [61808] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, 
+	        s.genre, s.published_at,
+	        s.cover_image_url, s.created_at,              
+	        a.artist_name,
+	        a.username as artist_username,
+	        al.title as album_title
+	      FROM favorites f
+	      INNER JOIN songs s ON f.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE f.user_id = $1
+	      ORDER BY f.created_at DESC
+	    
+2026-02-05 18:55:03.081 IST [70283] ERROR:  relation "artists" does not exist at character 398
+2026-02-05 18:55:03.081 IST [70283] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title,
+	        ps.position, ps.added_at
+	      FROM playlist_songs ps
+	      INNER JOIN songs s ON ps.song_id = s.id
+	      LEFT JOIN artists a ON s.artist_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE ps.playlist_id = $1
+	      ORDER BY ps.position ASC, ps.added_at ASC
+	    
+2026-02-05 18:56:10.530 IST [71854] ERROR:  column s.duration does not exist at character 69
+2026-02-05 18:56:10.530 IST [71854] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title,
+	        ps.position, ps.added_at
+	      FROM playlist_songs ps
+	      INNER JOIN songs s ON ps.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE ps.playlist_id = $1
+	      ORDER BY ps.position ASC, ps.added_at ASC
+	    
+2026-02-05 18:56:14.808 IST [71936] ERROR:  column s.duration does not exist at character 69
+2026-02-05 18:56:14.808 IST [71936] STATEMENT:  
+	      SELECT 
+	        s.id, s.title, s.artist_user_id, s.album_id, s.duration, 
+	        s.genre, s.release_date, s.play_count, s.file_key,
+	        s.image_url, s.created_at,
+	        a.name as artist_name,
+	        a.username as artist_username,
+	        al.title as album_title,
+	        ps.position, ps.added_at
+	      FROM playlist_songs ps
+	      INNER JOIN songs s ON ps.song_id = s.id
+	      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+	      LEFT JOIN albums al ON s.album_id = al.id
+	      WHERE ps.playlist_id = $1
+	      ORDER BY ps.position ASC, ps.added_at ASC
+	    
+2026-02-05 20:09:30.112 IST [51452] ERROR:  column "bio" does not exist at character 267
+2026-02-05 20:09:30.112 IST [51452] STATEMENT:  UPDATE users 
+	     SET name = COALESCE($2, name),
+	         phone = COALESCE($3, phone),
+	         bio = COALESCE($4, bio),
+	         profile_pic_url = COALESCE($5, profile_pic_url),
+	         updated_at = NOW()
+	     WHERE id = $1
+	     RETURNING id, name, email, phone, bio, profile_pic_url, artist_status, is_admin, created_at, updated_at
+2026-02-05 20:20:11.923 IST [89705] LOG:  received smart shutdown request
+2026-02-05 20:20:11.925 IST [89705] LOG:  background worker "logical replication launcher" (PID 89712) exited with exit code 1
+2026-02-05 20:20:11.925 IST [89707] LOG:  shutting down
+2026-02-05 20:20:11.937 IST [89705] LOG:  database system is shut down
+2026-02-06 11:28:15.673 IST [9631] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-06 11:28:15.676 IST [9631] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-06 11:28:15.676 IST [9631] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-06 11:28:15.676 IST [9631] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-06 11:28:15.701 IST [9632] LOG:  database system was shut down at 2026-02-05 20:20:11 IST
+2026-02-06 11:28:15.717 IST [9631] LOG:  database system is ready to accept connections
+2026-02-06 12:46:24.992 IST [43694] ERROR:  relation "support_tickets" does not exist at character 94
+2026-02-06 12:46:24.992 IST [43694] STATEMENT:  SELECT id, subject, message, category, status, admin_reply, created_at, updated_at
+	     FROM support_tickets
+	     WHERE user_id = $1
+	     ORDER BY created_at DESC
+2026-02-06 14:46:42.926 IST [14622] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-06 14:46:42.929 IST [14622] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-06 14:46:42.929 IST [14622] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-06 14:46:42.930 IST [14622] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-06 14:46:42.953 IST [14634] LOG:  database system was interrupted; last known up at 2026-02-06 12:48:16 IST
+2026-02-06 14:46:43.332 IST [14634] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-02-06 14:46:43.339 IST [14634] LOG:  redo starts at 0/5544120
+2026-02-06 14:46:43.340 IST [14634] LOG:  invalid record length at 0/5544208: wanted 24, got 0
+2026-02-06 14:46:43.340 IST [14634] LOG:  redo done at 0/55441D0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-02-06 14:46:43.357 IST [14622] LOG:  database system is ready to accept connections
+2026-02-06 20:46:43.969 IST [14622] LOG:  received smart shutdown request
+2026-02-06 20:46:43.973 IST [14622] LOG:  background worker "logical replication launcher" (PID 14643) exited with exit code 1
+2026-02-06 20:46:43.973 IST [14638] LOG:  shutting down
+2026-02-06 20:46:43.986 IST [14622] LOG:  database system is shut down
+2026-02-07 21:37:10.827 IST [4647] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-07 21:37:10.830 IST [4647] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-07 21:37:10.830 IST [4647] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-07 21:37:10.830 IST [4647] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-07 21:37:10.853 IST [4648] LOG:  database system was shut down at 2026-02-06 20:46:43 IST
+2026-02-07 21:37:10.861 IST [4647] LOG:  database system is ready to accept connections
+2026-02-07 21:41:17.179 IST [6303] ERROR:  relation "support_tickets" does not exist at character 94
+2026-02-07 21:41:17.179 IST [6303] STATEMENT:  SELECT id, subject, message, category, status, admin_reply, created_at, updated_at
+	     FROM support_tickets
+	     WHERE user_id = $1
+	     ORDER BY created_at DESC
+2026-02-07 21:42:50.241 IST [6932] ERROR:  foreign key constraint "support_tickets_user_id_fkey" cannot be implemented
+2026-02-07 21:42:50.241 IST [6932] DETAIL:  Key columns "user_id" and "id" are of incompatible types: integer and uuid.
+2026-02-07 21:42:50.241 IST [6932] STATEMENT:  CREATE TABLE IF NOT EXISTS support_tickets (
+	  id SERIAL PRIMARY KEY,
+	  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	  subject VARCHAR(200) NOT NULL,
+	  message TEXT NOT NULL,
+	  category VARCHAR(50) NOT NULL, -- 'ACCOUNT', 'PAYMENT', 'TECHNICAL', 'OTHER'
+	  status VARCHAR(20) DEFAULT 'OPEN', -- 'OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED'
+	  admin_reply TEXT,
+	  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+	
+	CREATE INDEX idx_support_tickets_user ON support_tickets(user_id);
+	CREATE INDEX idx_support_tickets_status ON support_tickets(status);
+2026-02-07 21:46:28.715 IST [8347] ERROR:  null value in column "selfie_video_url" of relation "artist_profiles" violates not-null constraint
+2026-02-07 21:46:28.715 IST [8347] DETAIL:  Failing row contains (c13181c9-ea92-4a3d-9244-b5e12048ce7b, f2c11c75-faef-48c1-961d-7785fb9aa9f5, Samuel, im a solo music creator, https://faithstream-songs-production.s3.ap-south-1.amazonaws.com..., null, REQUESTED, null, null, 2026-02-07 21:46:28.697723, https://placehold.co/400x400/png).
+2026-02-07 21:46:28.715 IST [8347] STATEMENT:  INSERT INTO artist_profiles
+	     (user_id, artist_name, bio, govt_id_url, selfie_video_url)
+	     VALUES ($1,$2,$3,$4,$5)
+2026-02-09 16:48:38.137 IST [78803] FATAL:  lock file "postmaster.pid" already exists
+2026-02-09 16:48:38.137 IST [78803] HINT:  Is another postmaster (PID 4647) running in data directory "/usr/local/var/postgres@14"?
+2026-02-09 16:48:42.702 IST [4647] LOG:  received fast shutdown request
+2026-02-09 16:48:42.705 IST [4647] LOG:  aborting any active transactions
+2026-02-09 16:48:42.710 IST [4647] LOG:  background worker "logical replication launcher" (PID 4654) exited with exit code 1
+2026-02-09 16:48:42.710 IST [4649] LOG:  shutting down
+2026-02-09 16:48:42.732 IST [4647] LOG:  database system is shut down
+2026-02-09 16:48:45.347 IST [78969] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-09 16:48:45.350 IST [78969] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-09 16:48:45.350 IST [78969] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-09 16:48:45.351 IST [78969] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-09 16:48:45.385 IST [78970] LOG:  database system was shut down at 2026-02-09 16:48:42 IST
+2026-02-09 16:48:45.395 IST [78969] LOG:  database system is ready to accept connections
+2026-02-09 19:56:42.158 IST [78969] LOG:  received smart shutdown request
+2026-02-09 19:56:42.160 IST [78969] LOG:  background worker "logical replication launcher" (PID 78976) exited with exit code 1
+2026-02-09 19:56:42.161 IST [78971] LOG:  shutting down
+2026-02-09 19:56:42.176 IST [78969] LOG:  database system is shut down
+2026-02-10 14:22:21.412 IST [77279] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-10 14:22:21.416 IST [77279] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-10 14:22:21.416 IST [77279] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-10 14:22:21.416 IST [77279] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-10 14:22:21.448 IST [77280] LOG:  database system was shut down at 2026-02-09 19:56:42 IST
+2026-02-10 14:22:21.460 IST [77279] LOG:  database system is ready to accept connections
+2026-02-10 14:33:32.483 IST [81198] ERROR:  relation "song_disputess" does not exist at character 13
+2026-02-10 14:33:32.483 IST [81198] STATEMENT:  delete from song_disputess
+2026-02-10 15:12:25.824 IST [187] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:12:25.824 IST [187] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:13:18.830 IST [1246] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:13:18.830 IST [1246] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:13:24.815 IST [1355] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:13:24.815 IST [1355] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:15:07.977 IST [2132] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:15:07.977 IST [2132] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:15:10.895 IST [2148] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:15:10.895 IST [2148] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:15:11.919 IST [2167] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:15:11.919 IST [2167] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:15:13.943 IST [2181] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:15:13.943 IST [2181] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 15:15:17.962 IST [2214] ERROR:  column u.phone_number does not exist at character 60
+2026-02-10 15:15:17.962 IST [2214] STATEMENT:  SELECT 
+	       u.id,
+	       u.name,
+	       u.email,
+	       u.phone_number,
+	       ap.artist_name,
+	       ap.bio,
+	       ap.profile_image_url,
+	       ap.verified_at,
+	       ap.verified_by,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count,
+	       admin.name as verified_by_name
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN users admin ON admin.id = ap.verified_by
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.id = $1
+	       AND u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, u.name, u.email, u.phone_number, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, ap.verified_by, u.created_at, admin.name
+2026-02-10 22:38:46.838 IST [64484] ERROR:  column u.profile_image_url does not exist at character 93
+2026-02-10 22:38:46.838 IST [64484] HINT:  Perhaps you meant to reference the column "ap.profile_image_url".
+2026-02-10 22:38:46.838 IST [64484] STATEMENT:  SELECT 
+	       u.id,
+	       COALESCE(ap.artist_name, u.name) as name,
+	       ap.bio,
+	       u.profile_image_url as image,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, ap.artist_name, u.name, ap.bio, ap.profile_image_url, u.created_at
+	     ORDER BY song_count DESC, u.created_at DESC
+	     LIMIT $1
+2026-02-10 22:39:23.302 IST [64757] ERROR:  column u.profile_image_url does not exist at character 93
+2026-02-10 22:39:23.302 IST [64757] HINT:  Perhaps you meant to reference the column "ap.profile_image_url".
+2026-02-10 22:39:23.302 IST [64757] STATEMENT:  SELECT 
+	       u.id,
+	       COALESCE(ap.artist_name, u.name) as name,
+	       ap.bio,
+	       u.profile_image_url as image,
+	       u.created_at,
+	       COUNT(DISTINCT s.id) as song_count,
+	       COUNT(DISTINCT a.id) as album_count
+	     FROM users u
+	     JOIN artist_profiles ap ON ap.user_id = u.id
+	     LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+	     LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+	     WHERE u.artist_status = 'APPROVED'
+	       AND ap.verification_status = 'APPROVED'
+	     GROUP BY u.id, ap.artist_name, u.name, ap.bio, ap.profile_image_url, u.created_at
+	     ORDER BY song_count DESC, u.created_at DESC
+	     LIMIT $1
+2026-02-10 23:46:14.882 IST [92955] ERROR:  null value in column "lyrics" of relation "songs" violates not-null constraint
+2026-02-10 23:46:14.882 IST [92955] DETAIL:  Failing row contains (535194da-7c31-471f-9f37-9ea4bf879477, 367ade8d-320f-43ec-ba13-d5958e52ee23, 0fd81f97-6884-4a51-84a1-1b2b875cffe6, nee mukhamu manoharamu, Other, Worship, null, my new album, 1, null, null, null, PENDING, null, 2026-02-10 23:46:14.877213, null, null).
+2026-02-10 23:46:14.882 IST [92955] STATEMENT:  INSERT INTO songs
+	     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
+	     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+	     RETURNING *
+2026-02-10 23:49:30.240 IST [94526] ERROR:  null value in column "lyrics" of relation "songs" violates not-null constraint
+2026-02-10 23:49:30.240 IST [94526] DETAIL:  Failing row contains (c301b1c2-df0d-4ada-8eca-b4e9b83e0b8f, 367ade8d-320f-43ec-ba13-d5958e52ee23, 0fd81f97-6884-4a51-84a1-1b2b875cffe6, nee mukhamu manoharamu, Other, Worship, null, my new album, 1, null, null, null, PENDING, null, 2026-02-10 23:49:30.237587, null, null).
+2026-02-10 23:49:30.240 IST [94526] STATEMENT:  INSERT INTO songs
+	     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
+	     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+	     RETURNING *
+2026-02-10 23:50:16.848 IST [94904] ERROR:  null value in column "lyrics" of relation "songs" violates not-null constraint
+2026-02-10 23:50:16.848 IST [94904] DETAIL:  Failing row contains (57158f01-fa59-4e11-aca6-8fa586491821, 367ade8d-320f-43ec-ba13-d5958e52ee23, 0fd81f97-6884-4a51-84a1-1b2b875cffe6, nee mukhamu manoharamu, Other, Worship, null, my new album, 1, null, null, null, PENDING, null, 2026-02-10 23:50:16.845066, null, null).
+2026-02-10 23:50:16.848 IST [94904] STATEMENT:  INSERT INTO songs
+	     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
+	     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+	     RETURNING *
+2026-02-10 23:51:36.806 IST [95513] ERROR:  null value in column "audio_original_url" of relation "songs" violates not-null constraint
+2026-02-10 23:51:36.806 IST [95513] DETAIL:  Failing row contains (ee6dc7f4-e613-49bf-8a21-d99b0a40f456, 367ade8d-320f-43ec-ba13-d5958e52ee23, 0fd81f97-6884-4a51-84a1-1b2b875cffe6, nee mukhamu manoharamu, Other, Worship, cccvcvghgvnhgbj, my new album, 1, null, null, null, PENDING, null, 2026-02-10 23:51:36.802936, null, null).
+2026-02-10 23:51:36.806 IST [95513] STATEMENT:  INSERT INTO songs
+	     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
+	     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+	     RETURNING *
+2026-02-10 23:52:17.898 IST [95938] ERROR:  null value in column "audio_original_url" of relation "songs" violates not-null constraint
+2026-02-10 23:52:17.898 IST [95938] DETAIL:  Failing row contains (33fc1a7a-0c08-4c4f-9afd-909a6de1949a, 367ade8d-320f-43ec-ba13-d5958e52ee23, 0fd81f97-6884-4a51-84a1-1b2b875cffe6, nee mukhamu manoharamu, Other, Worship, cccvcvghgvnhgbj, my new album, 1, null, null, null, PENDING, null, 2026-02-10 23:52:17.895117, null, null).
+2026-02-10 23:52:17.898 IST [95938] STATEMENT:  INSERT INTO songs
+	     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
+	     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+	     RETURNING *
+2026-02-11 00:20:11.572 IST [77279] LOG:  received smart shutdown request
+2026-02-11 00:20:11.574 IST [77279] LOG:  background worker "logical replication launcher" (PID 77286) exited with exit code 1
+2026-02-11 00:20:11.575 IST [77281] LOG:  shutting down
+2026-02-11 00:20:11.591 IST [77279] LOG:  database system is shut down
+2026-02-11 12:50:29.977 IST [14491] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-11 12:50:29.982 IST [14491] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-11 12:50:29.982 IST [14491] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-11 12:50:29.983 IST [14491] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-11 12:50:30.019 IST [14492] LOG:  database system was shut down at 2026-02-11 00:20:11 IST
+2026-02-11 12:50:30.033 IST [14491] LOG:  database system is ready to accept connections
+2026-02-11 15:27:03.553 IST [51604] ERROR:  null value in column "audio_original_url" of relation "songs" violates not-null constraint
+2026-02-11 15:27:03.553 IST [51604] DETAIL:  Failing row contains (f57b4d25-607a-4909-80e6-32ab2dda6eb3, 367ade8d-320f-43ec-ba13-d5958e52ee23, 0fd81f97-6884-4a51-84a1-1b2b875cffe6, vinava manavi, Other, Worship, hcjcjcjccj, fgcvh, 1, null, null, null, PENDING, null, 2026-02-11 15:27:03.449504, null, null).
+2026-02-11 15:27:03.553 IST [51604] STATEMENT:  INSERT INTO songs
+	     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
+	     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+	     RETURNING *
+2026-02-11 19:59:10.212 IST [14491] LOG:  received smart shutdown request
+2026-02-11 19:59:10.214 IST [14491] LOG:  background worker "logical replication launcher" (PID 14498) exited with exit code 1
+2026-02-11 19:59:10.214 IST [14493] LOG:  shutting down
+2026-02-11 19:59:10.227 IST [14491] LOG:  database system is shut down
+2026-02-12 10:34:33.369 IST [5753] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-12 10:34:33.373 IST [5753] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-12 10:34:33.373 IST [5753] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-12 10:34:33.375 IST [5753] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-12 10:34:33.406 IST [5754] LOG:  database system was shut down at 2026-02-11 19:59:10 IST
+2026-02-12 10:34:33.416 IST [5753] LOG:  database system is ready to accept connections
+2026-02-12 10:53:36.843 IST [9783] ERROR:  syntax error at or near "serial" at character 66
+2026-02-12 10:53:36.843 IST [9783] STATEMENT:  create table artist_profiles_supportings(
+	id varchar primary key serial,
+	artist_id uuid reference from artist_profiles(id),
+	supporting_links varchar
+	
+	)
+2026-02-12 10:54:08.570 IST [9783] ERROR:  syntax error at or near "serial" at character 66
+2026-02-12 10:54:08.570 IST [9783] STATEMENT:  create table artist_profiles_supportings(
+	id varchar primary key serial,
+	artist_id uuid reference from artist_profiles(id),
+	supporting_links varchar
+	)
+2026-02-12 10:54:24.445 IST [9783] ERROR:  syntax error at or near "serial" at character 63
+2026-02-12 10:54:24.445 IST [9783] STATEMENT:  create table artist_profiles_supportings(
+	id uuid primary key serial,
+	artist_id uuid reference from artist_profiles(id),
+	supporting_links varchar
+	)
+2026-02-12 10:55:31.654 IST [9783] ERROR:  syntax error at or near "reference" at character 104
+2026-02-12 10:55:31.654 IST [9783] STATEMENT:  create table artist_profiles_supportings(
+	id uuid DEFAULT getuuidrandom() primary key ,
+	artist_id uuid reference from artist_profiles(id),
+	supporting_links varchar
+	)
+2026-02-12 18:48:37.569 IST [8439] ERROR:  column "songs" does not exist at character 8
+2026-02-12 18:48:37.569 IST [8439] STATEMENT:  SELECT songs FROM albums WHERE id=$1
+2026-02-12 19:28:53.440 IST [5753] LOG:  received smart shutdown request
+2026-02-12 19:28:53.444 IST [5753] LOG:  background worker "logical replication launcher" (PID 5760) exited with exit code 1
+2026-02-12 19:28:53.445 IST [5755] LOG:  shutting down
+2026-02-12 19:28:53.471 IST [5753] LOG:  database system is shut down
+2026-02-12 21:40:13.420 IST [2801] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-12 21:40:13.445 IST [2801] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-12 21:40:13.445 IST [2801] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-12 21:40:13.446 IST [2801] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-12 21:40:13.471 IST [2802] LOG:  database system was shut down at 2026-02-12 19:28:53 IST
+2026-02-12 21:40:13.488 IST [2801] LOG:  database system is ready to accept connections
+2026-02-13 00:45:23.957 IST [2801] LOG:  received smart shutdown request
+2026-02-13 00:45:23.960 IST [2801] LOG:  background worker "logical replication launcher" (PID 2808) exited with exit code 1
+2026-02-13 00:45:23.960 IST [2803] LOG:  shutting down
+2026-02-13 00:45:23.970 IST [2801] LOG:  database system is shut down
+2026-02-13 11:56:23.298 IST [35024] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-13 11:56:23.302 IST [35024] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-13 11:56:23.302 IST [35024] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-13 11:56:23.303 IST [35024] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-13 11:56:23.337 IST [35025] LOG:  database system was shut down at 2026-02-13 00:45:23 IST
+2026-02-13 11:56:23.351 IST [35024] LOG:  database system is ready to accept connections

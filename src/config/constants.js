@@ -1,0 +1,23 @@
+module.exports = {
+  USER_ROLES: {
+    USER: 'USER',
+    ADMIN: 'ADMIN',
+  },
+
+  ARTIST_STATUS: {
+    NONE: 'NONE',
+    REQUESTED: 'REQUESTED',
+    APPROVED: 'APPROVED',
+    REJECTED: 'REJECTED',
+    SUSPENDED: 'SUSPENDED',
+  },
+
+  SONG_STATUS: {
+    DRAFT: 'DRAFT',
+    PENDING: 'PENDING',
+    APPROVED: 'APPROVED',
+    REJECTED: 'REJECTED',
+    DISPUTED: 'DISPUTED',
+    TAKEN_DOWN: 'TAKEN_DOWN',
+  },
+};
