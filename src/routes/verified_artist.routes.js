@@ -5,6 +5,8 @@ const authMiddleware = require('../middlewares/auth.middleware');
 router.use(authMiddleware);
 
 router.get('/:artistId', artistController.getVerifiedArtistById);
+router.get('/:artistId/songs', artistController.getArtistSongs);
+router.get('/:artistId/albums', artistController.getArtistAlbums);
 
 
 module.exports = router;

@@ -37,14 +37,14 @@ class PlaylistRepository {
     const songsQuery = `
       SELECT 
         s.id, s.title, s.artist_user_id, s.album_id, 
-        s.genre, s.published_at,
+        s.genre, s.published_at, s.audio_original_url,
         s.cover_image_url, s.created_at,
-        a.artist_name,
+        ap.artist_name as artist_display_name,
         al.title as album_title,
         ps.position, ps.added_at
       FROM playlist_songs ps
       INNER JOIN songs s ON ps.song_id = s.id
-      LEFT JOIN artist_profiles a ON s.artist_user_id = a.id
+      LEFT JOIN artist_profiles ap ON s.artist_user_id = ap.user_id
       LEFT JOIN albums al ON s.album_id = al.id
       WHERE ps.playlist_id = $1
       ORDER BY ps.position ASC, ps.added_at ASC

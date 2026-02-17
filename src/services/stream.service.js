@@ -15,11 +15,11 @@ exports.getStreamUrl = async (songId, userId) => {
 };
 
 exports.logStream = async (songId, userId, duration) => {
-  // Ignore very short plays (anti-fraud)
+  // Track recently played songs (always record history if called)
+  await recentlyPlayedRepo.upsert(userId, songId);
+
+  // Ignore very short plays (anti-fraud) for analytics/stream counts
   if (duration < 30) return;
 
   await streamRepo.create(songId, userId, duration);
-  
-  // Track recently played songs
-  await recentlyPlayedRepo.upsert(userId, songId);
 };

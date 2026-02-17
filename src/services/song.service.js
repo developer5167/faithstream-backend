@@ -45,6 +45,11 @@ exports.getArtistSongs = async (artistId) => {
   return songRepo.findByArtist(artistId);
 };
 
+exports.getArtistPublicSongs = async (artistId) => {
+  console.log("artistId",artistId); 
+  return songRepo.findPublicByArtist(artistId);
+};
+
 exports.getPendingSongs = async () => {
   return songRepo.findPending();
 };

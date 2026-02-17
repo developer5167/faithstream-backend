@@ -30,6 +30,27 @@ exports.findByArtist = async (artistId) => {
   return res.rows;
 };
 
+exports.findPublicByArtist = async (artistId) => {
+  try{
+  const res = await db.query(
+    `SELECT s.*, 
+            a.title as album_title,
+            u.name as artist_name,
+            ap.artist_name as artist_display_name
+     FROM songs s
+     JOIN users u ON u.id = s.artist_user_id
+     LEFT JOIN albums a ON a.id = s.album_id
+     LEFT JOIN artist_profiles ap ON ap.user_id = s.artist_user_id
+     WHERE s.artist_user_id=$1 AND s.status='APPROVED' 
+     ORDER BY s.created_at DESC`,
+    [artistId]
+  );
+  return res.rows;
+}catch(error){
+  console.log(error);
+}
+};
+
 exports.findByAlbum = async (albumId) => {
   const res = await db.query(
     `SELECT * FROM songs WHERE album_id=$1 ORDER BY track_number ASC, created_at ASC`,

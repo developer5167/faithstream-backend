@@ -68,6 +68,8 @@ exports.getFeaturedArtists = async (limit = 10) => {
        COALESCE(ap.artist_name, u.name) as name,
        ap.bio,
        u.profile_pic_url as image,
+       u.profile_pic_url as profile_image_url,
+       u.profile_pic_url as profile_pic_url,
        u.created_at,
        COUNT(DISTINCT s.id) as song_count,
        COUNT(DISTINCT a.id) as album_count

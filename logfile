@@ -1106,3 +1106,95 @@
 2026-02-13 11:56:23.303 IST [35024] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2026-02-13 11:56:23.337 IST [35025] LOG:  database system was shut down at 2026-02-13 00:45:23 IST
 2026-02-13 11:56:23.351 IST [35024] LOG:  database system is ready to accept connections
+2026-02-13 19:52:49.550 IST [35024] LOG:  received smart shutdown request
+2026-02-13 19:52:49.552 IST [35024] LOG:  background worker "logical replication launcher" (PID 35031) exited with exit code 1
+2026-02-13 19:52:49.552 IST [35026] LOG:  shutting down
+2026-02-13 19:52:49.567 IST [35024] LOG:  database system is shut down
+2026-02-16 19:11:19.869 IST [4378] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-16 19:11:19.872 IST [4378] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-16 19:11:19.872 IST [4378] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-16 19:11:19.873 IST [4378] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-16 19:11:19.897 IST [4379] LOG:  database system was shut down at 2026-02-13 19:52:49 IST
+2026-02-16 19:11:19.907 IST [4378] LOG:  database system is ready to accept connections
+2026-02-17 12:46:30.648 IST [44562] ERROR:  relation "idx_favorites_user_id" already exists
+2026-02-17 12:46:30.648 IST [44562] STATEMENT:  -- Create favorites table
+	CREATE TABLE IF NOT EXISTS favorites (
+	    id SERIAL PRIMARY KEY,
+	    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    song_id UUID NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(user_id, song_id)
+	);
+	
+	CREATE INDEX idx_favorites_user_id ON favorites(user_id);
+	CREATE INDEX idx_favorites_song_id ON favorites(song_id);
+	
+	-- Create playlists table
+	CREATE TABLE IF NOT EXISTS playlists (
+	    id SERIAL PRIMARY KEY,
+	    name VARCHAR(255) NOT NULL,
+	    description TEXT,
+	    image_url TEXT,
+	    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    is_public BOOLEAN DEFAULT false,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+	
+	CREATE INDEX idx_playlists_user_id ON playlists(user_id);
+	
+	-- Create playlist_songs junction table
+	CREATE TABLE IF NOT EXISTS playlist_songs (
+	    id SERIAL PRIMARY KEY,
+	    playlist_id INTEGER NOT NULL REFERENCES playlists(id) ON DELETE CASCADE,
+	    song_id UUID NOT NULL REFERENCES songs(id) ON DELETE CASCADE,
+	    position INTEGER DEFAULT 0,
+	    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(playlist_id, song_id)
+	);
+	
+	CREATE INDEX idx_playlist_songs_playlist_id ON playlist_songs(playlist_id);
+	CREATE INDEX idx_playlist_songs_song_id ON playlist_songs(song_id);
+	
+	-- Create trigger to update playlists updated_at
+	CREATE OR REPLACE FUNCTION update_playlist_updated_at()
+	RETURNS TRIGGER AS $$
+	BEGIN
+	    NEW.updated_at = CURRENT_TIMESTAMP;
+	    RETURN NEW;
+	END;
+	$$ LANGUAGE plpgsql;
+	
+	CREATE TRIGGER trigger_update_playlist_timestamp
+	BEFORE UPDATE ON playlists
+	FOR EACH ROW
+	EXECUTE FUNCTION update_playlist_updated_at();
+	
+2026-02-17 12:47:25.094 IST [44889] ERROR:  foreign key constraint "favorite_albums_album_id_fkey" cannot be implemented
+2026-02-17 12:47:25.094 IST [44889] DETAIL:  Key columns "album_id" and "id" are of incompatible types: integer and uuid.
+2026-02-17 12:47:25.094 IST [44889] STATEMENT:  -- Create favorite_artists table
+	CREATE TABLE IF NOT EXISTS favorite_artists (
+	    id SERIAL PRIMARY KEY,
+	    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    artist_user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(user_id, artist_user_id)
+	);
+	
+	CREATE INDEX idx_favorite_artists_user_id ON favorite_artists(user_id);
+	CREATE INDEX idx_favorite_artists_artist_user_id ON favorite_artists(artist_user_id);
+	
+	-- Create favorite_albums table
+	CREATE TABLE IF NOT EXISTS favorite_albums (
+	    id SERIAL PRIMARY KEY,
+	    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	    album_id INTEGER NOT NULL REFERENCES albums(id) ON DELETE CASCADE,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    UNIQUE(user_id, album_id)
+	);
+	
+	CREATE INDEX idx_favorite_albums_user_id ON favorite_albums(user_id);
+	CREATE INDEX idx_favorite_albums_album_id ON favorite_albums(album_id);
+	
+2026-02-17 14:56:23.233 IST [59610] FATAL:  database "kcs" does not exist
+2026-02-17 16:42:11.359 IST [75634] FATAL:  role "postgres" does not exist

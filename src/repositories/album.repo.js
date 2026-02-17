@@ -26,6 +26,25 @@ exports.findByArtist = async (artistId) => {
   return res.rows;
 };
 
+exports.findPublicByArtist = async (artistId) => {
+  try{
+  const res = await db.query(
+    `SELECT a.*,
+            u.name as artist_name,
+            ap.artist_name as artist_display_name
+     FROM albums a
+     JOIN users u ON u.id = a.artist_user_id
+     LEFT JOIN artist_profiles ap ON ap.user_id = a.artist_user_id
+     WHERE a.artist_user_id=$1 AND a.status='APPROVED' 
+     ORDER BY a.created_at DESC`,
+    [artistId]
+  );
+  return res.rows;
+}catch(error){
+  console.log(error);
+}
+};
+
 exports.findPending = async () => {
   const res = await db.query(
     `SELECT * FROM albums WHERE status='DRAFT' OR status='DRAFT' ORDER BY created_at DESC`

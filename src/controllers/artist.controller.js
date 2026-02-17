@@ -47,3 +47,13 @@ exports.getSupportingLinksByUserId = async (req, res) => {
   const links = await artistService.getSupportingLinksByUserId(req.params.userId);
   res.json({ supporting_links: links });
 };
+
+exports.getArtistSongs = async (req, res) => {
+  const songs = await require('../services/song.service').getArtistPublicSongs(req.params.artistId);
+  res.json(songs);
+};
+
+exports.getArtistAlbums = async (req, res) => {
+  const albums = await require('../services/album.service').getArtistPublicAlbums(req.params.artistId);
+  res.json(albums);
+};

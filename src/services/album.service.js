@@ -27,6 +27,10 @@ exports.getArtistAlbums = async (artistId) => {
   return albumRepo.findByArtist(artistId);
 };
 
+exports.getArtistPublicAlbums = async (artistId) => {
+  return albumRepo.findPublicByArtist(artistId);
+};
+
 exports.submitAlbum = async (albumId, artistId) => {
   const songs = await songRepo.findByAlbum(albumId);
   if (!songs.length) throw new Error('Album has no songs');
