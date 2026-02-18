@@ -1198,3 +1198,24 @@
 	
 2026-02-17 14:56:23.233 IST [59610] FATAL:  database "kcs" does not exist
 2026-02-17 16:42:11.359 IST [75634] FATAL:  role "postgres" does not exist
+2026-02-17 18:08:01.273 IST [4378] LOG:  received fast shutdown request
+2026-02-17 18:08:01.275 IST [4378] LOG:  aborting any active transactions
+2026-02-17 18:08:01.278 IST [4378] LOG:  background worker "logical replication launcher" (PID 4385) exited with exit code 1
+2026-02-17 18:08:01.278 IST [4380] LOG:  shutting down
+2026-02-17 18:08:01.291 IST [4378] LOG:  database system is shut down
+2026-02-17 19:30:07.521 IST [5478] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-17 19:30:07.526 IST [5478] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-17 19:30:07.526 IST [5478] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-17 19:30:07.527 IST [5478] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-17 19:30:07.559 IST [5479] LOG:  database system was shut down at 2026-02-17 18:08:01 IST
+2026-02-17 19:30:07.575 IST [5478] LOG:  database system is ready to accept connections
+2026-02-17 21:07:03.380 IST [5478] LOG:  received smart shutdown request
+2026-02-17 21:07:03.382 IST [5478] LOG:  background worker "logical replication launcher" (PID 5485) exited with exit code 1
+2026-02-17 21:07:03.382 IST [5480] LOG:  shutting down
+2026-02-17 21:07:03.398 IST [5478] LOG:  database system is shut down
+2026-02-18 12:35:37.797 IST [8095] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-18 12:35:37.808 IST [8095] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-18 12:35:37.808 IST [8095] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-18 12:35:37.809 IST [8095] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-18 12:35:37.836 IST [8096] LOG:  database system was shut down at 2026-02-17 21:07:03 IST
+2026-02-18 12:35:37.844 IST [8095] LOG:  database system is ready to accept connections
