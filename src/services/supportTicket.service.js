@@ -1,4 +1,6 @@
 const supportTicketRepo = require('../repositories/supportTicket.repo');
+const notificationService = require('./notification.service');
+
 
 /**
  * Create a new support ticket
@@ -26,4 +28,15 @@ exports.getOpenTickets = async () => {
  */
 exports.reply = async (ticketId, adminReply, status = 'RESOLVED') => {
   await supportTicketRepo.reply(ticketId, adminReply, status);
+
+  const ticket = await supportTicketRepo.findById(ticketId);
+  if (ticket && ticket.user_id) {
+    notificationService.sendToUser(
+      ticket.user_id,
+      '📩 Support Ticket Updated',
+      `An admin has replied to your ticket: "${ticket.subject}"`,
+      { type: 'support_ticket_reply', ticket_id: ticketId }
+    ).catch(err => console.error('Failed to notify user about ticket reply:', err));
+  }
 };
+

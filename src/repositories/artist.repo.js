@@ -219,3 +219,32 @@ exports.deleteSupportingLink = async (linkId) => {
     [linkId]
   );
 };
+
+exports.getDashboardStats = async (userId) => {
+  try{
+  const res = await db.query(
+    `SELECT
+       COUNT(DISTINCT s.id)                          AS total_songs,
+       COUNT(DISTINCT a.id)                          AS total_albums,
+       COALESCE(COUNT(st.id), 0)                     AS total_streams,
+       COALESCE(MAX(w.total_earned), 0)              AS total_earnings
+     FROM users u
+     LEFT JOIN songs  s  ON s.artist_user_id  = u.id AND s.status = 'APPROVED'
+     LEFT JOIN albums a  ON a.artist_user_id  = u.id AND a.status = 'APPROVED'
+     LEFT JOIN streams st ON st.song_id = s.id
+     LEFT JOIN artist_wallets w ON w.artist_user_id = u.id
+     WHERE u.id = $1`,
+    [userId]
+  );
+  const row = res.rows[0];
+  return {
+    total_songs:    parseInt(row.total_songs)    || 0,
+    total_albums:   parseInt(row.total_albums)   || 0,
+    total_streams:  parseInt(row.total_streams)  || 0,
+    total_earnings: parseFloat(row.total_earnings) || 0,
+  };
+  }catch(error){
+    console.log(error);
+    return error;
+  }
+} ;

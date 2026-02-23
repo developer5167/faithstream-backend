@@ -2,6 +2,8 @@ const albumRepo = require('../repositories/album.repo');
 const songRepo = require('../repositories/song.repo');
 const adminLog = require('../repositories/adminAction.repo');
 const userRepo = require('../repositories/user.repo');
+const notificationService = require('./notification.service');
+
 
 exports.createAlbum = async (artistId, data) => {
   // Verify the artist is approved
@@ -45,10 +47,30 @@ exports.getPendingAlbums = async () => {
 
 exports.approveAlbum = async (albumId) => {
   await albumRepo.updateStatus(albumId, 'APPROVED');
+
+  const album = await albumRepo.findById(albumId);
+  if (album && album.artist_user_id) {
+    notificationService.sendToUser(
+      album.artist_user_id,
+      '✅ Album Approved',
+      `Great news! Your album "${album.title}" is now live.`,
+      { type: 'album_approved', album_id: album.id }
+    ).catch(err => console.error('Failed to notify artist:', err));
+  }
 };
 
 exports.rejectAlbum = async (albumId, reason) => {
   await albumRepo.reject(albumId, reason);
+
+  const album = await albumRepo.findById(albumId);
+  if (album && album.artist_user_id) {
+    notificationService.sendToUser(
+      album.artist_user_id,
+      '❌ Album Review Update',
+      `Your album "${album.title}" requires changes. Reason: ${reason || 'Not specified'}`,
+      { type: 'album_rejected', album_id: album.id }
+    ).catch(err => console.error('Failed to notify artist:', err));
+  }
 };
 
 exports.getAlbumTracks = async (albumId) => {

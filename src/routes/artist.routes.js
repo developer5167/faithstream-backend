@@ -9,6 +9,9 @@ router.post('/request', auth, artistController.requestArtist);
 // user → check artist status
 router.get('/status', auth, artistController.getArtistStatus);
 
+// user → get artist dashboard stats (songs, albums, streams, earnings)
+router.get('/dashboard-stats', auth, artistController.getDashboardStats);
+
 // admin → view artist requests
 router.get('/admin/requests', auth, admin, artistController.getArtistRequests);
 

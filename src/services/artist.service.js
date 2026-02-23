@@ -64,3 +64,7 @@ exports.getSupportingLinks = async (artistId) => {
 exports.getSupportingLinksByUserId = async (userId) => {
   return artistRepo.getSupportingLinksByUserId(userId);
 };
+
+exports.getDashboardStats = async (userId) => {
+  return artistRepo.getDashboardStats(userId);
+};

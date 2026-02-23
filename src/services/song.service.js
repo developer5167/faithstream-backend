@@ -2,6 +2,8 @@ const songRepo = require('../repositories/song.repo');
 const albumRepo = require('../repositories/album.repo');
 const adminLog = require('../repositories/adminAction.repo');
 const userRepo = require('../repositories/user.repo');
+const notificationService = require('./notification.service');
+
 
 exports.createSong = async (artistId, data) => {
   // Verify the artist is approved
@@ -65,6 +67,16 @@ exports.getPendingAlbumSongs = async () => {
 exports.approveSong = async (songId, adminId) => {
   await songRepo.updateStatus(songId, 'APPROVED');
 
+  const song = await songRepo.getSongById(songId);
+  if (song && song.artist_user_id) {
+    notificationService.sendToUser(
+      song.artist_user_id,
+      '✅ Song Approved',
+      `Great news! Your song "${song.title}" is now live on FaithStream.`,
+      { type: 'song_approved', song_id: song.id }
+    ).catch(err => console.error('Failed to notify artist:', err));
+  }
+
   if (adminId) {
     await adminLog.log({
       admin_id: adminId,
@@ -75,8 +87,19 @@ exports.approveSong = async (songId, adminId) => {
   }
 };
 
+
 exports.rejectSong = async (songId, reason, adminId) => {
   await songRepo.reject(songId, reason);
+
+  const song = await songRepo.getSongById(songId);
+  if (song && song.artist_user_id) {
+    notificationService.sendToUser(
+      song.artist_user_id,
+      '❌ Song Review Update',
+      `Your song "${song.title}" requires changes. Reason: ${reason || 'Not specified'}`,
+      { type: 'song_rejected', song_id: song.id }
+    ).catch(err => console.error('Failed to notify artist:', err));
+  }
 
   if (adminId) {
     await adminLog.log({
@@ -87,6 +110,7 @@ exports.rejectSong = async (songId, reason, adminId) => {
     });
   }
 };
+
 
 exports.createSongOnBehalfOfArtist = async (artistId, adminId, data) => {
   // Admin can add songs to albums in any status (more flexibility)

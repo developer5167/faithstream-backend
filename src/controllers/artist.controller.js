@@ -11,6 +11,12 @@ exports.getArtistStatus = async (req, res) => {
   res.json(status);
 };
 
+exports.getDashboardStats = async (req, res) => {
+  const stats = await artistService.getDashboardStats(req.user.id);
+  res.json(stats);
+};
+
+
 exports.getArtistRequests = async (req, res) => {
   const requests = await artistService.getArtistRequests();
   res.json(requests);

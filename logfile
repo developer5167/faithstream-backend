@@ -1219,3 +1219,29 @@
 2026-02-18 12:35:37.809 IST [8095] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2026-02-18 12:35:37.836 IST [8096] LOG:  database system was shut down at 2026-02-17 21:07:03 IST
 2026-02-18 12:35:37.844 IST [8095] LOG:  database system is ready to accept connections
+2026-02-18 19:15:18.166 IST [8095] LOG:  received smart shutdown request
+2026-02-18 19:15:18.169 IST [8095] LOG:  background worker "logical replication launcher" (PID 8102) exited with exit code 1
+2026-02-18 19:15:18.169 IST [8097] LOG:  shutting down
+2026-02-18 19:15:18.181 IST [8095] LOG:  database system is shut down
+2026-02-19 15:19:37.913 IST [22530] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-19 15:19:37.916 IST [22530] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-19 15:19:37.916 IST [22530] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-19 15:19:37.916 IST [22530] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-19 15:19:37.940 IST [22531] LOG:  database system was shut down at 2026-02-18 19:15:18 IST
+2026-02-19 15:19:37.954 IST [22530] LOG:  database system is ready to accept connections
+2026-02-20 01:33:48.671 IST [22530] LOG:  received smart shutdown request
+2026-02-20 01:33:48.675 IST [22530] LOG:  background worker "logical replication launcher" (PID 22537) exited with exit code 1
+2026-02-20 01:33:48.676 IST [22532] LOG:  shutting down
+2026-02-20 01:33:48.694 IST [22530] LOG:  database system is shut down
+2026-02-23 12:05:47.063 IST [5408] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-23 12:05:47.069 IST [5408] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-23 12:05:47.069 IST [5408] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-23 12:05:47.069 IST [5408] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-23 12:05:47.091 IST [5409] LOG:  database system was shut down at 2026-02-23 02:18:10 IST
+2026-02-23 12:05:47.100 IST [5408] LOG:  database system is ready to accept connections
+2026-02-23 16:24:55.323 IST [57034] ERROR:  invalid input syntax for type uuid: "test_user"
+2026-02-23 16:24:55.323 IST [57034] CONTEXT:  unnamed portal parameter $1 = '...'
+2026-02-23 16:24:55.323 IST [57034] STATEMENT:  SELECT fcm_token FROM user_fcm_tokens WHERE user_id = $1
+2026-02-23 16:36:58.168 IST [58733] ERROR:  invalid input syntax for type uuid: "test"
+2026-02-23 16:36:58.168 IST [58733] CONTEXT:  unnamed portal parameter $1 = '...'
+2026-02-23 16:36:58.168 IST [58733] STATEMENT:  SELECT fcm_token FROM user_fcm_tokens WHERE user_id = $1

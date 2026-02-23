@@ -3,6 +3,8 @@ const rateLimit = require("express-rate-limit");
 const cors = require("cors");
 
 const app = express();
+// Trust reverse proxies (ngrok, nginx, etc.) — needed for rate limiting to work correctly
+app.set('trust proxy', 1);
 app.use(
   cors({
     origin: ["http://localhost:8080", "*"],
@@ -12,9 +14,19 @@ app.use(
   }),
 );
 
+/* -------------------- WEBHOOK (must be before express.json!) -------------------- */
+
+// 💳 Webhook — registered FIRST so express.json() never touches this body
+// express.raw() captures the raw Buffer needed for HMAC signature verification
+app.use(
+  "/api/subscriptions/webhook",
+  express.raw({ type: "*/*" }),       // capture any content-type as raw Buffer
+  require("./routes/subscription.webhook.routes"),
+);
+
 /* -------------------- GLOBAL MIDDLEWARE -------------------- */
 
-// Default JSON parser
+// Default JSON parser (registered AFTER webhook route)
 app.use(express.json());
 
 /* -------------------- RATE LIMITERS -------------------- */
@@ -36,13 +48,6 @@ const authLimiter = rateLimit({
 // 🔐 Auth
 app.use("/api/auth", authLimiter, require("./routes/auth.routes"));
 
-// 💳 Webhook (override body parser)
-app.use(
-  "/api/subscriptions/webhook",
-  express.raw({ type: "application/json" }),
-  require("./routes/subscription.webhook.routes"),
-);
-
 // 🌍 Global rate limit
 app.use(limiter);
 
@@ -55,10 +60,12 @@ app.use("/api/albums", require("./routes/album.routes"));
 app.use("/api/admin", require("./routes/admin.routes"));
 app.use("/api/subscriptions", require("./routes/subscription.routes"));
 app.use("/api/stream", require("./routes/stream.routes"));
+app.use("/api/payouts", require("./routes/payout.routes"));
 app.use("/api/complaints", require("./routes/complaint.routes"));
 app.use("/api/support", require("./routes/supportTicket.routes"));
 app.use("/api/disputes", require("./routes/dispute.routes"));
 app.use("/api/favorites", require("./routes/favorite.routes"));
+app.use("/api/notifications", require("./routes/notification.routes"));
 app.use("/api/playlists", require("./routes/playlist.routes"));
 app.use("/api/upload", require("./routes/upload.routes"));
 app.use("/api/albums/tracks",require("./routes/tracks.routes"))
