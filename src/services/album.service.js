@@ -47,6 +47,8 @@ exports.getPendingAlbums = async () => {
 
 exports.approveAlbum = async (albumId) => {
   await albumRepo.updateStatus(albumId, 'APPROVED');
+  // Also approve all songs that belong to this album
+  await songRepo.markAlbumSongsApproved(albumId);
 
   const album = await albumRepo.findById(albumId);
   if (album && album.artist_user_id) {

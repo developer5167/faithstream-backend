@@ -2,9 +2,11 @@ const complaintService = require('../services/complaint.service');
 
 exports.createComplaint = async (req, res) => {
   await complaintService.create(
-    req.body.song_id,
-    req.user.id,
-    req.body.reason
+    req.body.title,
+    req.body.description,
+    req.body.content_id,
+    req.body.content_type,
+    req.user.id
   );
   res.json({ message: 'Complaint submitted' });
 };

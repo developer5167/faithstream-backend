@@ -1245,3 +1245,38 @@
 2026-02-23 16:36:58.168 IST [58733] ERROR:  invalid input syntax for type uuid: "test"
 2026-02-23 16:36:58.168 IST [58733] CONTEXT:  unnamed portal parameter $1 = '...'
 2026-02-23 16:36:58.168 IST [58733] STATEMENT:  SELECT fcm_token FROM user_fcm_tokens WHERE user_id = $1
+2026-02-23 18:14:22.816 IST [69347] ERROR:  null value in column "message" of relation "support_tickets" violates not-null constraint
+2026-02-23 18:14:22.816 IST [69347] DETAIL:  Failing row contains (1, 367ade8d-320f-43ec-ba13-d5958e52ee23, I have done the payment but no premium, null, PAYMENT, OPEN, null, 2026-02-23 18:14:22.810533, 2026-02-23 18:14:22.810533).
+2026-02-23 18:14:22.816 IST [69347] STATEMENT:  INSERT INTO support_tickets (user_id, subject, message, category)
+	     VALUES ($1, $2, $3, $4)
+	     RETURNING *
+2026-02-23 18:16:29.060 IST [69763] ERROR:  null value in column "message" of relation "support_tickets" violates not-null constraint
+2026-02-23 18:16:29.060 IST [69763] DETAIL:  Failing row contains (2, 367ade8d-320f-43ec-ba13-d5958e52ee23, I have done the payment but no premium, null, PAYMENT, OPEN, null, 2026-02-23 18:16:29.059226, 2026-02-23 18:16:29.059226).
+2026-02-23 18:16:29.060 IST [69763] STATEMENT:  INSERT INTO support_tickets (user_id, subject, message, category)
+	     VALUES ($1, $2, $3, $4)
+	     RETURNING *
+2026-02-23 18:42:56.654 IST [72796] FATAL:  role "postgres" does not exist
+2026-02-23 18:44:37.512 IST [73255] FATAL:  role "postgres" does not exist
+2026-02-23 20:33:23.914 IST [5408] LOG:  received smart shutdown request
+2026-02-23 20:33:23.917 IST [5408] LOG:  background worker "logical replication launcher" (PID 5415) exited with exit code 1
+2026-02-23 20:33:23.917 IST [5410] LOG:  shutting down
+2026-02-23 20:33:23.930 IST [5408] LOG:  database system is shut down
+2026-02-23 21:14:20.907 IST [3340] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-23 21:14:20.910 IST [3340] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-23 21:14:20.910 IST [3340] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-23 21:14:20.911 IST [3340] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-23 21:14:20.944 IST [3341] LOG:  database system was shut down at 2026-02-23 20:33:23 IST
+2026-02-23 21:14:20.958 IST [3340] LOG:  database system is ready to accept connections
+2026-02-23 21:26:37.239 IST [5910] ERROR:  update or delete on table "users" violates foreign key constraint "complaints_reported_by_fkey" on table "complaints"
+2026-02-23 21:26:37.239 IST [5910] DETAIL:  Key (id)=(367ade8d-320f-43ec-ba13-d5958e52ee23) is still referenced from table "complaints".
+2026-02-23 21:26:37.239 IST [5910] STATEMENT:  delete  from users where id !='f843d0ac-b189-4d19-aee4-5b07c8262001'
+2026-02-24 01:15:51.463 IST [3340] LOG:  received smart shutdown request
+2026-02-24 01:15:51.465 IST [3340] LOG:  background worker "logical replication launcher" (PID 3347) exited with exit code 1
+2026-02-24 01:15:51.465 IST [3342] LOG:  shutting down
+2026-02-24 01:15:51.478 IST [3340] LOG:  database system is shut down
+2026-02-24 18:00:44.285 IST [6207] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-24 18:00:44.288 IST [6207] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-24 18:00:44.288 IST [6207] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-24 18:00:44.289 IST [6207] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-24 18:00:44.311 IST [6208] LOG:  database system was shut down at 2026-02-24 01:15:51 IST
+2026-02-24 18:00:44.318 IST [6207] LOG:  database system is ready to accept connections

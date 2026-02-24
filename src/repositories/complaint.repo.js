@@ -1,26 +1,21 @@
 const db = require('../config/db');
 
-exports.create = async (songId, userId, reason) => {
+exports.create = async (title, description, contentId, contentType, userId) => {
   await db.query(
-    `INSERT INTO complaints (song_id, reported_by, reason)
-     VALUES ($1,$2,$3)`,
-    [songId, userId, reason]
+    `INSERT INTO complaints (title, description, content_id, content_type, reported_by)
+     VALUES ($1,$2,$3,$4,$5)`,
+    [title, description, contentId, contentType, userId]
   );
 };
 
 exports.findByUser = async (userId) => {
   const res = await db.query(
     `SELECT 
-      c.id,
-      c.reason,
-      c.status,
-      c.created_at,
-      s.id AS song_id,
-      s.title AS song_title,
-      u.name AS artist_name
+      c.id, c.title, c.description, c.content_id, c.content_type, 
+      c.status, c.admin_notes, c.created_at, c.updated_at,
+      u.name AS reporter
      FROM complaints c
-     JOIN songs s ON s.id = c.song_id
-     JOIN users u ON u.id = s.artist_user_id
+     JOIN users u ON u.id = c.reported_by
      WHERE c.reported_by = $1
      ORDER BY c.created_at DESC`,
     [userId]
@@ -31,9 +26,11 @@ exports.findByUser = async (userId) => {
 exports.findOpen = async () => {
   const res = await db.query(
     `
-    SELECT c.*, s.title AS song_title, u.name AS reporter
+    SELECT 
+      c.id, c.title, c.description, c.content_id, c.content_type, 
+      c.status, c.admin_notes, c.created_at, c.updated_at,
+      u.name AS reporter
     FROM complaints c
-    JOIN songs s ON s.id=c.song_id
     JOIN users u ON u.id=c.reported_by
     WHERE c.status='OPEN'
     `

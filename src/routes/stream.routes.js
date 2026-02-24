@@ -5,5 +5,6 @@ const subscription = require('../middlewares/subscription.middleware');
 
 router.get('/:songId/url', auth, subscription, controller.getStreamUrl);
 router.post('/log', auth, controller.logStream);
+router.post('/log-played', auth, controller.logRecentlyPlayed);
 
 module.exports = router;

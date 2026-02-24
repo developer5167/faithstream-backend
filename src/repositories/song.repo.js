@@ -66,6 +66,13 @@ exports.markAlbumSongsPending = async (albumId) => {
   );
 };
 
+exports.markAlbumSongsApproved = async (albumId) => {
+  await db.query(
+    `UPDATE songs SET status='APPROVED', published_at=now() WHERE album_id=$1`,
+    [albumId]
+  );
+};
+
 exports.findPending = async () => {
   const res = await db.query(
     `SELECT s.*, u.name AS artist_name
@@ -187,6 +194,7 @@ exports.getPopularSongs = async (limit = 20) => {
        s.description,
        s.genre,
        s.language,
+       s.lyrics,
        s.artist_user_id,
       s.audio_original_url,
       s.created_at,

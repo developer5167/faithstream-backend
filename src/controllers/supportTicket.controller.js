@@ -7,7 +7,7 @@ exports.createTicket = async (req, res) => {
   const ticket = await supportTicketService.create(
     req.user.id,
     req.body.subject,
-    req.body.message,
+    req.body.description,
     req.body.category
   );
   res.json({ message: 'Support ticket created', ticket });

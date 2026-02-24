@@ -27,6 +27,7 @@ exports.getRecentlyPlayed = async (userId, limit = 20) => {
       s.description,
       s.genre,
       s.language,
+      s.lyrics,
       s.artist_user_id,
       s.audio_original_url,
       COALESCE(

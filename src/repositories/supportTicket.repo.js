@@ -4,6 +4,7 @@ const db = require('../config/db');
  * Create a new support ticket
  */
 exports.create = async (userId, subject, message, category) => {
+  try{
   const res = await db.query(
     `INSERT INTO support_tickets (user_id, subject, message, category)
      VALUES ($1, $2, $3, $4)
@@ -11,6 +12,10 @@ exports.create = async (userId, subject, message, category) => {
     [userId, subject, message, category]
   );
   return res.rows[0];
+  }catch(error){
+    console.log(error);
+    throw error;
+  }
 };
 
 /**

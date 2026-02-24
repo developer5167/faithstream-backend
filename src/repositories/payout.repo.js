@@ -18,10 +18,16 @@ exports.getAll = async () => {
     `SELECT
         ae.*,
         ap.artist_name,
-        u.email
+        u.email,
+        abd.payment_type,
+        abd.upi_id,
+        abd.account_number,
+        abd.ifsc_code,
+        abd.account_name
      FROM artist_earnings ae
      LEFT JOIN artist_profiles ap ON ae.artist_user_id = ap.user_id
      LEFT JOIN users u ON u.id = ae.artist_user_id
+     LEFT JOIN artist_bank_details abd ON abd.artist_user_id = ae.artist_user_id
      ORDER BY ae.created_at DESC`
   );
   return res.rows;
@@ -99,10 +105,16 @@ exports.getAllWallets = async () => {
     `SELECT
        aw.*,
        ap.artist_name,
-       u.email
+       u.email,
+       abd.payment_type,
+       abd.upi_id,
+       abd.account_number,
+       abd.ifsc_code,
+       abd.account_name
      FROM artist_wallets aw
      LEFT JOIN artist_profiles ap ON aw.artist_user_id = ap.user_id
      LEFT JOIN users u ON u.id = aw.artist_user_id
+     LEFT JOIN artist_bank_details abd ON abd.artist_user_id = aw.artist_user_id
      ORDER BY aw.balance DESC`
   );
   return res.rows;
