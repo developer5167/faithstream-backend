@@ -7,6 +7,7 @@ const admin = require('../middlewares/admin.middleware');
 // artist
 router.post('/', auth, artist, controller.createAlbum);
 router.get('/my', auth, artist, controller.getMyAlbums);
+router.get('/:id', auth, controller.getAlbumDetails);
 router.patch('/:id', auth, artist, controller.updateAlbum);
 router.post('/submit', auth, artist, controller.submitAlbum);
 

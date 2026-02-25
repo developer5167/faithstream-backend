@@ -160,3 +160,11 @@ exports.updateAlbumByAdmin = async (albumId, data) => {
 
   return albumRepo.update(albumId, data);
 };
+
+exports.getAlbumDetails = async (albumId) => {
+  const album = await albumRepo.findFullDetailsById(albumId);
+  if (!album) {
+    throw new Error('Album not found');
+  }
+  return album;
+};

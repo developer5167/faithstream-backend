@@ -67,6 +67,20 @@ exports.reject = async (albumId, reason) => {
   );
 };
 
+exports.findFullDetailsById = async (albumId) => {
+  const res = await db.query(
+    `SELECT a.*,
+            u.name as artist_name,
+            ap.artist_name as artist_display_name
+     FROM albums a
+     JOIN users u ON u.id = a.artist_user_id
+     LEFT JOIN artist_profiles ap ON ap.user_id = a.artist_user_id
+     WHERE a.id = $1 AND a.status = 'APPROVED'`,
+    [albumId]
+  );
+  return res.rows[0];
+};
+
 exports.findById = async (albumId) => {
   const res = await db.query(
     `SELECT * FROM albums WHERE id=$1`,

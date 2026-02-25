@@ -63,3 +63,12 @@ exports.getArtistAlbums = async (req, res) => {
   const albums = await require('../services/album.service').getArtistPublicAlbums(req.params.artistId);
   res.json(albums);
 };
+
+exports.getArtistProfile = async (req, res) => {
+  try {
+    const artist = await artistService.getVerifiedArtistById(req.params.id);
+    res.json(artist);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};

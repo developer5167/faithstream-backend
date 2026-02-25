@@ -220,31 +220,60 @@ exports.deleteSupportingLink = async (linkId) => {
   );
 };
 
-exports.getDashboardStats = async (userId) => {
-  try{
-  const res = await db.query(
-    `SELECT
-       COUNT(DISTINCT s.id)                          AS total_songs,
-       COUNT(DISTINCT a.id)                          AS total_albums,
-       COALESCE(COUNT(st.id), 0)                     AS total_streams,
-       COALESCE(MAX(w.total_earned), 0)              AS total_earnings
-     FROM users u
-     LEFT JOIN songs  s  ON s.artist_user_id  = u.id AND s.status = 'APPROVED'
-     LEFT JOIN albums a  ON a.artist_user_id  = u.id AND a.status = 'APPROVED'
-     LEFT JOIN streams st ON st.song_id = s.id
-     LEFT JOIN artist_wallets w ON w.artist_user_id = u.id
-     WHERE u.id = $1`,
-    [userId]
-  );
-  const row = res.rows[0];
-  return {
-    total_songs:    parseInt(row.total_songs)    || 0,
-    total_albums:   parseInt(row.total_albums)   || 0,
-    total_streams:  parseInt(row.total_streams)  || 0,
-    total_earnings: parseFloat(row.total_earnings) || 0,
-  };
-  }catch(error){
-    console.log(error);
-    return error;
+exports.getTopArtistsByStreams = async (limit = 10) => {
+  try {
+    const res = await db.query(
+      `SELECT 
+         u.id,
+         COALESCE(ap.artist_name, u.name) as name,
+         u.profile_pic_url,
+         u.profile_pic_url as profile_image_url,
+         COUNT(st.id) as total_streams
+       FROM users u
+       JOIN artist_profiles ap ON ap.user_id = u.id
+       LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+       LEFT JOIN streams st ON st.song_id = s.id
+       WHERE u.artist_status = 'APPROVED'
+       GROUP BY u.id, ap.artist_name, u.name, u.profile_pic_url
+       HAVING COUNT(st.id) > 0
+       ORDER BY total_streams DESC
+       LIMIT $1`,
+      [limit]
+    );
+    return res.rows;
+  } catch (error) {
+    console.error('[ArtistRepo] Error in getTopArtistsByStreams:', error);
+    throw error;
   }
-} ;
+};
+
+exports.getDashboardStats = async (userId) => {
+  try {
+    const res = await db.query(
+      `SELECT
+         COUNT(DISTINCT s.id)                          AS total_songs,
+         COUNT(DISTINCT a.id)                          AS total_albums,
+         COALESCE(COUNT(st.id), 0)                     AS total_streams,
+         COALESCE(MAX(w.total_earned), 0)              AS total_earnings,
+         (SELECT COUNT(*) FROM user_follows WHERE artist_user_id = $1) AS follower_count
+       FROM users u
+       LEFT JOIN songs  s  ON s.artist_user_id  = u.id AND s.status = 'APPROVED'
+       LEFT JOIN albums a  ON a.artist_user_id  = u.id AND a.status = 'APPROVED'
+       LEFT JOIN streams st ON st.song_id = s.id
+       LEFT JOIN artist_wallets w ON w.artist_user_id = u.id
+       WHERE u.id = $1`,
+      [userId]
+    );
+    const row = res.rows[0];
+    return {
+      total_songs:    parseInt(row.total_songs)    || 0,
+      total_albums:   parseInt(row.total_albums)   || 0,
+      total_streams:  parseInt(row.total_streams)  || 0,
+      total_earnings: parseFloat(row.total_earnings) || 0,
+      follower_count: parseInt(row.follower_count) || 0,
+    };
+  } catch (error) {
+    console.error('[ArtistRepo] Error in getDashboardStats:', error);
+    throw error;
+  }
+};

@@ -68,3 +68,12 @@ exports.updateSong = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+exports.getSongById = async (req, res) => {
+  try {
+    const song = await songService.getSongDetails(req.params.id);
+    res.json(song);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};

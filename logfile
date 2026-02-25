@@ -1280,3 +1280,64 @@
 2026-02-24 18:00:44.289 IST [6207] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2026-02-24 18:00:44.311 IST [6208] LOG:  database system was shut down at 2026-02-24 01:15:51 IST
 2026-02-24 18:00:44.318 IST [6207] LOG:  database system is ready to accept connections
+2026-02-24 19:51:01.105 IST [6207] LOG:  received smart shutdown request
+2026-02-24 19:51:01.107 IST [6207] LOG:  background worker "logical replication launcher" (PID 6214) exited with exit code 1
+2026-02-24 19:51:01.107 IST [6209] LOG:  shutting down
+2026-02-24 19:51:01.117 IST [6207] LOG:  database system is shut down
+2026-02-25 12:30:20.829 IST [10314] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-25 12:30:20.833 IST [10314] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-25 12:30:20.833 IST [10314] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-25 12:30:20.834 IST [10314] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-25 12:30:20.860 IST [10315] LOG:  database system was shut down at 2026-02-24 19:51:01 IST
+2026-02-25 12:30:20.871 IST [10314] LOG:  database system is ready to accept connections
+2026-02-25 13:02:09.820 IST [16889] ERROR:  column a.artist_id does not exist at character 170
+2026-02-25 13:02:09.820 IST [16889] STATEMENT:  SELECT a.id, a.title, a.cover_image_url, a.release_date, a.status,
+	                u.name as display_artist, a.artist_id
+	         FROM albums a
+	         JOIN users u ON a.artist_id = u.id
+	         WHERE a.status = 'APPROVED'
+	           AND (a.title ILIKE $1 OR u.name ILIKE $1)
+	         LIMIT 20
+2026-02-25 13:02:09.820 IST [16890] ERROR:  column s.artist_id does not exist at character 292
+2026-02-25 13:02:09.820 IST [16890] STATEMENT:  SELECT s.id, s.title, s.cover_image_url, s.audio_url, s.duration,
+	                s.genre, s.language, s.status, s.lyrics, s.description,
+	                u.name as display_artist, s.artist_id,
+	                a.title as album_title, s.album_id
+	         FROM songs s
+	         JOIN users u ON s.artist_id = u.id
+	         LEFT JOIN albums a ON s.album_id = a.id
+	         WHERE s.status = 'APPROVED'
+	           AND (s.title ILIKE $1 OR u.name ILIKE $1 OR s.genre ILIKE $1 OR a.title ILIKE $1)
+	         LIMIT 50
+2026-02-25 13:03:06.098 IST [17073] FATAL:  role "postgres" does not exist
+2026-02-25 13:04:31.223 IST [17346] ERROR:  column s.duration does not exist at character 77
+2026-02-25 13:04:31.223 IST [17346] STATEMENT:  SELECT s.id, s.title, s.cover_image_url, s.audio_original_url as audio_url, s.duration,
+	                s.genre, s.language, s.status, s.lyrics, s.description,
+	                u.name as display_artist, s.artist_user_id,
+	                a.title as album_title, s.album_id
+	         FROM songs s
+	         JOIN users u ON s.artist_user_id = u.id
+	         LEFT JOIN albums a ON s.album_id = a.id
+	         WHERE s.status = 'APPROVED'
+	           AND (s.title ILIKE $1 OR u.name ILIKE $1 OR s.genre ILIKE $1 OR a.title ILIKE $1)
+	         LIMIT 50
+2026-02-25 13:04:31.224 IST [17345] ERROR:  column a.release_date does not exist at character 42
+2026-02-25 13:04:31.224 IST [17345] HINT:  Perhaps you meant to reference the column "a.release_type".
+2026-02-25 13:04:31.224 IST [17345] STATEMENT:  SELECT a.id, a.title, a.cover_image_url, a.release_date, a.status,
+	                u.name as display_artist, a.artist_user_id
+	         FROM albums a
+	         JOIN users u ON a.artist_user_id = u.id
+	         WHERE a.status = 'APPROVED'
+	           AND (a.title ILIKE $1 OR u.name ILIKE $1)
+	         LIMIT 20
+2026-02-25 13:05:03.302 IST [17562] ERROR:  column a.release_date does not exist at character 42
+2026-02-25 13:05:03.302 IST [17562] HINT:  Perhaps you meant to reference the column "a.release_type".
+2026-02-25 13:05:03.302 IST [17562] STATEMENT:  SELECT a.id, a.title, a.cover_image_url, a.release_date, a.status,
+	                u.name as display_artist, a.artist_user_id
+	         FROM albums a
+	         JOIN users u ON a.artist_user_id = u.id
+	         WHERE a.status = 'APPROVED'
+	           AND (a.title ILIKE $1 OR u.name ILIKE $1)
+	         LIMIT 20
+2026-02-25 16:45:23.805 IST [55954] FATAL:  role "postgres" does not exist
+2026-02-25 16:48:23.593 IST [56520] FATAL:  database "faithstream" does not exist

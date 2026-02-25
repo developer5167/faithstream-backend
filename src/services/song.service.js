@@ -69,12 +69,25 @@ exports.approveSong = async (songId, adminId) => {
 
   const song = await songRepo.getSongById(songId);
   if (song && song.artist_user_id) {
+    // Notify the artist
     notificationService.sendToUser(
       song.artist_user_id,
       '✅ Song Approved',
       `Great news! Your song "${song.title}" is now live on FaithStream.`,
       { type: 'song_approved', song_id: song.id }
     ).catch(err => console.error('Failed to notify artist:', err));
+
+    // Notify followers
+    const followRepo = require('../repositories/follow.repo');
+    const followerIds = await followRepo.getFollowers(song.artist_user_id);
+    if (followerIds.length > 0) {
+      notificationService.sendToUsers(
+        followerIds,
+        '🎵 New Content',
+        `An artist you follow just released a new song: "${song.title}"`,
+        { type: 'new_song', song_id: song.id, artist_id: song.artist_user_id }
+      ).catch(err => console.error('Failed to notify followers:', err));
+    }
   }
 
   if (adminId) {
@@ -180,4 +193,12 @@ exports.updateSong = async (songId, artistId, isAdmin, data) => {
   }
 
   return songRepo.update(songId, data);
+};
+
+exports.getSongDetails = async (songId) => {
+  const song = await songRepo.findFullDetailsById(songId);
+  if (!song) {
+    throw new Error('Song not found');
+  }
+  return song;
 };

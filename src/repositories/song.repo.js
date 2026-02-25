@@ -178,6 +178,29 @@ exports.getSongById = async (songId) => {
   return res.rows[0];
 };
 
+exports.findFullDetailsById = async (songId) => {
+  const res = await db.query(
+    `SELECT 
+       s.*,
+       a.title as album_title,
+       u.name as artist_name,
+       ap.artist_name as artist_display_name,
+       COALESCE(stream_counts.count, 0) as stream_count
+     FROM songs s
+     JOIN users u ON u.id = s.artist_user_id
+     LEFT JOIN albums a ON a.id = s.album_id
+     LEFT JOIN artist_profiles ap ON ap.user_id = s.artist_user_id
+     LEFT JOIN (
+       SELECT song_id, COUNT(*) as count
+       FROM streams
+       GROUP BY song_id
+     ) stream_counts ON stream_counts.song_id = s.id
+     WHERE s.id = $1 AND s.status = 'APPROVED'`,
+    [songId]
+  );
+  return res.rows[0];
+};
+
 exports.findApprovedById = async (songId) => {
   const res = await db.query(
     `SELECT * FROM songs WHERE id=$1 AND status='APPROVED'`,
@@ -187,6 +210,46 @@ exports.findApprovedById = async (songId) => {
 };
 
 exports.getPopularSongs = async (limit = 20) => {
+  const res = await db.query(
+    `SELECT 
+       s.id,
+       s.title,
+       s.description,
+       s.genre,
+       s.language,
+       s.lyrics,
+       s.artist_user_id,
+      s.audio_original_url,
+      s.created_at,
+      COALESCE(
+        s.cover_image_url,
+        a.cover_image_url,
+        ap.profile_image_url,
+        u.profile_pic_url
+      ) as image,
+      a.title as album_title,
+       u.name as artist_name,
+       ap.artist_name as artist_display_name,
+       COALESCE(stream_counts.count, 0) as stream_count
+     FROM songs s
+     JOIN users u ON u.id = s.artist_user_id
+     LEFT JOIN albums a ON a.id = s.album_id
+     LEFT JOIN artist_profiles ap ON ap.user_id = s.artist_user_id
+     LEFT JOIN (
+       SELECT song_id, COUNT(*) as count
+       FROM streams
+       WHERE played_at >= NOW() - INTERVAL '30 days'
+       GROUP BY song_id
+     ) stream_counts ON stream_counts.song_id = s.id
+     WHERE s.status = 'APPROVED'
+     ORDER BY stream_counts.count DESC NULLS LAST, s.created_at DESC
+     LIMIT $1`,
+    [limit]
+  );
+  return res.rows;
+};
+
+exports.getTopPlayedSongs = async (limit = 10) => {
   const res = await db.query(
     `SELECT 
        s.id,

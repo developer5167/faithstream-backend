@@ -105,3 +105,12 @@ exports.updateAlbumByAdmin = async (req, res) => {
     res.status(error.message === 'Album not found' ? 404 : 400).json({ error: error.message });
   }
 };
+
+exports.getAlbumDetails = async (req, res) => {
+  try {
+    const album = await albumService.getAlbumDetails(req.params.id);
+    res.json(album);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};

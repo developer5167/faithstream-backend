@@ -53,8 +53,10 @@ app.use(limiter);
 
 // Main routes (with /api prefix)
 app.use("/api/home", require("./routes/home.routes"));
+app.use("/api/search", require("./routes/search.routes"));
 app.use("/api/users", require("./routes/user.routes"));
 app.use("/api/artist", require("./routes/artist.routes"));
+app.use("/api/artists", require("./routes/artist.routes"));
 app.use("/api/songs", require("./routes/song.routes"));
 app.use("/api/albums", require("./routes/album.routes"));
 app.use("/api/admin", require("./routes/admin.routes"));
@@ -70,6 +72,8 @@ app.use("/api/playlists", require("./routes/playlist.routes"));
 app.use("/api/upload", require("./routes/upload.routes"));
 app.use("/api/albums/tracks",require("./routes/tracks.routes"))
 app.use("/api/artist/verified", require("./routes/verified_artist.routes"));
+app.use("/api/follow", require("./routes/follow.routes"));
+app.use("/api/share", require("./routes/redirect.routes"));
 
 /* -------------------- ERROR HANDLER -------------------- */
 

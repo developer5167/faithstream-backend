@@ -83,6 +83,56 @@ exports.sendToUser = async (userId, title, body, data = {}) => {
 };
 
 /**
+ * Send push notifications to multiple users.
+ */
+exports.sendToUsers = async (userIds, title, body, data = {}) => {
+  if (!_ensureInitialized()) return;
+  if (!userIds || userIds.length === 0) return;
+
+  try {
+    const tokens = await fcmTokenRepo.getTokens(userIds);
+    if (tokens.length === 0) {
+      console.log(`[Notification] No FCM tokens found for the specified users.`);
+      return;
+    }
+
+    const message = {
+      tokens,
+      notification: {
+        title,
+        body,
+      },
+      data: {
+        ...data,
+        click_action: 'FLUTTER_NOTIFICATION_CLICK',
+      }
+    };
+
+    const response = await admin.messaging().sendEachForMulticast(message);
+    console.log(`[Notification] Multicast sent. Success: ${response.successCount}, Failure: ${response.failureCount}`);
+    
+    // Cleanup invalid tokens if any
+    if (response.failureCount > 0) {
+      response.responses.forEach((resp, idx) => {
+        if (!resp.success) {
+          const error = resp.error;
+          if (error.code === 'messaging/invalid-registration-token' || 
+              error.code === 'messaging/registration-token-not-registered') {
+            const invalidToken = tokens[idx];
+            console.log(`[Notification] Token ${invalidToken} is invalid, consider manual cleanup.`);
+            // Note: In a real app we'd map back token -> user_id for cleanup
+          }
+        }
+      });
+    }
+
+    return response;
+  } catch (error) {
+    console.error(`[Notification] Error in multicast send:`, error.message);
+  }
+};
+
+/**
  * Send a push notification to a topic (useful for broadcasts)
  */
 exports.sendToTopic = async (topic, title, body, data = {}) => {
