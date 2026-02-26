@@ -7,6 +7,19 @@ exports.create = async (songId, userId, duration) => {
     [songId, userId, duration]
   );
 };
+
+exports.getDailyPlayCount = async (userId, songId) => {
+  const res = await db.query(
+    `SELECT COUNT(*) AS count
+     FROM streams
+     WHERE user_id = $1
+       AND song_id = $2
+       AND played_at >= NOW() - INTERVAL '24 hours'`,
+    [userId, songId]
+  );
+  return parseInt(res.rows[0].count);
+};
+
 exports.getMonthlyArtistStreams = async (month) => {
   const res = await db.query(
     `

@@ -21,7 +21,7 @@ exports.generatePresignedUrl = ({ fileName, contentType, uploadType, userId, res
   }
   
   // Validate file type for images
-  else if (uploadType === 'album_cover' || uploadType === 'song_cover' || uploadType === 'artist_profile' || uploadType === 'user_profile') {
+  else if (uploadType === 'album_cover' || uploadType === 'song_cover' || uploadType === 'artist_profile' || uploadType === 'user_profile' || uploadType === 'ad_image') {
     const allowedImageTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
     if (!allowedImageTypes.includes(contentType)) {
       throw new Error('Invalid file type. Only JPEG, PNG, and WebP images are allowed.');
@@ -29,7 +29,7 @@ exports.generatePresignedUrl = ({ fileName, contentType, uploadType, userId, res
   }
 
   // Validate file type for videos
-  else if (uploadType === 'artist_selfie_video') {
+  else if (uploadType === 'artist_selfie_video' || uploadType === 'ad_video') {
     const allowedVideoTypes = ['video/mp4', 'video/quicktime', 'video/x-msvideo'];
     if (!allowedVideoTypes.includes(contentType)) {
       throw new Error('Invalid file type. Only MP4, MOV, and AVI video files are allowed.');

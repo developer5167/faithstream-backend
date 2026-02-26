@@ -73,6 +73,14 @@ exports.generateS3Key = ({ uploadType, userId, resourceId, fileName, userRole })
       // admin/{userId}/{filename}_{timestamp}.{ext}
       return `admin/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
     
+    case "ad_image":
+      // ads/images/{userId}/{filename}_{timestamp}.{ext}
+      return `ads/images/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+    
+    case "ad_video":
+      // ads/videos/{userId}/{filename}_{timestamp}.{ext}
+      return `ads/videos/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+    
     default:
       // general/{userRole}/{userId}/{filename}_{timestamp}.{ext}
       const role = (userRole || 'user').toLowerCase();

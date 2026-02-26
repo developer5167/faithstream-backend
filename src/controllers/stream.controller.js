@@ -19,3 +19,25 @@ exports.logRecentlyPlayed = async (req, res) => {
   await streamService.logRecentlyPlayed(req.body.song_id, req.user.id);
   res.json({ ok: true });
 };
+
+exports.checkPlayLimit = async (req, res) => {
+  try {
+     const subscriptionRepo = require('../repositories/subscription.repo');
+     const streamRepo = require('../repositories/stream.repo');
+     
+     const hasPremium = await subscriptionRepo.hasActiveSubscription(req.user.id);
+     if (hasPremium) {
+       return res.json({ canPlay: true });
+     }
+     
+     const songId = req.params.songId;
+     const count = await streamRepo.getDailyPlayCount(req.user.id, songId);
+     if (count >= 2) {
+       return res.json({ canPlay: false, reason: 'DAILY_LIMIT_REACHED' });
+     }
+     
+     res.json({ canPlay: true });
+  } catch (error) {
+     res.status(400).json({ error: error.message });
+  }
+};

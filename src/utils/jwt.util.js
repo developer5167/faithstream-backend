@@ -14,6 +14,7 @@ exports.sign = (user) => {
       id: user.id,
       is_admin: user.is_admin || false,
       artist_status: user.artist_status,
+      type: user.type,
     },
     JWT_SECRET,
     {

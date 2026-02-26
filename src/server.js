@@ -29,6 +29,10 @@ function _startCronJobs() {
 
     // Daily subscription expiry: 02:00 AM every day
     expiryJob();
+    
+    // Hourly ad cleanup
+    const adCleanup = require('./jobs/ad_cleanup.job');
+    adCleanup.startAdCleanupJob();
 
   } catch (err) {
     console.warn('[Cron] node-cron not installed — cron jobs will not auto-run. Run: npm install node-cron');

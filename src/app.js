@@ -7,7 +7,7 @@ const app = express();
 app.set('trust proxy', 1);
 app.use(
   cors({
-    origin: ["http://localhost:8080", "*"],
+    origin: ["http://localhost:8080","http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     optionsSuccessStatus: 204,
@@ -47,6 +47,7 @@ const authLimiter = rateLimit({
 
 // 🔐 Auth
 app.use("/api/auth", authLimiter, require("./routes/auth.routes"));
+app.use("/api/advertiser-auth", authLimiter, require("./routes/advertiser_auth.routes"));
 
 // 🌍 Global rate limit
 app.use(limiter);
@@ -74,6 +75,8 @@ app.use("/api/albums/tracks",require("./routes/tracks.routes"))
 app.use("/api/artist/verified", require("./routes/verified_artist.routes"));
 app.use("/api/follow", require("./routes/follow.routes"));
 app.use("/api/share", require("./routes/redirect.routes"));
+app.use("/api/ads", require("./routes/ad.routes"));
+app.use("/api/wallet", require("./routes/wallet.routes"));
 
 /* -------------------- ERROR HANDLER -------------------- */
 

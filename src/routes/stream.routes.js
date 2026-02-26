@@ -4,6 +4,7 @@ const auth = require('../middlewares/auth.middleware');
 const subscription = require('../middlewares/subscription.middleware');
 
 router.get('/:songId/url', auth, subscription, controller.getStreamUrl);
+router.get('/:songId/check-limit', auth, controller.checkPlayLimit);
 router.post('/log', auth, controller.logStream);
 router.post('/log-played', auth, controller.logRecentlyPlayed);
 

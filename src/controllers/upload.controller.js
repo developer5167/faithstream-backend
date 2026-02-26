@@ -23,15 +23,15 @@ exports.getPresignedUrl = async (req, res) => {
         required: {
           fileName: 'string (e.g., "image.jpg")',
           contentType: 'string (e.g., "image/jpeg")',
-          uploadType: 'string (e.g., "album_cover", "song_cover", "user_profile")'
+          uploadType: 'string (e.g., "album_cover", "song_cover", "ad_image")'
         },
-        validUploadTypes: ['album_cover', 'song_cover', 'song_audio', 'artist_profile', 'user_profile', 'admin_upload', 'artist_selfie_video'],
+        validUploadTypes: ['album_cover', 'song_cover', 'song_audio', 'artist_profile', 'user_profile', 'admin_upload', 'artist_selfie_video', 'ad_image', 'ad_video'],
         note: 'resourceId is required for album_cover, song_cover, and song_audio'
       });
     }
 
     // Validate uploadType
-    const validUploadTypes = ['album_cover', 'song_cover', 'song_audio', 'artist_profile', 'user_profile', 'admin_upload', 'artist_selfie_video'];
+    const validUploadTypes = ['album_cover', 'song_cover', 'song_audio', 'artist_profile', 'user_profile', 'admin_upload', 'artist_selfie_video', 'ad_image', 'ad_video'];
     if (!validUploadTypes.includes(uploadType)) {
       return res.status(400).json({
         error: `Invalid uploadType: "${uploadType}". Valid types are: ${validUploadTypes.join(', ')}`

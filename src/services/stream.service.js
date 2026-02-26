@@ -15,6 +15,16 @@ exports.getStreamUrl = async (songId, userId) => {
     throw new Error('Song not available');
   }
 
+  // Check subscription and enforce daily free limit
+  const subscriptionRepo = require('../repositories/subscription.repo');
+  const hasPremium = await subscriptionRepo.hasActiveSubscription(userId);
+  if (!hasPremium) {
+     const count = await streamRepo.getDailyPlayCount(userId, songId);
+     if (count >= 2) {
+       throw new Error('DAILY_LIMIT_REACHED');
+     }
+  }
+
   // audio_processed_url stores S3 key, not public URL
   return s3Util.getSignedUrl(song.audio_processed_url);
 };

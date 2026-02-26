@@ -1341,3 +1341,110 @@
 	         LIMIT 20
 2026-02-25 16:45:23.805 IST [55954] FATAL:  role "postgres" does not exist
 2026-02-25 16:48:23.593 IST [56520] FATAL:  database "faithstream" does not exist
+2026-02-25 19:52:56.143 IST [10314] LOG:  received smart shutdown request
+2026-02-25 19:52:56.146 IST [10314] LOG:  background worker "logical replication launcher" (PID 10321) exited with exit code 1
+2026-02-25 19:52:56.146 IST [10316] LOG:  shutting down
+2026-02-25 19:52:56.161 IST [10314] LOG:  database system is shut down
+2026-02-26 15:25:49.782 IST [24758] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-02-26 15:25:49.786 IST [24758] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-02-26 15:25:49.786 IST [24758] LOG:  listening on IPv6 address "::1", port 5432
+2026-02-26 15:25:49.787 IST [24758] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-02-26 15:25:49.810 IST [24759] LOG:  database system was shut down at 2026-02-26 02:32:38 IST
+2026-02-26 15:25:49.818 IST [24758] LOG:  database system is ready to accept connections
+2026-02-26 16:02:25.286 IST [27841] ERROR:  invalid input value for enum ad_status: "ACTIVE" at character 671
+2026-02-26 16:02:25.286 IST [27841] STATEMENT:  -- 1. Add wallet balance to advertisers table
+	ALTER TABLE advertisers 
+	ADD COLUMN IF NOT EXISTS wallet_balance NUMERIC(10, 2) DEFAULT 0.00;
+	
+	-- 2. Add budget and tracking columns to advertisements table
+	ALTER TABLE advertisements
+	ADD COLUMN IF NOT EXISTS daily_budget_limit NUMERIC(10, 2) DEFAULT 500.00,
+	ADD COLUMN IF NOT EXISTS total_spend NUMERIC(10, 2) DEFAULT 0.00,
+	ADD COLUMN IF NOT EXISTS cpc_rate NUMERIC(10, 2) DEFAULT 5.00,      -- Cost per click (Overlay)
+	ADD COLUMN IF NOT EXISTS cpm_rate NUMERIC(10, 2) DEFAULT 150.00;    -- Cost per 1000 views (Video)
+	
+	-- Ensure existing rows don't break logic
+	UPDATE advertisements SET status = 'APPROVED' WHERE status = 'ACTIVE';
+	
+	-- 3. Create wallet transactions table for tracking deposits and deductions
+	CREATE TABLE IF NOT EXISTS wallet_transactions (
+	    id SERIAL PRIMARY KEY,
+	    advertiser_id INTEGER REFERENCES advertisers(id) ON DELETE CASCADE,
+	    amount NUMERIC(10, 2) NOT NULL, -- Positive for deposits, negative for ad spend
+	    type VARCHAR(50) NOT NULL,      -- DEPOSIT, SPEND_CPC, SPEND_CPM
+	    ad_id INTEGER REFERENCES advertisements(id) ON DELETE SET NULL, -- Nullable if it's a deposit
+	    reference_id VARCHAR(255),      -- Razorpay Payment ID or similar
+	    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+	);
+	
+	-- Index for fast user transaction history lookups
+	CREATE INDEX IF NOT EXISTS idx_wallet_tx_advertiser ON wallet_transactions(advertiser_id);
+	-- Index for quick per-ad tracking
+	CREATE INDEX IF NOT EXISTS idx_wallet_tx_ad ON wallet_transactions(ad_id);
+	
+2026-02-26 16:02:53.884 IST [27925] ERROR:  foreign key constraint "wallet_transactions_advertiser_id_fkey" cannot be implemented
+2026-02-26 16:02:53.884 IST [27925] DETAIL:  Key columns "advertiser_id" and "id" are of incompatible types: integer and uuid.
+2026-02-26 16:02:53.884 IST [27925] STATEMENT:  -- 1. Add wallet balance to advertisers table
+	ALTER TABLE advertisers 
+	ADD COLUMN IF NOT EXISTS wallet_balance NUMERIC(10, 2) DEFAULT 0.00;
+	
+	-- 2. Add budget and tracking columns to advertisements table
+	ALTER TABLE advertisements
+	ADD COLUMN IF NOT EXISTS daily_budget_limit NUMERIC(10, 2) DEFAULT 500.00,
+	ADD COLUMN IF NOT EXISTS total_spend NUMERIC(10, 2) DEFAULT 0.00,
+	ADD COLUMN IF NOT EXISTS cpc_rate NUMERIC(10, 2) DEFAULT 5.00,      -- Cost per click (Overlay)
+	ADD COLUMN IF NOT EXISTS cpm_rate NUMERIC(10, 2) DEFAULT 150.00;    -- Cost per 1000 views (Video)
+	
+	-- Update ad_status enum to include PAUSED and DELETED
+	ALTER TYPE ad_status ADD VALUE IF NOT EXISTS 'PAUSED';
+	ALTER TYPE ad_status ADD VALUE IF NOT EXISTS 'DELETED';
+	
+	-- 3. Create wallet transactions table for tracking deposits and deductions
+	CREATE TABLE IF NOT EXISTS wallet_transactions (
+	    id SERIAL PRIMARY KEY,
+	    advertiser_id INTEGER REFERENCES advertisers(id) ON DELETE CASCADE,
+	    amount NUMERIC(10, 2) NOT NULL, -- Positive for deposits, negative for ad spend
+	    type VARCHAR(50) NOT NULL,      -- DEPOSIT, SPEND_CPC, SPEND_CPM
+	    ad_id INTEGER REFERENCES advertisements(id) ON DELETE SET NULL, -- Nullable if it's a deposit
+	    reference_id VARCHAR(255),      -- Razorpay Payment ID or similar
+	    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+	);
+	
+	-- Index for fast user transaction history lookups
+	CREATE INDEX IF NOT EXISTS idx_wallet_tx_advertiser ON wallet_transactions(advertiser_id);
+	-- Index for quick per-ad tracking
+	CREATE INDEX IF NOT EXISTS idx_wallet_tx_ad ON wallet_transactions(ad_id);
+	
+2026-02-26 16:03:35.217 IST [27978] ERROR:  foreign key constraint "wallet_transactions_ad_id_fkey" cannot be implemented
+2026-02-26 16:03:35.217 IST [27978] DETAIL:  Key columns "ad_id" and "id" are of incompatible types: integer and uuid.
+2026-02-26 16:03:35.217 IST [27978] STATEMENT:  -- 1. Add wallet balance to advertisers table
+	ALTER TABLE advertisers 
+	ADD COLUMN IF NOT EXISTS wallet_balance NUMERIC(10, 2) DEFAULT 0.00;
+	
+	-- 2. Add budget and tracking columns to advertisements table
+	ALTER TABLE advertisements
+	ADD COLUMN IF NOT EXISTS daily_budget_limit NUMERIC(10, 2) DEFAULT 500.00,
+	ADD COLUMN IF NOT EXISTS total_spend NUMERIC(10, 2) DEFAULT 0.00,
+	ADD COLUMN IF NOT EXISTS cpc_rate NUMERIC(10, 2) DEFAULT 5.00,      -- Cost per click (Overlay)
+	ADD COLUMN IF NOT EXISTS cpm_rate NUMERIC(10, 2) DEFAULT 150.00;    -- Cost per 1000 views (Video)
+	
+	-- Update ad_status enum to include PAUSED and DELETED
+	ALTER TYPE ad_status ADD VALUE IF NOT EXISTS 'PAUSED';
+	ALTER TYPE ad_status ADD VALUE IF NOT EXISTS 'DELETED';
+	
+	-- 3. Create wallet transactions table for tracking deposits and deductions
+	CREATE TABLE IF NOT EXISTS wallet_transactions (
+	    id SERIAL PRIMARY KEY,
+	    advertiser_id UUID REFERENCES advertisers(id) ON DELETE CASCADE,
+	    amount NUMERIC(10, 2) NOT NULL, -- Positive for deposits, negative for ad spend
+	    type VARCHAR(50) NOT NULL,      -- DEPOSIT, SPEND_CPC, SPEND_CPM
+	    ad_id INTEGER REFERENCES advertisements(id) ON DELETE SET NULL, -- Nullable if it's a deposit
+	    reference_id VARCHAR(255),      -- Razorpay Payment ID or similar
+	    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+	);
+	
+	-- Index for fast user transaction history lookups
+	CREATE INDEX IF NOT EXISTS idx_wallet_tx_advertiser ON wallet_transactions(advertiser_id);
+	-- Index for quick per-ad tracking
+	CREATE INDEX IF NOT EXISTS idx_wallet_tx_ad ON wallet_transactions(ad_id);
+	
