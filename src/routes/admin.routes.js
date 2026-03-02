@@ -34,4 +34,8 @@ router.get('/verified-artists/:artistId', auth, admin, artistController.getVerif
 // ─── Album Management ─────────────────────────────────────────────────────────
 router.post('/albums/submit-for-artist', auth, admin, albumController.submitAlbumOnBehalfOfArtist);
 
+// ─── Artist Account Creation by Admin (fast-track, bypasses verification) ────
+router.post('/artists/create', auth, admin, controller.createArtistAccount);
+
 module.exports = router;
+

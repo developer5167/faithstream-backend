@@ -47,10 +47,38 @@ exports.findPublicByArtist = async (artistId) => {
 
 exports.findPending = async () => {
   const res = await db.query(
-    `SELECT * FROM albums WHERE status='DRAFT' OR status='DRAFT' ORDER BY created_at DESC`
+    `SELECT
+       a.*,
+       u.name                  AS artist_name,
+       u.profile_pic_url       AS artist_profile_pic,
+       ap.artist_name          AS artist_display_name,
+       COALESCE(
+         (
+           SELECT json_agg(
+             json_build_object(
+               'id',                s.id,
+               'title',             s.title,
+               'track_number',      s.track_number,
+               'genre',             s.genre,
+               'audio_original_url',s.audio_original_url,
+               'cover_image_url',   s.cover_image_url,
+               'status',            s.status
+             ) ORDER BY s.track_number ASC
+           )
+           FROM songs s
+           WHERE s.album_id = a.id
+         ),
+         '[]'::json
+       ) AS songs
+     FROM albums a
+     JOIN users u ON u.id = a.artist_user_id
+     LEFT JOIN artist_profiles ap ON ap.user_id = a.artist_user_id
+     WHERE a.status = 'PENDING'
+     ORDER BY a.created_at DESC`
   );
   return res.rows;
 };
+
 
 exports.updateStatus = async (albumId, status) => {
  console.log('Updating album status:', { albumId, status });

@@ -17,6 +17,21 @@ exports.create = async (data) => {
   return res.rows[0];
 };
 
+/**
+ * Create an artist profile directly as APPROVED (used by admin for trusted artists)
+ */
+exports.createApprovedByAdmin = async ({ user_id, artist_name, bio, admin_id }) => {
+  const res = await db.query(
+    `INSERT INTO artist_profiles
+     (user_id, artist_name, bio, govt_id_url, selfie_video_url, verification_status, verified_by, verified_at)
+     VALUES ($1, $2, $3, '', '', 'APPROVED', $4, NOW())
+     RETURNING id, user_id, artist_name, bio, verification_status, verified_at`,
+    [user_id, artist_name, bio, admin_id]
+  );
+  return res.rows[0];
+};
+
+
 exports.findByUserId = async (userId) => {
   const res = await db.query(
     `SELECT * FROM artist_profiles WHERE user_id=$1`,

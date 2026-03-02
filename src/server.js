@@ -1,7 +1,7 @@
 require('dotenv').config();
 const app = require('./app');
 
-app.listen(process.env.PORT, '0.0.0.0', () => {
+app.listen(process.env.PORT, () => {
   console.log(`FaithStream backend running on port ${process.env.PORT}`);
   _startCronJobs();
 });

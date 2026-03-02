@@ -1448,3 +1448,17 @@
 	-- Index for quick per-ad tracking
 	CREATE INDEX IF NOT EXISTS idx_wallet_tx_ad ON wallet_transactions(ad_id);
 	
+2026-02-26 20:01:09.004 IST [24758] LOG:  received smart shutdown request
+2026-02-26 20:01:09.007 IST [24758] LOG:  background worker "logical replication launcher" (PID 24765) exited with exit code 1
+2026-02-26 20:01:09.007 IST [24760] LOG:  shutting down
+2026-02-26 20:01:09.019 IST [24758] LOG:  database system is shut down
+2026-03-01 23:32:22.696 IST [4614] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-03-01 23:32:22.699 IST [4614] LOG:  listening on IPv6 address "::1", port 5432
+2026-03-01 23:32:22.699 IST [4614] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-03-01 23:32:22.700 IST [4614] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-03-01 23:32:22.724 IST [4615] LOG:  database system was shut down at 2026-02-28 01:45:43 IST
+2026-03-01 23:32:22.734 IST [4614] LOG:  database system is ready to accept connections
+2026-03-02 00:34:36.148 IST [4614] LOG:  received smart shutdown request
+2026-03-02 00:34:36.150 IST [4614] LOG:  background worker "logical replication launcher" (PID 4621) exited with exit code 1
+2026-03-02 00:34:36.150 IST [4616] LOG:  shutting down
+2026-03-02 00:34:36.162 IST [4614] LOG:  database system is shut down

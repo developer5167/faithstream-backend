@@ -136,7 +136,8 @@ exports.trackEvent = async (adId, userId, eventType) => {
 
       // 4. Determine if we should deduct money
       let amountToDeduct = 0;
-      if (eventType === 'VIEW' && adData.ad_type === 'POWER_VIDEO') {
+      // POWER_VIDEO and APP_OPEN are both CPM (impression-based) ad types
+      if (eventType === 'VIEW' && (adData.ad_type === 'POWER_VIDEO' || adData.ad_type === 'APP_OPEN')) {
         amountToDeduct = parseFloat(adData.cpm_rate) / 1000;
       } else if (eventType === 'CLICK' && adData.ad_type === 'COVER_OVERLAY') {
         amountToDeduct = parseFloat(adData.cpc_rate);
