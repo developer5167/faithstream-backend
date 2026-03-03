@@ -16,6 +16,29 @@ exports.getSignedUrl = (key) => {
 };
 
 /**
+ * Delete an object from S3 using its full public URL
+ * @param {string} url - The full public URL of the S3 object
+ */
+exports.deleteFromS3ByUrl = async (url) => {
+  if (!url) return;
+  try {
+    const bucketUrlBase = `https://${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/`;
+    if (!url.startsWith(bucketUrlBase)) {
+      console.log(`[S3 Util] URL ${url} is not from standard bucket format. Skipping.`);
+      return;
+    }
+    const key = url.replace(bucketUrlBase, '');
+    await s3.deleteObject({
+      Bucket: process.env.AWS_BUCKET,
+      Key: key
+    }).promise();
+    console.log(`[S3 Util] Deleted Object: ${key}`);
+  } catch (err) {
+    console.error(`[S3 Util] Error deleting ${url} from S3:`, err);
+  }
+};
+
+/**
  * Generate presigned URL for uploading files to S3
  * @param {string} key - The S3 key (file path)
  * @param {string} contentType - The file content type (e.g., 'image/jpeg')

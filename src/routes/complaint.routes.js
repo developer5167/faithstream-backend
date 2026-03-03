@@ -12,6 +12,12 @@ router.get('/my', auth, controller.getMyComplaints);
 // admin views complaints
 router.get('/admin', auth, admin, controller.getComplaints);
 
+// admin searches songs to find reported content
+router.get('/admin/search-songs', auth, admin, controller.searchSongs);
+
+// admin links a song to a complaint
+router.post('/admin/link-content', auth, admin, controller.linkContent);
+
 // admin resolves complaint
 router.post('/admin/resolve', auth, admin, controller.resolveComplaint);
 

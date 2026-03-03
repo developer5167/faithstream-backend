@@ -2,6 +2,8 @@ const router          = require('express').Router();
 const controller      = require('../controllers/admin.controller');
 const albumController = require('../controllers/album.controller');
 const artistController = require('../controllers/artist.controller');
+const duplicateController = require('../controllers/duplicate_detection.controller');
+
 const auth  = require('../middlewares/auth.middleware');
 const admin = require('../middlewares/admin.middleware');
 
@@ -37,5 +39,10 @@ router.post('/albums/submit-for-artist', auth, admin, albumController.submitAlbu
 // ─── Artist Account Creation by Admin (fast-track, bypasses verification) ────
 router.post('/artists/create', auth, admin, controller.createArtistAccount);
 
+// ─── Duplicate Song Management ───────────────────────────────────────────────
+router.get('/songs/potential-duplicates', auth, admin, duplicateController.getPotentialDuplicates);
+router.post('/songs/merge',               auth, admin, duplicateController.mergeSongs);
+
 module.exports = router;
+
 

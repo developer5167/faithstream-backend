@@ -18,6 +18,7 @@ exports.register = async ({ name, email, password }) => {
       email: user.email,
       artist_status: user.artist_status || null,
       is_admin: user.is_admin || false,
+      copyright_strikes: user.copyright_strikes || 0,
       created_at: user.created_at || null,
     },
   };
@@ -26,6 +27,7 @@ exports.register = async ({ name, email, password }) => {
 exports.login = async ({ email, password }) => {
   const user = await userRepo.findByEmail(email);
   if (!user) throw new Error('Invalid credentials');
+  if (user.is_blocked) throw new Error('Account blocked due to severe policy violations.');
 
   const ok = await bcrypt.compare(password, user.password_hash);
   if (!ok) throw new Error('Invalid credentials');
@@ -41,6 +43,7 @@ exports.login = async ({ email, password }) => {
       email: user.email,
       artist_status: user.artist_status,
       is_admin: user.is_admin,
+      copyright_strikes: user.copyright_strikes || 0,
       created_at: user.created_at,
     },
   };
@@ -67,6 +70,7 @@ exports.me = async (userId) => {
       email: user.email,
       artist_status: user.artist_status,
       is_admin: user.is_admin,
+      copyright_strikes: user.copyright_strikes || 0,
       created_at: user.created_at,
     },
     role,

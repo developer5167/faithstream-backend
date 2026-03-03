@@ -69,9 +69,24 @@ exports.getVerifiedArtists = async () => {
   const res = await db.query(
     `SELECT u.id, u.name, u.email, ap.artist_name, ap.bio, u.created_at
      FROM users u
-     JOIN artist_profiles ap ON ap.user_id = u.id
-     WHERE ap.verification_status = 'APPROVED'
      ORDER BY ap.artist_name ASC`
   );
   return res.rows;
+};
+
+exports.incrementCopyrightStrikes = async (userId) => {
+  const res = await db.query(
+    `UPDATE users 
+     SET copyright_strikes = copyright_strikes + 1,
+         is_blocked = CASE WHEN copyright_strikes + 1 >= 3 THEN true ELSE is_blocked END
+     WHERE id = $1
+     RETURNING copyright_strikes, is_blocked`,
+    [userId]
+  );
+  
+  if (res.rows[0].is_blocked) {
+    await db.query(`DELETE FROM user_tokens WHERE user_id = $1`, [userId]);
+  }
+  
+  return res.rows[0];
 };
