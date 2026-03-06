@@ -41,16 +41,15 @@ exports.getPayoutDashboard        = payoutCtrl.getAdminDashboard;
 // POST /api/admin/artists/create — admin creates a trusted artist account directly
 exports.createArtistAccount = async (req, res) => {
   try {
-    const { name, email, password, artist_name, bio } = req.body;
+    const { name, email, artist_name, bio } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: 'name, email, and password are required' });
+    if (!name || !email) {
+      return res.status(400).json({ error: 'name and email are required' });
     }
 
     const result = await artistService.createArtistAccount(req.user.id, {
       name,
       email,
-      password,
       artist_name,
       bio,
     });

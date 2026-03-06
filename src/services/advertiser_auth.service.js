@@ -20,12 +20,18 @@ exports.register = async ({ companyName, email, password, phone }) => {
   const existing = await advertiserRepo.findByEmail(email);
   if (existing) throw new Error('Email already registered');
 
-  // Note: OTP verification should happen before this call in the UI flow.
-  // We can add a check here if we track verification status in DB.
+  // Verify that the email was actually validated via OTP
+  const isVerified = await otpService.isEmailVerified(email);
+  if (!isVerified) {
+    throw new Error('Email has not been verified via OTP. Please complete OTP verification first.');
+  }
   
   const hash = await bcrypt.hash(password);
   const advertiser = await advertiserRepo.createAdvertiser(companyName, email, hash, phone);
   
+  // Clear the OTP record so it can't be reused
+  await otpService.clearOTP(email);
+
   const token = jwt.sign({ id: advertiser.id, type: 'advertiser' });
   await advertiserRepo.saveToken(advertiser.id, token);
 

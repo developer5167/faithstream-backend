@@ -1,4 +1,6 @@
 const uploadService = require('../services/upload.service');
+const albumRepo = require('../repositories/album.repo');
+const songRepo = require('../repositories/song.repo');
 
 /**
  * Generate presigned URL for file upload
@@ -49,6 +51,21 @@ exports.getPresignedUrl = async (req, res) => {
     // Get user info from auth middleware
     const userId = req.user.id;
     const userRole = req.user.role;
+
+    // IDOR check: verify ownership of resourceId
+    if (!req.user.is_admin) {
+      if (uploadType === 'album_cover') {
+        const album = await albumRepo.findById(resourceId);
+        if (!album || album.artist_user_id !== userId) {
+          return res.status(403).json({ error: 'You do not have permission to upload to this album' });
+        }
+      } else if (uploadType === 'song_cover' || uploadType === 'song_audio') {
+        const song = await songRepo.getSongById(resourceId);
+        if (!song || song.artist_user_id !== userId) {
+          return res.status(403).json({ error: 'You do not have permission to upload to this song' });
+        }
+      }
+    }
 
     // Generate presigned URL
     const result = uploadService.generatePresignedUrl({

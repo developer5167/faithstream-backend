@@ -1,6 +1,9 @@
 const express = require("express");
 const rateLimit = require("express-rate-limit");
 const cors = require("cors");
+const helmet = require("helmet");
+const { RedisStore } = require("rate-limit-redis");
+const redisClient = require("./config/redis");
 
 const app = express();
 // Trust reverse proxies (ngrok, nginx, etc.) — needed for rate limiting to work correctly
@@ -26,21 +29,34 @@ app.use(
 
 /* -------------------- GLOBAL MIDDLEWARE -------------------- */
 
-// Default JSON parser (registered AFTER webhook route)
-app.use(express.json());
+// Security headers
+app.use(helmet());
+
+// Default JSON parser with size limit (registered AFTER webhook route)
+app.use(express.json({ limit: '1mb' }));
 
 /* -------------------- RATE LIMITERS -------------------- */
 
-const limiter = rateLimit({
+const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
+  message: { error: "Too many requests from this IP, please try again after 15 minutes" },
   standardHeaders: true,
   legacyHeaders: false,
+  store: new RedisStore({
+    sendCommand: (...args) => redisClient.sendCommand(args),
+  }),
 });
 
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
+  message: { error: "Too many login/registration attempts, please try again later" },
+  standardHeaders: true,
+  legacyHeaders: false,
+  store: new RedisStore({
+    sendCommand: (...args) => redisClient.sendCommand(args),
+  }),
 });
 
 /* -------------------- ROUTES -------------------- */
@@ -50,7 +66,7 @@ app.use("/api/auth", authLimiter, require("./routes/auth.routes"));
 app.use("/api/advertiser-auth", authLimiter, require("./routes/advertiser_auth.routes"));
 
 // 🌍 Global rate limit
-app.use(limiter);
+app.use(globalLimiter);
 
 // Main routes (with /api prefix)
 app.use("/api/home", require("./routes/home.routes"));

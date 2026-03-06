@@ -77,15 +77,19 @@ exports.getDashboardStats = async (userId) => {
  * Admin creates an artist account directly (bypasses verification flow).
  * The artist gets APPROVED status immediately.
  */
-exports.createArtistAccount = async (adminId, { name, email, password, artist_name, bio }) => {
+exports.createArtistAccount = async (adminId, { name, email, artist_name, bio }) => {
   // Check if email already exists
   const existing = await userRepo.findByEmail(email);
   if (existing) {
     throw new Error('An account with this email already exists');
   }
 
+  // Generate secure temporary password
+  const crypto = require('crypto');
+  const tempPassword = crypto.randomBytes(8).toString('hex');
+
   // Hash password
-  const hash = await bcrypt.hash(password);
+  const hash = await bcrypt.hash(tempPassword);
 
   // Create user
   const user = await userRepo.createUser(name, email, hash);
@@ -122,11 +126,11 @@ exports.createArtistAccount = async (adminId, { name, email, password, artist_na
       artist_status: 'APPROVED',
     },
     artist_profile: artistProfile,
-    credentials: { email, password }, // returned once so admin can share with artist
+    message: 'Temporary credentials have been emailed to the artist.',
   };
 
   // Send welcome email with credentials to artist (non-blocking — don't fail if email fails)
-  otpService.sendArtistCredentials({ name, email, password }).catch(err => {
+  otpService.sendArtistCredentials({ name, email, password: tempPassword }).catch(err => {
     console.error('[ArtistService] Failed to send credentials email:', err.message);
   });
 

@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const redisClient = require('../config/redis');
 
 // ── Activate on payment ───────────────────────────────────────────────────────
 
@@ -18,6 +19,9 @@ exports.activateByPaymentId = async (userId, paymentId, amount) => {
            expires_at          = $4`,
     [userId, amount, paymentId, expiresAt]
   );
+  
+  // Invalidate Redis cache instantly
+  await redisClient.del(`sub_status:${userId}`).catch(console.error);
 };
 
 // ── Legacy activate (keep for compatibility) ──────────────────────────────────
@@ -30,17 +34,41 @@ exports.activate = async (userId, start, end) => {
      DO UPDATE SET status='ACTIVE', started_at=to_timestamp($2/1000), expires_at=to_timestamp($3/1000)`,
     [userId, start, end]
   );
+  
+  // Invalidate Redis cache instantly
+  await redisClient.del(`sub_status:${userId}`).catch(console.error);
 };
 
 // ── Query helpers ─────────────────────────────────────────────────────────────
 
 exports.hasActiveSubscription = async (userId) => {
+  const cacheKey = `sub_status:${userId}`;
+
+  // 1. Check Redis Cache
+  try {
+    const cached = await redisClient.get(cacheKey);
+    if (cached !== null) return cached === 'true';
+  } catch (err) {
+    console.error('[Redis] Sub status cache read error:', err.message);
+  }
+
+  // 2. Cache Miss - Query DB
   const res = await db.query(
     `SELECT 1 FROM subscriptions
      WHERE user_id=$1 AND status='ACTIVE' AND expires_at > now()`,
     [userId]
   );
-  return res.rowCount > 0;
+  
+  const isActive = res.rowCount > 0;
+
+  // 3. Set Redis Cache (Expires in 1 hour)
+  try {
+    await redisClient.set(cacheKey, isActive ? 'true' : 'false', { EX: 3600 });
+  } catch (err) {
+    console.error('[Redis] Sub status cache write error:', err.message);
+  }
+
+  return isActive;
 };
 
 exports.findActiveByUser = async (userId) => {
@@ -59,6 +87,9 @@ exports.cancel = async (userId) => {
     `UPDATE subscriptions SET status='CANCELLED' WHERE user_id=$1`,
     [userId]
   );
+
+  // Invalidate Redis cache instantly
+  await redisClient.del(`sub_status:${userId}`).catch(console.error);
 };
 
 // ── Expiry ────────────────────────────────────────────────────────────────────
@@ -77,17 +108,42 @@ exports.expireOverdue = async () => {
 
 exports.findAllForAdmin = async ({ page = 1, limit = 20, status } = {}) => {
   const offset = (page - 1) * limit;
-  const conditions = status ? `WHERE s.status = '${status}'` : '';
+
+  if (status) {
+    const countRes = await db.query(
+      `SELECT COUNT(*) AS total FROM subscriptions s WHERE s.status = $1`,
+      [status]
+    );
+
+    const res = await db.query(
+      `SELECT s.*, u.name, u.email
+       FROM subscriptions s
+       JOIN users u ON u.id = s.user_id
+       WHERE s.status = $1
+       ORDER BY s.started_at DESC
+       LIMIT $2 OFFSET $3`,
+      [status, limit, offset]
+    );
+
+    return {
+      data: res.rows,
+      pagination: {
+        page,
+        limit,
+        total: parseInt(countRes.rows[0].total),
+        totalPages: Math.ceil(countRes.rows[0].total / limit),
+      },
+    };
+  }
 
   const countRes = await db.query(
-    `SELECT COUNT(*) AS total FROM subscriptions s ${conditions}`
+    `SELECT COUNT(*) AS total FROM subscriptions s`
   );
 
   const res = await db.query(
     `SELECT s.*, u.name, u.email
      FROM subscriptions s
      JOIN users u ON u.id = s.user_id
-     ${conditions}
      ORDER BY s.started_at DESC
      LIMIT $1 OFFSET $2`,
     [limit, offset]
@@ -106,9 +162,19 @@ exports.findAllForAdmin = async ({ page = 1, limit = 20, status } = {}) => {
 
 exports.getRevenueSummary = async (month) => {
   // month format: 'YYYY-MM' or null = current month
-  const condition = month
-    ? `AND to_char(started_at, 'YYYY-MM') = '${month}'`
-    : `AND to_char(started_at, 'YYYY-MM') = to_char(NOW(), 'YYYY-MM')`;
+  if (month) {
+    const res = await db.query(
+      `SELECT
+         COUNT(*)                              AS total_subscribers,
+         COUNT(*) FILTER (WHERE status='ACTIVE') AS active_subscribers,
+         COALESCE(SUM(amount), 0)             AS total_revenue
+       FROM subscriptions
+       WHERE status IN ('ACTIVE','EXPIRED')
+         AND to_char(started_at, 'YYYY-MM') = $1`,
+      [month]
+    );
+    return res.rows[0];
+  }
 
   const res = await db.query(
     `SELECT
@@ -116,7 +182,8 @@ exports.getRevenueSummary = async (month) => {
        COUNT(*) FILTER (WHERE status='ACTIVE') AS active_subscribers,
        COALESCE(SUM(amount), 0)             AS total_revenue
      FROM subscriptions
-     WHERE status IN ('ACTIVE','EXPIRED') ${condition}`
+     WHERE status IN ('ACTIVE','EXPIRED')
+       AND to_char(started_at, 'YYYY-MM') = to_char(NOW(), 'YYYY-MM')`
   );
   return res.rows[0];
 };

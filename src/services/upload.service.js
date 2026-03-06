@@ -12,10 +12,13 @@ const s3Util = require('../utils/s3.util');
  * @returns {Object} - Object containing upload URL and S3 key
  */
 exports.generatePresignedUrl = ({ fileName, contentType, uploadType, userId, resourceId, userRole }) => {
+  const fileExtension = fileName.split('.').pop().toLowerCase();
+
   // Validate file type for audio
   if (uploadType === 'song_audio') {
     const allowedAudioTypes = ['audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/flac'];
-    if (!allowedAudioTypes.includes(contentType)) {
+    const allowedAudioExts = ['mp3', 'wav', 'flac'];
+    if (!allowedAudioTypes.includes(contentType) || !allowedAudioExts.includes(fileExtension)) {
       throw new Error('Invalid file type. Only MP3, WAV, and FLAC audio files are allowed.');
     }
   }
@@ -23,7 +26,8 @@ exports.generatePresignedUrl = ({ fileName, contentType, uploadType, userId, res
   // Validate file type for images
   else if (uploadType === 'album_cover' || uploadType === 'song_cover' || uploadType === 'artist_profile' || uploadType === 'user_profile' || uploadType === 'ad_image') {
     const allowedImageTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-    if (!allowedImageTypes.includes(contentType)) {
+    const allowedImageExts = ['jpeg', 'jpg', 'png', 'webp'];
+    if (!allowedImageTypes.includes(contentType) || !allowedImageExts.includes(fileExtension)) {
       throw new Error('Invalid file type. Only JPEG, PNG, and WebP images are allowed.');
     }
   }
@@ -31,7 +35,8 @@ exports.generatePresignedUrl = ({ fileName, contentType, uploadType, userId, res
   // Validate file type for videos
   else if (uploadType === 'artist_selfie_video' || uploadType === 'ad_video') {
     const allowedVideoTypes = ['video/mp4', 'video/quicktime', 'video/x-msvideo'];
-    if (!allowedVideoTypes.includes(contentType)) {
+    const allowedVideoExts = ['mp4', 'mov', 'avi'];
+    if (!allowedVideoTypes.includes(contentType) || !allowedVideoExts.includes(fileExtension)) {
       throw new Error('Invalid file type. Only MP4, MOV, and AVI video files are allowed.');
     }
   }

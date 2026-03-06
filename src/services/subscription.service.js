@@ -42,14 +42,16 @@ exports.createOrder = async (userId) => {
 // ── Verify payment & activate subscription ────────────────────────────────────
 
 exports.verifyPayment = async (userId, { razorpay_order_id, razorpay_payment_id, razorpay_signature }) => {
-  // Verify HMAC signature
+  // Verify HMAC signature (constant-time comparison to prevent timing attacks)
   const body = `${razorpay_order_id}|${razorpay_payment_id}`;
   const expected = crypto
     .createHmac('sha256', RAZORPAY_KEY_SECRET)
     .update(body)
     .digest('hex');
 
-  if (expected !== razorpay_signature) {
+  const sigValid = expected.length === razorpay_signature.length &&
+    crypto.timingSafeEqual(Buffer.from(expected, 'hex'), Buffer.from(razorpay_signature, 'hex'));
+  if (!sigValid) {
     throw new Error('Payment verification failed — invalid signature');
   }
 
@@ -136,13 +138,15 @@ exports.handleWebhook = async (req) => {
   const body      = req.body; // raw Buffer from express.raw()
   const signature = req.headers['x-razorpay-signature'];
 
-  // Verify signature
+  // Verify signature (constant-time comparison to prevent timing attacks)
   const expected = crypto
     .createHmac('sha256', WEBHOOK_SECRET)
     .update(body)
     .digest('hex');
 
-  if (expected !== signature) {
+  const sigValid = expected.length === signature.length &&
+    crypto.timingSafeEqual(Buffer.from(expected, 'hex'), Buffer.from(signature, 'hex'));
+  if (!sigValid) {
     throw new Error('Invalid webhook signature');
   }
 

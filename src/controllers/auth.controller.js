@@ -1,22 +1,40 @@
 const authService = require('../services/auth.service');
+const { validateRegister, validateLogin } = require('../validators/auth.validator');
 
 exports.register = async (req, res) => {
-  const user = await authService.register(req.body);
-  res.json(user);
+  try {
+    validateRegister(req.body);
+    const user = await authService.register(req.body);
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 
 exports.login = async (req, res) => {
-  console.log(req.body);
-  const token = await authService.login(req.body);
-  res.json(token);
+  try {
+    validateLogin(req.body);
+    const token = await authService.login(req.body);
+    res.json(token);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 
 exports.me = async (req, res) => {
-  const userInfo = await authService.me(req.user.id);
-  res.json(userInfo);
+  try {
+    const userInfo = await authService.me(req.user.id);
+    res.json(userInfo);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 
 exports.logout = async (req, res) => {
-  await authService.logout(req.user.id, req.headers.authorization.split(' ')[1]);
-  res.json({ message: 'Logged out successfully' });
+  try {
+    await authService.logout(req.user.id, req.headers.authorization.split(' ')[1]);
+    res.json({ message: 'Logged out successfully' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };

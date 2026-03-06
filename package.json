@@ -30,12 +30,15 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "firebase-admin": "^13.6.1",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "node-cron": "^4.2.1",
     "nodemailer": "^8.0.1",
     "nodemon": "^3.1.11",
     "pg": "^8.17.2",
+    "rate-limit-redis": "^4.3.1",
     "razorpay": "^2.9.6",
+    "redis": "^5.11.0",
     "uuid": "^13.0.0"
   }
 }

@@ -1,9 +1,21 @@
 const db = require('../config/db');
+const redisClient = require('../config/redis');
 
 class SearchService {
   async performSearch(query) {
+    const rawQuery = query.toLowerCase().trim();
+    const cacheKey = `search:${rawQuery}`;
+
+    // 1. Check Redis Cache
+    try {
+      const cached = await redisClient.get(cacheKey);
+      if (cached) return JSON.parse(cached);
+    } catch (err) {
+      console.error('[Redis] Search cache read error:', err.message);
+    }
+
     // Add wildcards for ILIKE matching
-    const searchTerm = `%${query}%`;
+    const searchTerm = `%${rawQuery}%`;
     const searchParams = [searchTerm];
 
     // Combine 3 concurrent searches into a single Promise.all
@@ -97,6 +109,15 @@ class SearchService {
         createdAt: artist.created_at
       }))
     };
+
+    // 2. Set to Redis Cache (10 minutes = 600 seconds)
+    try {
+      await redisClient.set(cacheKey, JSON.stringify(results), { EX: 600 });
+    } catch (err) {
+      console.error('[Redis] Search cache write error:', err.message);
+    }
+
+    return results;
   }
 }
 
