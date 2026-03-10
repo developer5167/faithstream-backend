@@ -15,6 +15,15 @@ exports.getSignedUrl = (key) => {
   });
 };
 
+exports.getObjectAsString = async (key) => {
+  const params = {
+    Bucket: process.env.AWS_BUCKET,
+    Key: key,
+  };
+  const data = await s3.getObject(params).promise();
+  return data.Body.toString('utf-8');
+};
+
 /**
  * Delete an object from S3 using its full public URL
  * @param {string} url - The full public URL of the S3 object

@@ -3,6 +3,7 @@ const streamRepo = require('../repositories/stream.repo');
 const recentlyPlayedRepo = require('../repositories/recentlyPlayed.repo');
 const s3Util = require('../utils/s3.util');
 const redisClient = require('../config/redis');
+const jwt = require('jsonwebtoken');
 
 const DEDUP_WINDOW_MS = 5000; // 5 seconds
 
@@ -27,8 +28,35 @@ exports.getStreamUrl = async (songId, userId) => {
      }
   }
 
-  // audio_processed_url stores S3 key, not public URL
+  if (song.audio_processed_url && song.audio_processed_url.endsWith('.m3u8')) {
+     const token = jwt.sign({ id: userId, purpose: 'hls' }, process.env.JWT_SECRET, { expiresIn: '6h' });
+     const appUrl = process.env.APP_URL || process.env.VITE_API_URL || 'http://localhost:9000';
+     return `${appUrl}/api/stream/${song.id}/hls.m3u8?token=${token}`;
+  }
+
+  // audio_processed_url stores S3 key, not public URL for legacy files
   return s3Util.getSignedUrl(song.audio_processed_url);
+};
+
+exports.getHlsPlaylist = async (songId, userId) => {
+  const song = await songRepo.findApprovedById(songId);
+  if (!song || !song.audio_processed_url) throw new Error('Song unavailable');
+
+  const m3u8Raw = await s3Util.getObjectAsString(song.audio_processed_url);
+  
+  // The M3U8 has lines like "segment_000.ts"
+  // We need to replace each .ts with a fully signed S3 url.
+  const lines = m3u8Raw.split('\n');
+  const basePath = song.audio_processed_url.substring(0, song.audio_processed_url.lastIndexOf('/') + 1);
+
+  const signedLines = lines.map(line => {
+    if (line.trim().endsWith('.ts')) {
+       return s3Util.getSignedUrl(basePath + line.trim());
+    }
+    return line;
+  });
+
+  return signedLines.join('\n');
 };
 
 exports.logStream = async (songId, userId, duration) => {

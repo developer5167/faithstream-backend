@@ -31,21 +31,8 @@ exports.findById = async (id) => {
   return res.rows[0];
 };
 
-exports.saveToken = async (userId, token) => {
-  await db.query(
-    `INSERT INTO user_tokens (user_id, token, created_at)
-     VALUES ($1, $2, NOW())
-     ON CONFLICT (user_id, token) DO NOTHING`,
-    [userId, token]
-  );
-};
-
-exports.removeToken = async (userId, token) => {
-  await db.query(
-    `DELETE FROM user_tokens WHERE user_id=$1 AND token=$2`,
-    [userId, token]
-  );
-};
+// (Phase 4): JWTs are now purely cryptographic + Redis Blocklist managed
+// exports.saveToken and exports.removeToken have been dropped to save Database write-cycles.
 
 exports.updateProfile = async (userId, updates) => {
   const { name, phone, bio, profile_pic_url } = updates;

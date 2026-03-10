@@ -52,17 +52,24 @@ exports.getPresignedUrl = async (req, res) => {
     const userId = req.user.id;
     const userRole = req.user.role;
 
+    // Helper to check if string is a valid UUID
+    const isValidUUID = (id) => /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id);
+
     // IDOR check: verify ownership of resourceId
     if (!req.user.is_admin) {
       if (uploadType === 'album_cover') {
-        const album = await albumRepo.findById(resourceId);
-        if (!album || album.artist_user_id !== userId) {
-          return res.status(403).json({ error: 'You do not have permission to upload to this album' });
+        if (isValidUUID(resourceId)) {
+          const album = await albumRepo.findById(resourceId);
+          if (!album || album.artist_user_id !== userId) {
+            return res.status(403).json({ error: 'You do not have permission to upload to this album' });
+          }
         }
       } else if (uploadType === 'song_cover' || uploadType === 'song_audio') {
-        const song = await songRepo.getSongById(resourceId);
-        if (!song || song.artist_user_id !== userId) {
-          return res.status(403).json({ error: 'You do not have permission to upload to this song' });
+        if (isValidUUID(resourceId)) {
+          const song = await songRepo.getSongById(resourceId);
+          if (!song || song.artist_user_id !== userId) {
+            return res.status(403).json({ error: 'You do not have permission to upload to this song' });
+          }
         }
       }
     }

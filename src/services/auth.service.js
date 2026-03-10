@@ -2,13 +2,14 @@ const userRepo = require('../repositories/user.repo');
 const subscriptionRepo = require('../repositories/subscription.repo');
 const bcrypt = require('../utils/password.util');
 const jwt = require('../utils/jwt.util');
+const redisClient = require('../config/redis');
 
 exports.register = async ({ name, email, password }) => {
   const hash = await bcrypt.hash(password);
   const user = await userRepo.createUser(name, email, hash);
   
   const token = jwt.sign(user);
-  await userRepo.saveToken(user.id, token);
+  // (Phase 4): No longer securely saving standard JWTs to Postgres to save write-cycles
 
   return {
     token,
@@ -33,7 +34,7 @@ exports.login = async ({ email, password }) => {
   if (!ok) throw new Error('Invalid credentials');
 
   const token = jwt.sign(user);
-  await userRepo.saveToken(user.id, token);
+  // (Phase 4): No longer securely saving standard JWTs to Postgres to save write-cycles
 
   return {
     token,
@@ -79,5 +80,11 @@ exports.me = async (userId) => {
 };
 
 exports.logout = async (userId, token) => {
-  await userRepo.removeToken(userId, token);
+  // (Phase 4): Instead of deleting the token from Postgres, we add its signature
+  // to the Redis blocklist so the fast `auth.middleware.js` will reject it.
+  // We set the TTL to exactly 7 days (604,800s) to match the JWT expiration time.
+  // After 7 days, Redis automatically shreds the key, making our blocklist self-cleaning!
+  await redisClient.set(`bl_token:${token}`, '1', {
+    EX: 604800
+  });
 };

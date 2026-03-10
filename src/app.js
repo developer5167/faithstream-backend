@@ -37,41 +37,21 @@ app.use(express.json({ limit: '1mb' }));
 
 /* -------------------- RATE LIMITERS -------------------- */
 
-const globalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: { error: "Too many requests from this IP, please try again after 15 minutes" },
-  standardHeaders: true,
-  legacyHeaders: false,
-  store: new RedisStore({
-    sendCommand: (...args) => redisClient.sendCommand(args),
-  }),
-});
-
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 10,
-  message: { error: "Too many login/registration attempts, please try again later" },
-  standardHeaders: true,
-  legacyHeaders: false,
-  store: new RedisStore({
-    sendCommand: (...args) => redisClient.sendCommand(args),
-  }),
-});
+const { strictLimiter, looseLimiter } = require("./middlewares/rateLimiter");
 
 /* -------------------- ROUTES -------------------- */
 
 // 🔐 Auth
-app.use("/api/auth", authLimiter, require("./routes/auth.routes"));
-app.use("/api/advertiser-auth", authLimiter, require("./routes/advertiser_auth.routes"));
+app.use("/api/auth", strictLimiter, require("./routes/auth.routes"));
+app.use("/api/advertiser-auth", strictLimiter, require("./routes/advertiser_auth.routes"));
 
-// 🌍 Global rate limit
-app.use(globalLimiter);
+// Removing generic `app.use(globalLimiter)` which restricted safe routes needlessly
+// Instead, adding looseLimiter only where high traffic usually lives
 
 // Main routes (with /api prefix)
-app.use("/api/home", require("./routes/home.routes"));
-app.use("/api/search", require("./routes/search.routes"));
-app.use("/api/users", require("./routes/user.routes"));
+app.use("/api/home", looseLimiter, require("./routes/home.routes"));
+app.use("/api/search", looseLimiter, require("./routes/search.routes"));
+app.use("/api/users", looseLimiter, require("./routes/user.routes"));
 app.use("/api/artist", require("./routes/artist.routes"));
 app.use("/api/artists", require("./routes/artist.routes"));
 app.use("/api/songs", require("./routes/song.routes"));
@@ -93,6 +73,13 @@ app.use("/api/follow", require("./routes/follow.routes"));
 app.use("/api/share", require("./routes/redirect.routes"));
 app.use("/api/ads", require("./routes/ad.routes"));
 app.use("/api/wallet", require("./routes/wallet.routes"));
+app.use("/api/app", require("./routes/app.routes"));
+
+/* -------------------- BACKGROUND WORKERS -------------------- */
+const streamBatchWorker = require('./workers/streamBatchWorker');
+streamBatchWorker.start();
+const ffmpegWorker = require('./workers/ffmpegWorker');
+ffmpegWorker.start();
 
 /* -------------------- ERROR HANDLER -------------------- */
 

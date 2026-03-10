@@ -7,6 +7,9 @@ exports.register = async (req, res) => {
     const user = await authService.register(req.body);
     res.json(user);
   } catch (err) {
+    if (err.code === '23505' || err.message.includes('users_email_key')) {
+      return res.status(400).json({ error: 'An account with this email address already exists.' });
+    }
     res.status(400).json({ error: err.message });
   }
 };

@@ -9,11 +9,60 @@ exports.getStreamUrl = async (req, res) => {
   res.json({ url });
 };
 
+exports.getHlsPlaylist = async (req, res) => {
+  try {
+    const { songId } = req.params;
+    const { token } = req.query;
+
+    if (!token) return res.status(401).json({ error: 'Missing playback token' });
+
+    // Validate token manually (allows flutter to play via query param natively)
+    const jwt = require('jsonwebtoken');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (decoded.purpose !== 'hls') {
+      return res.status(401).json({ error: 'Invalid playback token' });
+    }
+
+    const m3u8Content = await streamService.getHlsPlaylist(songId, decoded.id);
+    
+    res.setHeader('Content-Type', 'application/vnd.apple.mpegurl');
+    res.send(m3u8Content);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 exports.logStream = async (req, res) => {
-  // Flutter sends 'duration_listened' (in seconds)
-  const duration = parseInt(req.body.duration_listened ?? req.body.duration ?? 0, 10);
-  await streamService.logStream(req.body.song_id, req.user.id, duration);
-  res.json({ ok: true });
+  try {
+    // Flutter sends 'duration_listened' (in seconds)
+    const duration = parseInt(req.body.duration_listened ?? req.body.duration ?? 0, 10);
+    const songId = req.body.song_id;
+    const userId = req.user.id;
+    
+    if (!songId || !userId) {
+       return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // High Write Traffic Optimization (Phase 2)
+    // Instead of invoking `streamService.logStream` which executes a heavy 
+    // persistent PostgreSQL `INSERT` on the main thread, we enqueue it into
+    // RAM instantly via Redis. A background cron job will flush the queue 
+    // every 10 seconds.
+    const payload = JSON.stringify({
+      songId,
+      userId,
+      duration,
+      timestamp: Date.now()
+    });
+
+    await redisClient.rPush('stream_analytics_queue', payload);
+
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('Redis RPUSH stream error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 };
 
 exports.logRecentlyPlayed = async (req, res) => {

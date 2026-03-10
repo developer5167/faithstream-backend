@@ -3,6 +3,7 @@ const albumRepo = require('../repositories/album.repo');
 const adminLog = require('../repositories/adminAction.repo');
 const userRepo = require('../repositories/user.repo');
 const notificationService = require('./notification.service');
+const redisClient = require('../config/redis');
 
 
 exports.createSong = async (artistId, data) => {
@@ -29,7 +30,7 @@ exports.createSong = async (artistId, data) => {
     }
   }
 
-  return songRepo.create({
+  const song = await songRepo.create({
     artist_user_id: artistId,
     title: data.title,
     language: data.language,
@@ -41,6 +42,16 @@ exports.createSong = async (artistId, data) => {
     album_id: data.album_id || null,
     track_number: data.track_number || null
   });
+
+  // Inject a transcoding job into the Redis Queue
+  if (song && song.audio_original_url) {
+    await redisClient.lPush('hls_transcoding_queue', JSON.stringify({
+      songId: song.id,
+      audio_url: song.audio_original_url
+    }));
+  }
+
+  return song;
 };
 
 exports.getArtistSongs = async (artistId) => {
@@ -150,6 +161,13 @@ exports.createSongOnBehalfOfArtist = async (artistId, adminId, data) => {
     track_number: data.track_number || null
   });
 
+  if (song && song.audio_original_url) {
+    await redisClient.lPush('hls_transcoding_queue', JSON.stringify({
+      songId: song.id,
+      audio_url: song.audio_original_url
+    }));
+  }
+
   await adminLog.log({
     admin_id: adminId,
     action_type: 'SONG_CREATED_FOR_ARTIST',
@@ -192,7 +210,16 @@ exports.updateSong = async (songId, artistId, isAdmin, data) => {
     data.album_id = album.id;
   }
 
-  return songRepo.update(songId, data);
+  const updatedSong = await songRepo.update(songId, data);
+  
+  if (data.audio_original_url && data.audio_original_url !== song.audio_original_url) {
+    await redisClient.lPush('hls_transcoding_queue', JSON.stringify({
+      songId: updatedSong.id,
+      audio_url: updatedSong.audio_original_url
+    }));
+  }
+  
+  return updatedSong;
 };
 
 exports.getSongDetails = async (songId) => {
