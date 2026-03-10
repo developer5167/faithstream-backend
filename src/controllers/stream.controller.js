@@ -58,6 +58,23 @@ exports.logStream = async (req, res) => {
 
     await redisClient.rPush('stream_analytics_queue', payload);
 
+    // INSTANTLY increment the 2-play daily limit cache so the user can't 
+    // bypass the limit by playing songs rapidly before the 10s worker runs.
+    if (duration >= 30) {
+      try {
+        const todayStr = new Date().toISOString().split('T')[0];
+        const dailyKey = `daily_plays:${userId}:${songId}:${todayStr}`;
+        await redisClient.incr(dailyKey);
+        
+        // Ensure midnight expiry
+        const now = new Date();
+        const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        await redisClient.expireAt(dailyKey, Math.floor(nextMidnight.getTime() / 1000));
+      } catch (err) {
+        console.error('Instant Redis limit increment error:', err);
+      }
+    }
+
     res.json({ ok: true });
   } catch (error) {
     console.error('Redis RPUSH stream error:', error);

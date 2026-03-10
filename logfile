@@ -1462,3 +1462,1213 @@
 2026-03-02 00:34:36.150 IST [4614] LOG:  background worker "logical replication launcher" (PID 4621) exited with exit code 1
 2026-03-02 00:34:36.150 IST [4616] LOG:  shutting down
 2026-03-02 00:34:36.162 IST [4614] LOG:  database system is shut down
+2026-03-10 22:48:56.382 IST [5737] LOG:  starting PostgreSQL 14.15 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.4), 64-bit
+2026-03-10 22:48:56.386 IST [5737] LOG:  listening on IPv6 address "::1", port 5432
+2026-03-10 22:48:56.386 IST [5737] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-03-10 22:48:56.386 IST [5737] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-03-10 22:48:56.425 IST [5738] LOG:  database system was shut down at 2026-03-10 19:53:56 IST
+2026-03-10 22:48:56.439 IST [5737] LOG:  database system is ready to accept connections
+2026-03-11 00:04:36.626 IST [18277] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:04:36.626 IST [18277] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:04:46.473 IST [18277] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:04:46.473 IST [18277] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:04:56.615 IST [18277] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:04:56.615 IST [18277] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:05:07.108 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:05:07.108 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:05:16.597 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:05:16.597 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:05:26.560 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:05:26.560 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:05:36.519 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:05:36.519 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:05:46.560 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:05:46.560 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:05:56.479 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:05:56.479 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:06:06.497 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:06:06.497 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:06:16.495 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:06:16.495 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:06:26.465 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:06:26.465 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:06:36.500 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:06:36.500 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:06:46.527 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:06:46.527 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:06:56.500 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:06:56.500 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:07:06.586 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:07:06.586 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:07:16.552 IST [18341] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:07:16.552 IST [18341] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:07:26.771 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:07:26.771 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:07:36.581 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:07:36.581 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:07:46.566 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:07:46.566 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:07:56.641 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:07:56.641 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:08:06.509 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:08:06.509 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:08:16.498 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:08:16.498 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:08:26.504 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:08:26.504 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:08:36.503 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:08:36.503 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:08:46.483 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:08:46.483 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:08:56.555 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:08:56.555 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:09:06.503 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:09:06.503 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:09:16.622 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:09:16.622 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:09:26.580 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:09:26.580 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:09:36.953 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:09:36.953 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:09:46.570 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:09:46.570 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:09:56.584 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:09:56.584 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:10:06.543 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:10:06.543 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:10:16.566 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:10:16.566 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:10:26.531 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:10:26.531 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:10:36.518 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:10:36.518 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:10:46.505 IST [18663] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:10:46.505 IST [18663] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:10:56.760 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:10:56.760 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:11:06.715 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:11:06.715 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:11:16.566 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:11:16.566 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:11:26.717 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:11:26.717 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:11:36.657 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:11:36.657 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:11:46.810 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:11:46.810 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:11:56.747 IST [19089] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:11:56.747 IST [19089] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:12:02.467 IST [19089] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 00:12:02.467 IST [19089] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 00:12:06.715 IST [19252] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:12:06.715 IST [19252] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:12:16.688 IST [19252] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:12:16.688 IST [19252] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:12:26.734 IST [19252] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:12:26.734 IST [19252] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:12:36.896 IST [19329] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:12:36.896 IST [19329] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:12:46.669 IST [19329] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:12:46.669 IST [19329] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:12:56.687 IST [19329] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:12:56.687 IST [19329] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:13:06.621 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:13:06.621 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:13:16.745 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:13:16.745 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:13:26.595 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:13:26.595 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:13:36.780 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:13:36.780 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:13:46.741 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:13:46.741 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:13:56.870 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:13:56.870 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:14:06.730 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:14:06.730 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:14:16.760 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:14:16.760 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:14:26.771 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:14:26.771 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:14:36.701 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:14:36.701 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:14:46.796 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:14:46.796 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:14:56.667 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:14:56.667 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:15:06.721 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:15:06.721 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:15:16.663 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:15:16.663 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:15:26.823 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:15:26.823 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:15:36.740 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:15:36.740 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:15:46.878 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:15:46.878 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:15:56.712 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:15:56.712 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:16:06.771 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:16:06.771 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:16:16.734 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:16:16.734 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:16:26.749 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:16:26.749 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:16:36.806 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:16:36.806 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:16:46.778 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:16:46.778 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:16:56.820 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:16:56.820 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:17:06.707 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:17:06.707 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:17:16.744 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:17:16.744 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:17:26.695 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:17:26.695 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:17:36.857 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:17:36.857 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:17:46.676 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:17:46.676 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:17:56.856 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:17:56.856 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:18:06.764 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:18:06.764 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:18:16.801 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:18:16.801 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:18:26.707 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:18:26.707 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:18:36.779 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:18:36.779 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:18:46.735 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:18:46.735 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:18:56.799 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:18:56.799 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:19:06.734 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:19:06.734 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:19:16.748 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:19:16.748 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:19:26.773 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:19:26.773 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:19:36.659 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:19:36.659 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:19:46.727 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:19:46.727 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:19:56.643 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:19:56.643 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:20:06.859 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:20:06.859 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:20:16.694 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:20:16.694 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:20:26.824 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:20:26.824 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:20:36.734 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:20:36.734 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:20:46.777 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:20:46.777 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:20:56.749 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:20:56.749 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:21:06.750 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:21:06.750 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:21:16.694 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:21:16.694 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:21:26.783 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:21:26.783 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:21:36.911 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:21:36.911 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:21:46.650 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:21:46.650 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:21:56.696 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:21:56.696 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:22:06.661 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:22:06.661 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:22:16.751 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:22:16.751 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:22:26.784 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:22:26.784 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:22:36.794 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:22:36.794 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:22:46.704 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:22:46.704 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:22:56.817 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:22:56.817 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:23:06.747 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:23:06.747 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:23:16.790 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:23:16.790 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:23:26.705 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:23:26.705 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:23:36.687 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:23:36.687 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:23:46.799 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:23:46.799 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:23:56.663 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:23:56.663 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:24:06.859 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:24:06.859 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:24:16.644 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:24:16.644 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:24:26.783 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:24:26.783 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:24:36.749 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:24:36.749 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:24:46.799 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:24:46.799 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:24:56.775 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:24:56.775 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:25:06.791 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:25:06.791 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:25:16.738 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:25:16.738 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:25:26.750 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:25:26.750 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:25:36.746 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:25:36.746 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:25:46.767 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:25:46.767 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:25:56.829 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:25:56.829 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:26:06.698 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:26:06.698 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:26:16.892 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:26:16.892 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:26:26.682 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:26:26.682 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:26:36.814 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:26:36.814 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:26:46.669 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:26:46.669 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:26:56.870 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:26:56.870 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:27:06.743 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:27:06.743 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:27:16.983 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:27:16.983 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:27:26.719 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:27:26.719 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:27:36.840 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:27:36.840 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:27:46.790 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:27:46.790 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:27:56.733 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:27:56.733 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:28:06.685 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:28:06.685 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:28:16.769 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:28:16.769 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:28:26.786 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:28:26.786 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:28:36.677 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:28:36.677 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:28:46.703 IST [19386] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:28:46.703 IST [19386] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:29:19.199 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:29:19.199 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:29:29.141 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:29:29.141 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:29:39.157 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:29:39.157 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:29:49.096 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:29:49.096 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:29:59.268 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:29:59.268 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:30:09.186 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:30:09.186 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:30:19.267 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:30:19.267 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:30:29.233 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:30:29.233 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:30:39.269 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:30:39.269 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:30:49.152 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:30:49.152 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:30:59.191 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:30:59.191 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:31:09.173 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:31:09.173 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:31:19.178 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:31:19.178 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:31:29.114 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:31:29.114 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:31:39.144 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:31:39.144 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:31:49.183 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:31:49.183 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:31:59.086 IST [21281] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:31:59.086 IST [21281] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:32:07.339 IST [21281] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 00:32:07.339 IST [21281] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 00:32:09.251 IST [21552] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:32:09.251 IST [21552] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:32:19.232 IST [21552] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:32:19.232 IST [21552] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:32:29.292 IST [21552] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:32:29.292 IST [21552] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:32:39.219 IST [21605] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:32:39.219 IST [21605] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:32:49.329 IST [21608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:32:49.329 IST [21608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:32:59.177 IST [21608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:32:59.177 IST [21608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:33:09.269 IST [21608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:33:09.269 IST [21608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:33:19.216 IST [21608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:33:19.216 IST [21608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:33:29.212 IST [21608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:33:29.212 IST [21608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:33:39.248 IST [21708] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:33:39.248 IST [21708] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:33:49.151 IST [21708] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:33:49.151 IST [21708] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:33:59.176 IST [21708] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:33:59.176 IST [21708] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:34:12.197 IST [21952] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 00:34:12.197 IST [21952] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 00:34:19.518 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:34:19.518 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:34:29.580 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:34:29.580 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:34:39.546 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:34:39.546 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:34:49.697 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:34:49.697 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:34:59.607 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:34:59.607 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:35:09.837 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:35:09.837 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:35:19.643 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:35:19.643 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:35:29.725 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:35:29.725 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:35:40.065 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:35:40.065 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:35:49.669 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:35:49.669 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:35:59.625 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:35:59.625 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:36:09.635 IST [21962] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:36:09.635 IST [21962] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:36:20.245 IST [22178] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:36:20.245 IST [22178] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:36:29.594 IST [22178] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:36:29.594 IST [22178] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:36:40.282 IST [22214] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:36:40.282 IST [22214] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:36:49.591 IST [22214] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:36:49.591 IST [22214] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:36:59.851 IST [22214] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:36:59.851 IST [22214] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:37:09.861 IST [22214] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:37:09.861 IST [22214] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:37:20.342 IST [22290] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:37:20.342 IST [22290] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:37:29.642 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:37:29.642 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:37:39.709 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:37:39.709 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:37:49.643 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:37:49.643 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:37:59.731 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:37:59.731 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:38:09.647 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:38:09.647 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:38:19.655 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:38:19.655 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:38:29.719 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:38:29.719 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:38:39.697 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:38:39.697 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:38:49.831 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:38:49.831 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:38:59.745 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:38:59.745 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:39:09.811 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:39:09.811 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:39:19.748 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:39:19.748 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:39:29.792 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:39:29.792 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:39:39.706 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:39:39.706 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:39:49.748 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:39:49.748 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:39:59.769 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:39:59.769 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:40:09.788 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:40:09.788 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:40:19.694 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:40:19.694 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:40:29.747 IST [22287] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:40:29.747 IST [22287] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:40:40.812 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:40:40.812 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:40:41.090 IST [22652] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 00:40:41.090 IST [22652] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 00:40:49.710 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:40:49.710 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:40:59.871 IST [22678] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:40:59.871 IST [22678] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:41:09.831 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:41:09.831 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:41:19.805 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:41:19.805 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:41:29.751 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:41:29.751 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:41:39.892 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:41:39.892 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:41:49.792 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:41:49.792 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:41:59.877 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:41:59.877 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:42:09.732 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:42:09.732 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:42:19.912 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:42:19.912 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:42:29.713 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:42:29.713 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:42:39.779 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:42:39.779 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:42:49.915 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:42:49.915 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:42:59.733 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:42:59.733 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:43:09.953 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:43:09.953 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:43:19.799 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:43:19.799 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:43:29.859 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:43:29.859 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:43:39.832 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:43:39.832 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:43:49.836 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:43:49.836 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:43:59.795 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:43:59.795 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:44:09.867 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:44:09.867 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:44:19.790 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:44:19.790 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:44:29.863 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:44:29.863 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:44:39.885 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:44:39.885 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:44:49.980 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:44:49.980 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:45:00.012 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:45:00.012 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:45:10.018 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:45:10.018 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:45:20.017 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:45:20.017 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:45:29.830 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:45:29.830 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:45:39.890 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:45:39.890 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:45:49.934 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:45:49.934 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:46:00.001 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:46:00.001 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:46:09.778 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:46:09.778 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:46:19.915 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:46:19.915 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:46:29.865 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:46:29.865 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:46:39.946 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:46:39.946 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:46:49.914 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:46:49.914 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:00.012 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:00.012 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:10.006 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:10.006 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:19.933 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:19.933 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:29.940 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:29.940 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:39.744 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:39.744 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:49.923 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:49.923 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:47:59.785 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:47:59.785 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:48:10.027 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:48:10.027 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:48:19.919 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:48:19.919 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:48:30.019 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:48:30.019 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:48:39.863 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:48:39.863 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:48:49.917 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:48:49.917 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:00.069 IST [22650] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:00.069 IST [22650] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:10.040 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:10.040 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:19.993 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:19.993 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:29.960 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:29.960 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:39.982 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:39.982 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:49.930 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:49.930 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:49:59.972 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:49:59.972 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:50:09.786 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:50:09.786 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:50:19.924 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:50:19.924 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:50:29.916 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:50:29.916 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:50:39.971 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:50:39.971 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:50:49.904 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:50:49.904 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:50:59.859 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:50:59.859 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:51:09.793 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:51:09.793 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:51:20.086 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:51:20.086 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:51:29.999 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:51:29.999 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:51:39.837 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:51:39.837 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:51:49.827 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:51:49.827 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:00.094 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:00.094 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:09.957 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:09.957 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:19.876 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:19.876 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:29.965 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:29.965 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:39.850 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:39.850 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:49.936 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:49.936 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:52:59.899 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:52:59.899 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:53:10.299 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:53:10.299 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:53:19.780 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:53:19.780 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:53:29.927 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:53:29.927 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:53:39.754 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:53:39.754 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:53:49.872 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:53:49.872 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:53:59.944 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:53:59.944 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:54:09.910 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:54:09.910 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:54:19.927 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:54:19.927 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:54:29.837 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:54:29.837 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:54:39.836 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:54:39.836 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:54:49.827 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:54:49.827 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:54:59.819 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:54:59.819 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:55:09.874 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:55:09.874 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:55:19.905 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:55:19.905 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:55:29.994 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:55:29.994 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:55:39.969 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:55:39.969 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:55:49.830 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:55:49.830 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:55:59.871 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:55:59.871 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:56:10.030 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:56:10.030 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:56:19.945 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:56:19.945 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:56:30.082 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:56:30.082 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:56:39.865 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:56:39.865 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:56:49.963 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:56:49.963 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:56:59.849 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:56:59.849 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:57:09.951 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:57:09.951 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:57:19.827 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:57:19.827 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:57:29.981 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:57:29.981 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:57:39.874 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:57:39.874 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:57:49.946 IST [23504] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:57:49.946 IST [23504] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:57:59.948 IST [24316] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:57:59.948 IST [24316] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:58:10.046 IST [24316] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:58:10.046 IST [24316] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:58:20.070 IST [24316] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:58:20.070 IST [24316] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:58:29.971 IST [24316] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:58:29.971 IST [24316] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:58:40.025 IST [24316] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:58:40.025 IST [24316] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:59:12.501 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:59:12.501 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:59:22.282 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:59:22.282 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:59:32.418 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:59:32.418 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:59:42.327 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:59:42.327 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 00:59:52.419 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 00:59:52.419 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:00:02.374 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:00:02.374 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:00:12.324 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:00:12.324 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:00:22.314 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:00:22.314 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:00:32.390 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:00:32.390 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:00:42.879 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:00:42.879 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:00:52.416 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:00:52.416 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:01:02.219 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:01:02.219 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:01:12.316 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:01:12.316 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:01:22.330 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:01:22.330 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:01:32.266 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:01:32.266 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:01:42.460 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:01:42.460 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:01:52.352 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:01:52.352 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:02:02.488 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:02:02.488 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:02:12.280 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:02:12.280 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:02:22.356 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:02:22.356 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:02:32.402 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:02:32.402 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:02:42.425 IST [24565] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:02:42.425 IST [24565] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:03:03.538 IST [25003] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:03:03.538 IST [25003] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:03:22.298 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:03:22.298 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:03:32.026 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:03:32.026 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:03:42.038 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:03:42.038 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:03:52.051 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:03:52.051 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:04:02.125 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:04:02.125 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:04:12.044 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:04:12.044 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:04:22.060 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:04:22.060 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:04:32.259 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:04:32.259 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:04:42.072 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:04:42.072 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:04:52.173 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:04:52.173 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:05:01.960 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:05:01.960 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:05:12.148 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:05:12.148 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:05:22.180 IST [25092] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:05:22.180 IST [25092] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:05:23.720 IST [25092] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 01:05:23.720 IST [25092] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 01:05:32.061 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:05:32.061 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:05:42.058 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:05:42.058 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:05:51.982 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:05:51.982 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:06:02.127 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:06:02.127 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:06:12.223 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:06:12.223 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:06:22.047 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:06:22.047 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:06:32.023 IST [25291] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:06:32.023 IST [25291] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:06:42.449 IST [25402] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:06:42.449 IST [25402] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:06:52.139 IST [25402] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:06:52.139 IST [25402] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:07:02.063 IST [25402] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:07:02.063 IST [25402] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:07:12.162 IST [25452] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:07:12.162 IST [25452] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:07:22.165 IST [25452] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:07:22.165 IST [25452] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:07:27.794 IST [25452] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 01:07:27.794 IST [25452] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 01:07:32.085 IST [25500] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:07:32.085 IST [25500] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:07:42.165 IST [25501] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:07:42.165 IST [25501] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:07:52.012 IST [25501] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:07:52.012 IST [25501] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:08:02.046 IST [25501] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:08:02.046 IST [25501] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:08:11.985 IST [25501] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:08:11.985 IST [25501] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:08:22.091 IST [25501] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:08:22.091 IST [25501] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:08:31.992 IST [25501] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:08:31.992 IST [25501] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:08:42.469 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:08:42.469 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:08:52.011 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:08:52.011 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:09:02.027 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:09:02.027 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:09:11.996 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:09:11.996 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:09:21.972 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:09:21.972 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:09:32.149 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:09:32.149 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:09:41.968 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:09:41.968 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:09:52.120 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:09:52.120 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:10:02.039 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:10:02.039 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:10:12.050 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:10:12.050 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:10:22.010 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:10:22.010 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:10:32.115 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:10:32.115 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:10:41.990 IST [25608] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:10:41.990 IST [25608] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:10:52.237 IST [25806] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:10:52.237 IST [25806] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:11:02.069 IST [25806] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:11:02.069 IST [25806] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:11:12.058 IST [25806] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:11:12.058 IST [25806] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:11:22.022 IST [25806] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:11:22.022 IST [25806] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:11:32.003 IST [25806] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:11:32.003 IST [25806] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:11:42.043 IST [25888] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:11:42.043 IST [25888] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:11:51.968 IST [25905] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:11:51.968 IST [25905] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:12:02.098 IST [25905] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:12:02.098 IST [25905] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:12:12.826 IST [25954] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:12:12.826 IST [25954] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:12:22.109 IST [25954] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:12:22.109 IST [25954] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:12:31.990 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:12:31.990 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:12:42.199 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:12:42.199 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:12:52.106 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:12:52.106 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:13:02.224 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:13:02.224 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:13:12.120 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:13:12.120 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:13:22.190 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:13:22.190 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:13:32.334 IST [25981] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:13:32.334 IST [25981] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:13:54.425 IST [26174] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:13:54.425 IST [26174] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:14:04.382 IST [26174] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:14:04.382 IST [26174] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:14:14.326 IST [26174] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:14:14.326 IST [26174] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:14:24.304 IST [26174] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:14:24.304 IST [26174] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:14:40.680 IST [26377] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:14:40.680 IST [26377] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:14:54.661 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:14:54.661 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:15:04.671 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:15:04.671 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:15:14.579 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:15:14.579 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:15:24.670 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:15:24.670 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:15:34.582 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:15:34.582 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:15:44.620 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:15:44.620 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:15:54.607 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:15:54.607 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:16:04.621 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:16:04.621 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:16:14.685 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:16:14.685 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:16:24.601 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:16:24.601 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:16:34.610 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:16:34.610 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:16:44.552 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:16:44.552 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:16:54.664 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:16:54.664 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:17:04.630 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:17:04.630 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:17:14.654 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:17:14.654 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:17:24.559 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:17:24.559 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:17:34.683 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:17:34.683 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:17:44.589 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:17:44.589 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:17:54.644 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:17:54.644 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:18:04.584 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:18:04.584 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:18:14.670 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:18:14.670 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:18:24.626 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:18:24.626 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:18:34.585 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:18:34.585 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:18:44.642 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:18:44.642 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:18:54.565 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:18:54.565 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:19:04.695 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:19:04.695 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:19:14.558 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:19:14.558 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:19:24.725 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:19:24.725 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:19:34.585 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:19:34.585 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:19:44.662 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:19:44.662 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:19:54.616 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:19:54.616 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:20:04.695 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:20:04.695 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:20:14.574 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:20:14.574 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:20:24.639 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:20:24.639 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:20:34.568 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:20:34.568 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:20:44.579 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:20:44.579 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:20:54.643 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:20:54.643 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:21:04.535 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:21:04.535 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:21:14.569 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:21:14.569 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:21:24.528 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:21:24.528 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:21:34.698 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:21:34.698 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:21:44.590 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:21:44.590 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:21:54.615 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:21:54.615 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:22:04.577 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:22:04.577 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:22:14.741 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:22:14.741 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:22:24.617 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:22:24.617 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:22:34.643 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:22:34.643 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:22:44.597 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:22:44.597 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:22:54.618 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:22:54.618 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:23:04.583 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:23:04.583 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:23:14.574 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:23:14.574 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:23:24.599 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:23:24.599 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:23:34.533 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:23:34.533 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:23:44.715 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:23:44.715 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:23:54.673 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:23:54.673 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:24:04.952 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:24:04.952 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:24:14.719 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:24:14.719 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:24:24.705 IST [26458] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:24:24.705 IST [26458] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:24:28.372 IST [26458] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 01:24:28.372 IST [26458] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 01:24:34.695 IST [27359] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:24:34.695 IST [27359] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:24:44.724 IST [27355] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:24:44.724 IST [27355] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:24:54.781 IST [27359] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:24:54.781 IST [27359] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:25:04.662 IST [27355] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:25:04.662 IST [27355] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:25:14.837 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:25:14.837 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:25:24.711 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:25:24.711 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:25:34.816 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:25:34.816 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:25:44.726 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:25:44.726 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:25:54.857 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:25:54.857 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:26:04.797 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:26:04.797 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:26:14.864 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:26:14.864 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:26:24.798 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:26:24.798 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:26:35.165 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:26:35.165 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:26:44.893 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:26:44.893 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:26:54.860 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:26:54.860 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:27:04.941 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:27:04.941 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:27:14.906 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:27:14.906 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:27:24.965 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:27:24.965 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:27:34.833 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:27:34.833 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:27:44.990 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:27:44.990 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:27:54.861 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:27:54.861 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:28:04.968 IST [27441] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:28:04.968 IST [27441] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:28:15.783 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:28:15.783 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:28:24.985 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:28:24.985 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:28:35.122 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:28:35.122 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:28:45.091 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:28:45.091 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:28:55.045 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:28:55.045 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:29:04.890 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:29:04.890 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:29:15.014 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:29:15.014 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:29:24.941 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:29:24.941 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:29:34.950 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:29:34.950 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:29:44.768 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:29:44.768 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:29:54.958 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:29:54.958 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:30:04.872 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:30:04.872 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:30:14.973 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:30:14.973 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:30:24.933 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:30:24.933 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:30:34.987 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:30:34.987 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:30:45.024 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:30:45.024 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:30:54.986 IST [27764] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:30:54.986 IST [27764] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:31:04.356 IST [27764] ERROR:  column "first_name" does not exist at character 32
+2026-03-11 01:31:04.356 IST [27764] STATEMENT:  
+	            SELECT id, email, first_name, last_name, bio, location, 
+	                   profile_image_url, role, is_active, 
+	                   stripe_customer_id, created_at 
+	            FROM users 
+	            WHERE id = $1
+	        
+2026-03-11 01:31:05.194 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:31:05.194 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:31:14.900 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:31:14.900 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:31:25.003 IST [28026] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:31:25.003 IST [28026] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:31:34.975 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:31:34.975 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:31:45.055 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:31:45.055 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:31:54.961 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:31:54.961 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:32:05.055 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:32:05.055 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:32:14.989 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:32:14.989 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:32:25.077 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:32:25.077 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:32:34.974 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:32:34.974 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:32:45.076 IST [28027] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:32:45.076 IST [28027] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:32:55.051 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:32:55.051 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:33:05.273 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:33:05.273 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:33:15.277 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:33:15.277 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:33:25.162 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:33:25.162 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:33:35.315 IST [28289] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:33:35.315 IST [28289] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:33:45.153 IST [28289] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:33:45.153 IST [28289] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:33:55.153 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:33:55.153 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:34:05.020 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:34:05.020 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:34:15.199 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:34:15.199 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:34:25.079 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:34:25.079 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:34:35.178 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:34:35.178 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:34:45.140 IST [28207] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:34:45.140 IST [28207] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:34:55.297 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:34:55.297 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:35:05.179 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:35:05.179 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:35:15.223 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:35:15.223 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:35:25.264 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:35:25.264 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:35:35.309 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:35:35.309 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:35:45.350 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:35:45.350 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:35:55.288 IST [28410] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:35:55.288 IST [28410] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:36:05.269 IST [28514] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:36:05.269 IST [28514] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:36:15.171 IST [28514] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:36:15.171 IST [28514] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:36:25.204 IST [28514] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:36:25.204 IST [28514] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:39:45.347 IST [29250] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:39:45.347 IST [29250] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:39:55.281 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:39:55.281 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:40:05.232 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:40:05.232 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:40:15.252 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:40:15.252 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:40:25.267 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:40:25.267 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:40:35.361 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:40:35.361 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:40:45.332 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:40:45.332 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:40:55.558 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:40:55.558 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:41:06.049 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:41:06.049 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:41:15.400 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:41:15.400 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:41:25.371 IST [29260] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:41:25.371 IST [29260] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:41:35.422 IST [29436] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:41:35.422 IST [29436] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:41:45.459 IST [29436] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:41:45.459 IST [29436] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:41:55.414 IST [29436] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:41:55.414 IST [29436] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:42:05.416 IST [29436] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:42:05.416 IST [29436] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:42:15.340 IST [29436] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:42:15.340 IST [29436] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:42:25.361 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:42:25.361 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:42:35.565 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:42:35.565 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:42:45.395 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:42:45.395 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:42:55.392 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:42:55.392 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:43:05.536 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:43:05.536 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:43:15.483 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:43:15.483 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:43:25.496 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:43:25.496 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:43:35.550 IST [29510] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:43:35.550 IST [29510] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:43:45.668 IST [29671] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:43:45.668 IST [29671] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:43:55.462 IST [29656] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:43:55.462 IST [29656] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:44:05.534 IST [29706] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:44:05.534 IST [29706] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:44:15.568 IST [29656] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
+2026-03-11 01:44:15.568 IST [29656] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)

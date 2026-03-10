@@ -11,7 +11,7 @@ exports.getSignedUrl = (key) => {
   return s3.getSignedUrl('getObject', {
     Bucket: process.env.AWS_BUCKET,
     Key: key,
-    Expires: 60 * 5, // 5 minutes
+    Expires: 60 * 60 * 24, // 24 hours (Allows gapless Flutter playback queues without expiring)
   });
 };
 

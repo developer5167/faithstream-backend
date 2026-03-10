@@ -53,16 +53,6 @@ const processStreamQueue = async () => {
                     'INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)',
                     [songId, userId, duration, new Date(timestamp)]
                 );
-
-                // Increment Daily Limit Counter in Redis natively
-                const todayStr = new Date(timestamp).toISOString().split('T')[0];
-                const dailyKey = `daily_plays:${userId}:${songId}:${todayStr}`;
-                await redisClient.incr(dailyKey);
-                
-                // Set to expire at midnight to save RAM
-                const now = new Date();
-                const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-                await redisClient.expireAt(dailyKey, Math.floor(nextMidnight.getTime() / 1000));
             }
 
             await client.query('COMMIT');
