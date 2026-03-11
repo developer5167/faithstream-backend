@@ -26,6 +26,16 @@ module.exports = async (req, res, next) => {
       return res.status(401).json({ error: 'Token has been revoked' });
     }
 
+    // Phase 7: Concurrent Device Limits
+    // If the entire session was killed because the user gave their password to a 4th person,
+    // intercept it and physically revoke all access.
+    if (decoded.sessionId) {
+      const isSessionRevoked = await redisClient.get(`bl_session:${decoded.sessionId}`);
+      if (isSessionRevoked) {
+        return res.status(401).json({ error: 'Session has been revoked due to device limits' });
+      }
+    }
+
     req.user = decoded;
     next();
   } catch (err) {

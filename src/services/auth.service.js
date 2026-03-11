@@ -8,11 +8,15 @@ exports.register = async ({ name, email, password }) => {
   const hash = await bcrypt.hash(password);
   const user = await userRepo.createUser(name, email, hash);
   
-  const token = jwt.sign(user);
-  // (Phase 4): No longer securely saving standard JWTs to Postgres to save write-cycles
+  const sessionId = jwt.generateSessionId();
+  const token = jwt.sign(user, sessionId);
+  const refreshToken = jwt.signRefresh(user, sessionId);
+  
+  await manageActiveSessions(user.id, sessionId);
 
   return {
     token,
+    refreshToken,
     user: {
       id: user.id,
       name: user.name,
@@ -33,11 +37,15 @@ exports.login = async ({ email, password }) => {
   const ok = await bcrypt.compare(password, user.password_hash);
   if (!ok) throw new Error('Invalid credentials');
 
-  const token = jwt.sign(user);
-  // (Phase 4): No longer securely saving standard JWTs to Postgres to save write-cycles
+  const sessionId = jwt.generateSessionId();
+  const token = jwt.sign(user, sessionId);
+  const refreshToken = jwt.signRefresh(user, sessionId);
+  
+  await manageActiveSessions(user.id, sessionId);
 
   return {
     token,
+    refreshToken,
     user: {
       id: user.id,
       name: user.name,
@@ -48,6 +56,71 @@ exports.login = async ({ email, password }) => {
       created_at: user.created_at,
     },
   };
+};
+
+/**
+ * Ensures a user never exceeds 3 concurrent active sessions
+ */
+async function manageActiveSessions(userId, newSessionId) {
+  const sessionKey = `user_sessions:${userId}`;
+  
+  // Add new session to sorted set with timestamp as score
+  await redisClient.zAdd(sessionKey, {
+    score: Date.now(),
+    value: newSessionId
+  });
+
+  const sessionCount = await redisClient.zCard(sessionKey);
+  
+  // If user has more than 3 active sessions, revoke the oldest one
+  if (sessionCount > 3) {
+    // Get the oldest session (index 0)
+    const oldSessions = await redisClient.zRange(sessionKey, 0, 0);
+    if (oldSessions.length > 0) {
+      const oldestSession = oldSessions[0];
+      await redisClient.zRem(sessionKey, oldestSession);
+      // Revoke it globally across all Auth Middlewares (TTL 30 days)
+      await redisClient.set(`bl_session:${oldestSession}`, '1', { EX: 2592000 });
+    }
+  }
+}
+
+exports.refresh = async (refreshToken) => {
+  try {
+    const decoded = jwt.verify(refreshToken);
+    if (decoded.tokenType !== 'refresh') {
+      throw new Error('Invalid token type');
+    }
+
+    // Check if entire session was revoked (e.g. exceeded device limits or logged out)
+    const isRevoked = await redisClient.get(`bl_session:${decoded.sessionId}`);
+    if (isRevoked) {
+      throw new Error('Session has been revoked');
+    }
+
+    // Fetch user details for the new access token
+    const user = await userRepo.findById(decoded.id);
+    if (!user || user.is_blocked) {
+      throw new Error('User inactive or blocked');
+    }
+
+    // Issue brand new short-lived access token, but KEEP the same sessionId!
+    const newToken = jwt.sign(user, decoded.sessionId);
+    
+    // We optionally issue a new refresh token to implement Sliding Security Windows
+    const newRefreshToken = jwt.signRefresh(user, decoded.sessionId);
+    
+    // Update score in Redis to keep this session alive
+    const sessionKey = `user_sessions:${user.id}`;
+    await redisClient.zAdd(sessionKey, {
+      score: Date.now(),
+      value: decoded.sessionId
+    });
+
+    return { token: newToken, refreshToken: newRefreshToken };
+  } catch (err) {
+    throw new Error('Invalid or expired refresh token');
+  }
 };
 
 exports.me = async (userId) => {
@@ -80,11 +153,24 @@ exports.me = async (userId) => {
 };
 
 exports.logout = async (userId, token) => {
-  // (Phase 4): Instead of deleting the token from Postgres, we add its signature
-  // to the Redis blocklist so the fast `auth.middleware.js` will reject it.
-  // We set the TTL to exactly 7 days (604,800s) to match the JWT expiration time.
-  // After 7 days, Redis automatically shreds the key, making our blocklist self-cleaning!
-  await redisClient.set(`bl_token:${token}`, '1', {
-    EX: 604800
-  });
+  try {
+    const decoded = jwt.verify(token);
+    
+    // Add specific access token to blocklist (1 hour TTL)
+    await redisClient.set(`bl_token:${token}`, '1', { EX: 3600 });
+    
+    if (decoded.sessionId) {
+      // Add the entire session to blocklist to immediately kill the refresh token (30 day TTL)
+      await redisClient.set(`bl_session:${decoded.sessionId}`, '1', { EX: 2592000 });
+      // Remove it from their active sessions count
+      await redisClient.zRem(`user_sessions:${userId}`, decoded.sessionId);
+    }
+  } catch (err) {
+    // If token is already expired, we still try parsing to kill the session if possible
+    const payload = jwt.decode(token);
+    if (payload && payload.sessionId) {
+       await redisClient.set(`bl_session:${payload.sessionId}`, '1', { EX: 2592000 });
+       await redisClient.zRem(`user_sessions:${userId}`, payload.sessionId);
+    }
+  }
 };

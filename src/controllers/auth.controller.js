@@ -17,10 +17,23 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     validateLogin(req.body);
-    const token = await authService.login(req.body);
-    res.json(token);
+    const tokens = await authService.login(req.body);
+    res.json(tokens);
   } catch (err) {
     res.status(400).json({ error: err.message });
+  }
+};
+
+exports.refresh = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res.status(400).json({ error: 'Refresh token is required' });
+    }
+    const tokens = await authService.refresh(refreshToken);
+    res.json(tokens);
+  } catch (err) {
+    res.status(401).json({ error: err.message });
   }
 };
 

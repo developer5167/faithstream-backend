@@ -2,8 +2,9 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "createadmin": "nodemon scripts/create-admin.js"
-  },
+    "createadmin": "nodemon scripts/create-admin.js",
+    "resetdb": "node src/resetDatabase.js"
+    },
   "name": "faithstream-backend",
   "version": "1.0.0",
   "main": "src/server.js",

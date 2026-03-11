@@ -2672,3 +2672,7 @@
 2026-03-11 01:44:05.534 IST [29706] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
 2026-03-11 01:44:15.568 IST [29656] ERROR:  column "listener_id" of relation "streams" does not exist at character 31
 2026-03-11 01:44:15.568 IST [29656] STATEMENT:  INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)
+2026-03-11 01:46:23.424 IST [5737] LOG:  received smart shutdown request
+2026-03-11 01:46:23.427 IST [5737] LOG:  background worker "logical replication launcher" (PID 5744) exited with exit code 1
+2026-03-11 01:46:23.427 IST [5739] LOG:  shutting down
+2026-03-11 01:46:23.440 IST [5737] LOG:  database system is shut down
