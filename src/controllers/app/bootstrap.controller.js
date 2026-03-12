@@ -21,9 +21,9 @@ exports.bootstrap = async (req, res) => {
 
         // 1. Fetch User Profile
         const userQuery = `
-            SELECT id, email, first_name, last_name, bio, location, 
-                   profile_image_url, role, is_active, 
-                   stripe_customer_id, created_at 
+            SELECT id, email, name, bio, 
+                   profile_pic_url, role, is_blocked, 
+                created_at 
             FROM users 
             WHERE id = $1
         `;
