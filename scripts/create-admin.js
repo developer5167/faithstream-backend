@@ -15,3 +15,29 @@ const db = require('../src/config/db');
   console.log('Admin created');
   process.exit();
 })();
+
+
+// CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+// CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+// DROP SCHEMA public CASCADE;
+// CREATE SCHEMA public;
+
+// SELECT * FROM pg_extension;
+// SELECT uuid_generate_v4();
+
+// SELECT n.nspname AS schema,
+//        p.proname AS function
+// FROM pg_proc p
+// JOIN pg_namespace n ON p.pronamespace = n.oid
+// WHERE p.proname = 'uuid_generate_v4';
+
+// CREATE OR REPLACE FUNCTION public.uuid_generate_v4()
+// RETURNS uuid
+// LANGUAGE sql
+// AS $$
+// SELECT extensions.uuid_generate_v4();
+// $$;
+
+// SELECT public.uuid_generate_v4();
+//Sy.3vF$m5DTLYW/
