@@ -1,4 +1,4 @@
-ˍconst jwtUtil = require('../utils/jwt.util');
+const jwtUtil = require('../utils/jwt.util');
 const redisClient = require('../config/redis');
 
 module.exports = async (req, res, next) => {
