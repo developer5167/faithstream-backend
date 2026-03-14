@@ -19,7 +19,9 @@ redisClient.on('error', (err) => {
 });
 
 redisClient.on('connect', () => {
-  console.log('[Redis] Connected successfully');
+  // Mask password for safety
+  const safeUrl = redisUrl ? redisUrl.replace(/:[^:@]+@/, ':****@') : 'undefined';
+  console.log('[Redis] Connected successfully to:', safeUrl);
 });
 
 // Connect immediately

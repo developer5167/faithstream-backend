@@ -10,7 +10,11 @@ const app = express();
 app.set('trust proxy', 1);
 app.use(
   cors({
-    origin: ["http://localhost:8080","http://localhost:5173"],
+    origin: [
+      "http://localhost:8080",
+      "http://localhost:5173",
+      "http://192.168.15.165:5173"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     optionsSuccessStatus: 204,
@@ -65,6 +69,8 @@ app.use("/api/support", require("./routes/supportTicket.routes"));
 app.use("/api/disputes", require("./routes/dispute.routes"));
 app.use("/api/favorites", require("./routes/favorite.routes"));
 app.use("/api/notifications", require("./routes/notification.routes"));
+app.use("/api/notification", require("./routes/notification.routes"));
+app.use("/api/library", require("./routes/library.routes"));
 app.use("/api/playlists", require("./routes/playlist.routes"));
 app.use("/api/upload", require("./routes/upload.routes"));
 app.use("/api/albums/tracks",require("./routes/tracks.routes"))

@@ -40,15 +40,25 @@ exports.createSong = async (artistId, data) => {
     audio_original_url: data.audio_original_url,
     cover_image_url: data.cover_image_url || null,
     album_id: data.album_id || null,
-    track_number: data.track_number || null
+    track_number: data.track_number || null,
+    singer: data.singer
   });
 
   // Inject a transcoding job into the Redis Queue
   if (song && song.audio_original_url) {
-    await redisClient.lPush('hls_transcoding_queue', JSON.stringify({
-      songId: song.id,
-      audio_url: song.audio_original_url
-    }));
+    console.log(`[SongService] Enqueuing HLS job for song: ${song.id}`);
+    try {
+      const payload = JSON.stringify({
+        songId: song.id,
+        audio_url: song.audio_original_url
+      });
+      await redisClient.lPush('hls_transcoding_queue', payload);
+      console.log(`[SongService] Successfully enqueued job to hls_transcoding_queue`);
+    } catch (redisError) {
+      console.error(`[SongService] FAILED to enqueue HLS job:`, redisError.message);
+    }
+  } else {
+    console.log(`[SongService] Skipping HLS enqueue: song=${!!song}, audio=${song?.audio_original_url}`);
   }
 
   return song;
@@ -113,24 +123,32 @@ exports.approveSong = async (songId, adminId) => {
 
 
 exports.rejectSong = async (songId, reason, adminId) => {
-  await songRepo.reject(songId, reason);
-
   const song = await songRepo.getSongById(songId);
-  if (song && song.artist_user_id) {
+  if (!song) return;
+
+  // 1. Notify the artist FIRST before deleting the record
+  if (song.artist_user_id) {
     notificationService.sendToUser(
       song.artist_user_id,
       '❌ Song Review Update',
-      `Your song "${song.title}" requires changes. Reason: ${reason || 'Not specified'}`,
-      { type: 'song_rejected', song_id: song.id }
+      `Your song "${song.title}" was rejected and removed. Reason: ${reason || 'Not specified'}`,
+      { type: 'song_rejected', song_title: song.title }
     ).catch(err => console.error('Failed to notify artist:', err));
   }
 
+  // 2. Wipe files from S3
+  await songRepo.wipeSongFilesFromS3(songId);
+
+  // 3. Delete from DB
+  await songRepo.delete(songId);
+
+  // 4. Log the action
   if (adminId) {
     await adminLog.log({
       admin_id: adminId,
-      action_type: 'SONG_REJECTED',
+      action_type: 'SONG_REJECTED_AND_DELETED',
       target_id: songId,
-      description: `Song rejected by admin${reason ? `: ${reason}` : ''}`
+      description: `Song "${song.title}" rejected and deleted by admin${reason ? `: ${reason}` : ''}`
     });
   }
 };
@@ -158,14 +176,21 @@ exports.createSongOnBehalfOfArtist = async (artistId, adminId, data) => {
     audio_original_url: data.audio_original_url,
     cover_image_url: data.cover_image_url || null,
     album_id: data.album_id || null,
-    track_number: data.track_number || null
+    track_number: data.track_number || null,
+    singer: data.singer
   });
 
   if (song && song.audio_original_url) {
-    await redisClient.lPush('hls_transcoding_queue', JSON.stringify({
-      songId: song.id,
-      audio_url: song.audio_original_url
-    }));
+    console.log(`[SongService] Enqueuing HLS job for song (on behalf): ${song.id}`);
+    try {
+      await redisClient.lPush('hls_transcoding_queue', JSON.stringify({
+        songId: song.id,
+        audio_url: song.audio_original_url
+      }));
+      console.log(`[SongService] Successfully enqueued job to hls_transcoding_queue`);
+    } catch (redisError) {
+      console.error(`[SongService] FAILED to enqueue HLS job:`, redisError.message);
+    }
   }
 
   await adminLog.log({

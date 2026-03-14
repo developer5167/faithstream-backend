@@ -4,11 +4,28 @@ const adminLog = require('../repositories/adminAction.repo');
 const bcrypt = require('../utils/password.util');
 const jwt = require('../utils/jwt.util');
 const otpService = require('./otp.service');
+const notificationService = require('./notification.service');
+const db = require('../config/db');
 
 exports.requestArtist = async (userId, data) => {
   const existing = await artistRepo.findByUserId(userId);
   if (existing) {
-    throw new Error('Artist request already exists');
+    if (existing.verification_status === 'REJECTED' && existing.rejected_at) {
+      const rejectedAt = new Date(existing.rejected_at);
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      
+      if (rejectedAt > thirtyDaysAgo) {
+        const daysRemaining = Math.ceil((rejectedAt.getTime() - thirtyDaysAgo.getTime()) / (1000 * 60 * 60 * 24));
+        throw new Error(`Your previous application was rejected. Please wait ${daysRemaining} more days before reapplying.`);
+      }
+      
+      // If cooldown is over, reset the profile for a new request
+      await db.query(`DELETE FROM artist_profiles_supportings WHERE artist_id = $1`, [existing.id]);
+      await db.query(`DELETE FROM artist_profiles WHERE id = $1`, [existing.id]);
+    } else {
+      throw new Error('Artist request already exists');
+    }
   }
 
   const artistProfile = await artistRepo.create({
@@ -39,14 +56,32 @@ exports.getArtistRequests = async () => {
 };
 
 exports.approveArtist = async (userId, adminId) => {
- const artist = await artistRepo.approve(userId, adminId);
- const user_id = artist.rows[0].user_id;
+  const artist = await artistRepo.approve(userId, adminId);
+  const user_id = artist.rows[0].user_id;
+  const artist_name = artist.rows[0].artist_name;
+  
   await userRepo.updateArtistStatus(user_id, 'APPROVED');
+
+  // Send push notification to the artist
+  notificationService.sendToUser(
+    user_id,
+    'Congratulations!',
+    `Your artist application for "${artist_name}" has been approved! You can now start uploading music.`,
+    { type: 'ARTIST_APPROVAL_SUCCESS', artistId: user_id }
+  ).catch(err => console.error('[ArtistService] Approval notification failed:', err.message));
 };
 
 exports.rejectArtist = async (userId, reason) => {
   await artistRepo.reject(userId, reason);
   await userRepo.updateArtistStatus(userId, 'REJECTED');
+
+  // Send push notification to the artist
+  notificationService.sendToUser(
+    userId,
+    'Artist Application Status',
+    `Your application has been reviewed. Status: Rejected. Reason: ${reason || 'Not specified'}.`,
+    { type: 'ARTIST_APPROVAL_REJECT', reason: reason || '' }
+  ).catch(err => console.error('[ArtistService] Rejection notification failed:', err.message));
 };
 
 exports.getVerifiedArtists = async (options = {}) => {

@@ -37,7 +37,7 @@ class PlaylistRepository {
     const songsQuery = `
       SELECT 
         s.id, s.title, s.artist_user_id, s.album_id, 
-        s.genre, s.published_at, s.audio_original_url,
+        s.genre, s.published_at, s.audio_original_url, s.audio_processed_url,
         s.cover_image_url, s.created_at,
         ap.artist_name as artist_display_name,
         al.title as album_title,

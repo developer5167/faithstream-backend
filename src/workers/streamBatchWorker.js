@@ -25,6 +25,10 @@ const processStreamQueue = async () => {
         // 3. We must process them safely. Some events might be duplicates, 
         // some might be under 30 seconds. We apply the same logic as the old service.
         const validEvents = events.filter(e => e.duration >= 30);
+        const filteredCount = events.length - validEvents.length;
+        if (filteredCount > 0) {
+            console.log(`[StreamBatchWorker] Filtered out ${filteredCount} events under 30s threshold.`);
+        }
 
         if (validEvents.length === 0) return;
 
@@ -33,6 +37,8 @@ const processStreamQueue = async () => {
 
         try {
             await client.query('BEGIN');
+            let insertedCount = 0;
+            let skippedCount = 0;
 
             for (const event of validEvents) {
                 const { songId, userId, duration, timestamp } = event;
@@ -45,22 +51,25 @@ const processStreamQueue = async () => {
                 });
 
                 if (!acquired) {
+                    skippedCount++;
                     continue; // Skip duplicate
                 }
 
-                // Insert into streams table
+                // Insert into streams table: Fixed column names to match actual schema
                 await client.query(
-                    'INSERT INTO streams (song_id, listener_id, duration_listened, created_at) VALUES ($1, $2, $3, $4)',
+                    'INSERT INTO streams (song_id, user_id, duration_seconds, played_at) VALUES ($1, $2, $3, $4)',
                     [songId, userId, duration, new Date(timestamp)]
                 );
+                insertedCount++;
             }
 
             await client.query('COMMIT');
-            console.log(`[StreamBatchWorker] Successfully batch-inserted valid streaming events to PostgreSQL.`);
+            console.log(`[StreamBatchWorker] Batch summary: Inserted ${insertedCount}, Skipped ${skippedCount} duplicates.`);
 
         } catch (dbError) {
             await client.query('ROLLBACK');
-            console.error(`[StreamBatchWorker] Postgres Transaction Failed. Putting events back into Redis queue...`);
+            console.error(`[StreamBatchWorker] Postgres Transaction Failed:`, dbError.message);
+            console.error(`Putting ${rawEvents.length} events back into Redis queue...`);
             
             // Critical: If Postgres fails, put the events back into the front of the queue so we don't lose analytics!
             for (const raw of rawEvents) {

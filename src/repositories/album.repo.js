@@ -61,6 +61,7 @@ exports.findPending = async () => {
                'track_number',      s.track_number,
                'genre',             s.genre,
                'audio_original_url',s.audio_original_url,
+               'audio_processed_url',s.audio_processed_url,
                'cover_image_url',   s.cover_image_url,
                'status',            s.status
              ) ORDER BY s.track_number ASC
@@ -115,6 +116,10 @@ exports.findById = async (albumId) => {
     [albumId]
   );
   return res.rows[0];
+};
+
+exports.delete = async (albumId) => {
+  await db.query(`DELETE FROM albums WHERE id=$1`, [albumId]);
 };
 
 

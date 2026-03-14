@@ -4,8 +4,8 @@ const s3Util = require('../utils/s3.util');
 exports.create = async (data) => {
   const res = await db.query(
     `INSERT INTO songs
-     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+     (artist_user_id, album_id, title, language, genre, lyrics, description, audio_original_url, cover_image_url, track_number, singer)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
      RETURNING *`,
     [
       data.artist_user_id,
@@ -17,7 +17,8 @@ exports.create = async (data) => {
       data.description,
       data.audio_original_url,
       data.cover_image_url,
-      data.track_number
+      data.track_number,
+      data.singer
     ]
   );
   return res.rows[0];
@@ -160,6 +161,10 @@ exports.update = async (songId, data) => {
     fields.push(`track_number=$${paramIndex++}`);
     values.push(data.track_number);
   }
+  if (data.singer !== undefined) {
+    fields.push(`singer=$${paramIndex++}`);
+    values.push(data.singer);
+  }
 
   if (fields.length === 0) {
     throw new Error('No fields to update');
@@ -177,6 +182,14 @@ exports.getSongById = async (songId) => {
     [songId]
   );
   return res.rows[0];
+};
+
+exports.delete = async (songId) => {
+  await db.query(`DELETE FROM songs WHERE id=$1`, [songId]);
+};
+
+exports.deleteByAlbumId = async (albumId) => {
+  await db.query(`DELETE FROM songs WHERE album_id=$1`, [albumId]);
 };
 
 exports.findFullDetailsById = async (songId) => {
@@ -219,16 +232,18 @@ exports.getPopularSongs = async (limit = 20) => {
        s.genre,
        s.language,
        s.lyrics,
+       s.singer,
        s.artist_user_id,
-      s.audio_original_url,
-      s.created_at,
-      COALESCE(
-        s.cover_image_url,
-        a.cover_image_url,
-        ap.profile_image_url,
-        u.profile_pic_url
-      ) as image,
-      a.title as album_title,
+       s.audio_original_url,
+       s.audio_processed_url,
+       s.created_at,
+       COALESCE(
+         s.cover_image_url,
+         a.cover_image_url,
+         ap.profile_image_url,
+         u.profile_pic_url
+       ) as image,
+       a.title as album_title,
        u.name as artist_name,
        ap.artist_name as artist_display_name,
        COALESCE(stream_counts.count, 0) as stream_count
@@ -259,16 +274,18 @@ exports.getTopPlayedSongs = async (limit = 10) => {
        s.genre,
        s.language,
        s.lyrics,
+       s.singer,
        s.artist_user_id,
-      s.audio_original_url,
-      s.created_at,
-      COALESCE(
-        s.cover_image_url,
-        a.cover_image_url,
-        ap.profile_image_url,
-        u.profile_pic_url
-      ) as image,
-      a.title as album_title,
+       s.audio_original_url,
+       s.audio_processed_url,
+       s.created_at,
+       COALESCE(
+         s.cover_image_url,
+         a.cover_image_url,
+         ap.profile_image_url,
+         u.profile_pic_url
+       ) as image,
+       a.title as album_title,
        u.name as artist_name,
        ap.artist_name as artist_display_name,
        COALESCE(stream_counts.count, 0) as stream_count

@@ -50,9 +50,20 @@ const uploadFileToS3 = async (localPath, key, contentType) => {
 const processFfmpegJob = async () => {
     try {
         // Pop ONE job from the queue (we process linearly to protect CPU)
-        const rawJob = await redisClient.rPop('hls_transcoding_queue');
-        if (!rawJob) return;
+        const qName = 'hls_transcoding_queue';
+        const qLen = await redisClient.lLen(qName);
+        console.log(`[FFmpeg Worker] Checking queue: ${qName} (Length: ${qLen})`);
+        
+        if (qLen === 0) return;
 
+        const rawJob = await redisClient.rPop(qName);
+        
+        if (!rawJob) {
+            console.log('[FFmpeg Worker] rPop returned null despite lLen > 0!');
+            return;
+        }
+
+        console.log('[FFmpeg Worker] Raw job popped:', rawJob);
         const job = JSON.parse(rawJob);
         const { songId, audio_url } = job;
 
@@ -117,8 +128,9 @@ const processFfmpegJob = async () => {
             console.log(`[FFmpeg Worker] Uploaded ${uploadPromises.length} files successfully.`);
 
             // Update Database: Map the new HLS playlist as the primary processed URL!
+            // Do NOT reset status to PENDING if it's already APPROVED
             await pool.query(
-                `UPDATE songs SET audio_processed_url = $1, status = 'PENDING' WHERE id = $2`,
+                `UPDATE songs SET audio_processed_url = $1 WHERE id = $2`,
                 [m3u8S3Key, songId]
             );
 
@@ -132,21 +144,35 @@ const processFfmpegJob = async () => {
     }
 };
 
+console.log('[FFmpeg Worker] Module loaded');
+
 // Start the daemon interval
 exports.start = () => {
-    console.log('[FFmpeg Worker] Service Daemon Started running every 5 seconds...');
+    console.log('[FFmpeg Worker] Starting Service Daemon (Interval: 5s)...');
+    
     // Ensure root tmp directory exists
     if (!fs.existsSync(TMP_DIR)) {
         fs.mkdirSync(TMP_DIR, { recursive: true });
     }
-    // We poll strictly one by one via setTimeout chain or setInterval. 
-    // Using setInterval is simple, but if transcoding takes longer than 5s, 
-    // we could spawn multiples. Instead, a recursive timeout is safer.
     
-    const runWorker = async () => {
-        await processFfmpegJob();
-        setTimeout(runWorker, BATCH_INTERVAL_MS);
-    };
-    
-    runWorker();
+    // Check every 5 seconds
+    setInterval(async () => {
+        try {
+            if (!redisClient.isReady) {
+                // console.log('[FFmpeg Worker] Redis not ready...');
+                return;
+            }
+            await processFfmpegJob();
+            console.log(`[FFmpeg Worker] Poll cycle finished at ${new Date().toISOString()}`);
+        } catch (err) {
+            console.error('[FFmpeg Worker] Loop error:', err.message);
+        }
+    }, BATCH_INTERVAL_MS);
+
+    console.log('[FFmpeg Worker] Interval scheduled.');
 };
+
+// If run directly via 'node src/workers/ffmpegWorker.js'
+if (require.main === module) {
+    exports.start();
+}

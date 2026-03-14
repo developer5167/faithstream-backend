@@ -61,17 +61,49 @@ exports.approveAlbum = async (albumId) => {
   }
 };
 
-exports.rejectAlbum = async (albumId, reason) => {
-  await albumRepo.reject(albumId, reason);
+const s3Util = require('../utils/s3.util');
 
+exports.rejectAlbum = async (albumId, reason, adminId) => {
   const album = await albumRepo.findById(albumId);
-  if (album && album.artist_user_id) {
+  if (!album) return;
+
+  // 1. Get all songs in the album to wipe their files
+  const songs = await songRepo.findByAlbum(albumId);
+
+  // 2. Notify the artist FIRST
+  if (album.artist_user_id) {
     notificationService.sendToUser(
       album.artist_user_id,
       '❌ Album Review Update',
-      `Your album "${album.title}" requires changes. Reason: ${reason || 'Not specified'}`,
-      { type: 'album_rejected', album_id: album.id }
+      `Your album "${album.title}" was rejected and removed. Reason: ${reason || 'Not specified'}`,
+      { type: 'album_rejected', album_title: album.title }
     ).catch(err => console.error('Failed to notify artist:', err));
+  }
+
+  // 3. Wipe all song files from S3
+  for (const song of songs) {
+    await songRepo.wipeSongFilesFromS3(song.id);
+  }
+
+  // 4. Wipe album cover from S3
+  if (album.cover_image_url) {
+    await s3Util.deleteFromS3ByUrl(album.cover_image_url);
+  }
+
+  // 5. Delete songs from DB
+  await songRepo.deleteByAlbumId(albumId);
+
+  // 6. Delete album from DB
+  await albumRepo.delete(albumId);
+
+  // 7. Log accurately
+  if (adminId) {
+    await adminLog.log({
+      admin_id: adminId,
+      action_type: 'ALBUM_REJECTED_AND_DELETED',
+      target_id: albumId,
+      description: `Album "${album.title}" and its ${songs.length} songs were rejected and deleted by admin${reason ? `: ${reason}` : ''}`
+    });
   }
 };
 

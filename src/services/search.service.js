@@ -22,9 +22,14 @@ class SearchService {
     const [artistsResult, albumsResult, songsResult] = await Promise.all([
       // 1. Search Artists
       db.query(
-        `SELECT id, name, profile_pic_url, bio, role, created_at
-         FROM users
-         WHERE role = 'ARTIST' AND name ILIKE $1
+        `SELECT u.id, u.name, u.profile_pic_url, ap.bio, u.role, u.created_at,
+                COUNT(st.id) as total_streams
+         FROM users u
+         JOIN artist_profiles ap ON ap.user_id = u.id
+         LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
+         LEFT JOIN streams st ON st.song_id = s.id
+         WHERE u.role = 'ARTIST' AND (u.name ILIKE $1 OR ap.artist_name ILIKE $1)
+         GROUP BY u.id, u.name, u.profile_pic_url, ap.bio, u.role, u.created_at
          LIMIT 20`,
         searchParams
       ),
@@ -43,7 +48,7 @@ class SearchService {
 
       // 3. Search Songs (Approved only)
       db.query(
-        `SELECT s.id, s.title, s.audio_original_url,
+        `SELECT s.id, s.title, s.audio_original_url, s.audio_processed_url,
                 s.genre, s.language, s.status, s.lyrics, s.description,
                 u.name as display_artist, s.artist_user_id,
                 a.title as album_title, s.album_id,
@@ -78,6 +83,7 @@ class SearchService {
         title: song.title,
         cover_image_url: song.image,
         audio_original_url: song.audio_original_url,
+        audio_processed_url: song.audio_processed_url,
         genre: song.genre,
         language: song.language,
         status: song.status,
@@ -106,7 +112,8 @@ class SearchService {
         profilePicUrl: artist.profile_pic_url,
         bio: artist.bio,
         role: artist.role,
-        createdAt: artist.created_at
+        createdAt: artist.created_at,
+        total_streams: artist.total_streams
       }))
     };
 

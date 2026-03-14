@@ -1,6 +1,7 @@
 const admin = require('firebase-admin');
 const path = require('path');
 const fcmTokenRepo = require('../repositories/fcm-token.repo');
+const notificationRepo = require('../repositories/notification.repo');
 
 let isInitialized = false;
 
@@ -69,6 +70,15 @@ exports.sendToUser = async (userId, title, body, data = {}) => {
 
     const response = await admin.messaging().send(message);
     console.log(`[Notification] Successfully sent to user ${userId}:`, response);
+
+    // Persist to database for history
+    await notificationRepo.create({
+      user_id: userId,
+      title,
+      body,
+      notification_data: data
+    });
+
     return response;
   } catch (error) {
     console.error(`[Notification] Error sending to user ${userId}:`, error.message);
@@ -111,6 +121,18 @@ exports.sendToUsers = async (userIds, title, body, data = {}) => {
     const response = await admin.messaging().sendEachForMulticast(message);
     console.log(`[Notification] Multicast sent. Success: ${response.successCount}, Failure: ${response.failureCount}`);
     
+    // Persist to database for history (only for successful ones or all? Usually all intended recipients)
+    // We persist for all intended recipients so they see it in their inbox even if FCM failed temporarily
+    const persistencePromises = userIds.map(uid => 
+      notificationRepo.create({
+        user_id: uid,
+        title,
+        body,
+        notification_data: data
+      })
+    );
+    await Promise.all(persistencePromises);
+
     // Cleanup invalid tokens if any
     if (response.failureCount > 0) {
       response.responses.forEach((resp, idx) => {

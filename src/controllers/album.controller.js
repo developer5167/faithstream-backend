@@ -55,7 +55,7 @@ exports.approveAlbum = async (req, res) => {
 };
 
 exports.rejectAlbum = async (req, res) => {
-  await albumService.rejectAlbum(req.body.albumId, req.body.reason);
+  await albumService.rejectAlbum(req.body.albumId, req.body.reason, req.user.id);
   res.json({ message: 'Album rejected' });
 };
 

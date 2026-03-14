@@ -70,7 +70,8 @@ exports.approve = async (userId, adminId) => {
 exports.reject = async (userId, reason) => {
   await db.query(
     `UPDATE artist_profiles
-     SET verification_status='REJECTED'
+     SET verification_status='REJECTED',
+         rejected_at=NOW()
      WHERE id=$1`,
     [userId]
   );
@@ -87,15 +88,17 @@ exports.getFeaturedArtists = async (limit = 10) => {
        u.profile_pic_url as profile_pic_url,
        u.created_at,
        COUNT(DISTINCT s.id) as song_count,
-       COUNT(DISTINCT a.id) as album_count
+       COUNT(DISTINCT a.id) as album_count,
+       COUNT(st.id) as total_streams
      FROM users u
      JOIN artist_profiles ap ON ap.user_id = u.id
      LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
      LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+     LEFT JOIN streams st ON st.song_id = s.id
      WHERE u.artist_status = 'APPROVED'
        AND ap.verification_status = 'APPROVED'
      GROUP BY u.id, ap.artist_name, u.name, ap.bio, ap.profile_image_url, u.created_at
-     ORDER BY song_count DESC, u.created_at DESC
+     ORDER BY total_streams DESC, song_count DESC, u.created_at DESC
      LIMIT $1`,
     [limit]
   );
@@ -143,16 +146,18 @@ exports.getVerifiedArtists = async (options = {}) => {
        ap.verified_at,
        u.created_at,
        COUNT(DISTINCT s.id) as song_count,
-       COUNT(DISTINCT a.id) as album_count
+       COUNT(DISTINCT a.id) as album_count,
+       COUNT(st.id) as total_streams
      FROM users u
      JOIN artist_profiles ap ON ap.user_id = u.id
      LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
      LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+     LEFT JOIN streams st ON st.song_id = s.id
      WHERE u.artist_status = 'APPROVED'
        AND ap.verification_status = 'APPROVED'
        ${searchCondition}
      GROUP BY u.id, u.name, u.email, ap.artist_name, ap.bio, ap.profile_image_url, ap.verified_at, u.created_at
-     ORDER BY ap.verified_at DESC
+     ORDER BY total_streams DESC, ap.verified_at DESC
      LIMIT $${paramCount} OFFSET $${paramCount + 1}`,
     params
   );
@@ -183,12 +188,14 @@ exports.getVerifiedArtistById = async (artistId) => {
        u.created_at,
        COUNT(DISTINCT s.id) as song_count,
        COUNT(DISTINCT a.id) as album_count,
+       COUNT(st.id) as total_streams,
        admin.name as verified_by_name
      FROM users u
      JOIN artist_profiles ap ON ap.user_id = u.id
      LEFT JOIN users admin ON admin.id = ap.verified_by
      LEFT JOIN songs s ON s.artist_user_id = u.id AND s.status = 'APPROVED'
      LEFT JOIN albums a ON a.artist_user_id = u.id AND a.status = 'APPROVED'
+     LEFT JOIN streams st ON st.song_id = s.id
      WHERE u.id = $1
        AND u.artist_status = 'APPROVED'
        AND ap.verification_status = 'APPROVED'

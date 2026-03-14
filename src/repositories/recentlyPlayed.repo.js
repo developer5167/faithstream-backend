@@ -30,6 +30,7 @@ exports.getRecentlyPlayed = async (userId, limit = 20) => {
       s.lyrics,
       s.artist_user_id,
       s.audio_original_url,
+      s.audio_processed_url,
       COALESCE(
         s.cover_image_url,
         a.cover_image_url,
