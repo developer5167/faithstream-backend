@@ -1,0 +1,24 @@
+pg_dump \
+-h localhost \
+-U kcs \
+-d faithstream_db \
+-F c \
+--no-owner \
+--no-privileges \
+-f faithstream.dump
+
+
+docker run --rm \
+-v $(pwd):/dump \
+-e PGPASSWORD='Sy.3vF$m5DTLYW/' \
+postgres:16 \
+pg_restore \
+--verbose \
+--jobs=2 \
+--no-owner \
+--no-privileges \
+-h aws-1-ap-south-1.pooler.supabase.com \
+-p 6543 \
+-U postgres.djygeyobuzqejtotyuvn \
+-d postgres \
+/dump/faithstream.dump

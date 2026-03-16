@@ -76,46 +76,63 @@ exports.generateS3Key = ({ uploadType, userId, resourceId, fileName, userRole })
   const timestamp = Date.now();
   const fileExtension = fileName.split('.').pop();
   
+  // Differentiate between development and production
+  const envPrefix = process.env.NODE_ENV === 'development' ? 'development' : 'live';
+  
+  let keyPath = '';
+
   switch (uploadType) {
     case "album_cover":
-      // albums/{albumId}/album_cover_{timestamp}.{ext}
-      return `albums/${resourceId}/album_cover_${timestamp}.${fileExtension}`;
+      // {env}/albums/{albumId}/album_cover_{timestamp}.{ext}
+      keyPath = `albums/${resourceId}/album_cover_${timestamp}.${fileExtension}`;
+      break;
     
     case "song_audio":
-      // songs/{songId}/audio_{timestamp}.{ext}
-      return `songs/${resourceId}/audio_${timestamp}.${fileExtension}`;
+      // {env}/songs/{songId}/audio_{timestamp}.{ext}
+      keyPath = `songs/${resourceId}/audio_${timestamp}.${fileExtension}`;
+      break;
     
     case "song_cover":
-      // songs/{songId}/cover_{timestamp}.{ext}
-      return `songs/${resourceId}/cover_${timestamp}.${fileExtension}`;
+      // {env}/songs/{songId}/cover_{timestamp}.{ext}
+      keyPath = `songs/${resourceId}/cover_${timestamp}.${fileExtension}`;
+      break;
     
     case "artist_profile":
-      // profiles/artist/{userId}/{filename}_{timestamp}.{ext}
-      return `profiles/artist/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      // {env}/profiles/artist/{userId}/{filename}_{timestamp}.{ext}
+      keyPath = `profiles/artist/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      break;
     
     case "artist_selfie_video":
-      // profiles/artist/{userId}/selfie_videos/selfie_video_{timestamp}.{ext}
-      return `profiles/artist/${userId}/selfie_videos/selfie_video_${timestamp}.${fileExtension}`;
+      // {env}/profiles/artist/{userId}/selfie_videos/selfie_video_{timestamp}.{ext}
+      keyPath = `profiles/artist/${userId}/selfie_videos/selfie_video_{timestamp}.${fileExtension}`;
+      break;
     
     case "user_profile":
-      // profiles/user/{userId}/{filename}_{timestamp}.{ext}
-      return `profiles/user/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      // {env}/profiles/user/{userId}/{filename}_{timestamp}.{ext}
+      keyPath = `profiles/user/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      break;
     
     case "admin_upload":
-      // admin/{userId}/{filename}_{timestamp}.{ext}
-      return `admin/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      // {env}/admin/{userId}/{filename}_{timestamp}.{ext}
+      keyPath = `admin/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      break;
     
     case "ad_image":
-      // ads/images/{userId}/{filename}_{timestamp}.{ext}
-      return `ads/images/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      // {env}/ads/images/{userId}/{filename}_{timestamp}.{ext}
+      keyPath = `ads/images/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      break;
     
     case "ad_video":
-      // ads/videos/{userId}/{filename}_{timestamp}.{ext}
-      return `ads/videos/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      // {env}/ads/videos/{userId}/{filename}_{timestamp}.{ext}
+      keyPath = `ads/videos/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      break;
     
     default:
-      // general/{userRole}/{userId}/{filename}_{timestamp}.{ext}
+      // {env}/general/{userRole}/{userId}/{filename}_{timestamp}.{ext}
       const role = (userRole || 'user').toLowerCase();
-      return `general/${role}/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      keyPath = `general/${role}/${userId}/${fileName.split('.')[0]}_${timestamp}.${fileExtension}`;
+      break;
   }
+
+  return `${envPrefix}/${keyPath}`;
 };

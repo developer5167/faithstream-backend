@@ -88,7 +88,7 @@ exports.clearOTP = async (email) => {
  * Send login credentials to a newly created artist account
  */
 exports.sendArtistCredentials = async ({ name, email, password }) => {
-  const portalUrl = process.env.ADMIN_HUB_URL || 'http://localhost:5173';
+  const portalUrl = process.env.ADMIN_HUB_URL;
 
   const mailOptions = {
     from: `"FaithStream" <${process.env.SMTP_USER}>`,
