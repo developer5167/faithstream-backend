@@ -3,8 +3,41 @@ const subscriptionRepo = require('../repositories/subscription.repo');
 const bcrypt = require('../utils/password.util');
 const jwt = require('../utils/jwt.util');
 const redisClient = require('../config/redis');
+const otpService = require('./otp.service');
 
-exports.register = async ({ name, email, password }) => {
+// ==========================================
+// REGISTRATION FLOW
+// ==========================================
+
+exports.sendRegistrationOtp = async (email) => {
+  const existingUser = await userRepo.findByEmail(email);
+  if (existingUser) throw new Error('An account with this email already exists.');
+
+  await otpService.generateAndSendGenericOTP(
+    email,
+    'register',
+    'Verify Your FaithStream Account',
+    'Thank you for signing up for FaithStream. Please use the following code to verify your email address.'
+  );
+};
+
+exports.verifyRegistrationOtp = async (email, otpCode) => {
+  await otpService.verifyGenericOTP(email, otpCode, 'register');
+  // Return a short-lived token to prove they verified the email
+  return jwt.signPurposeToken({ email }, 'registration_verification', '15m');
+};
+
+exports.register = async ({ name, email, password, verified_email_token }) => {
+  // 1. Verify the token to ensure the email was actually verified
+  try {
+    const decoded = jwt.verify(verified_email_token);
+    if (decoded.purpose !== 'registration_verification' || decoded.email !== email) {
+      throw new Error('Invalid or mismatched email verification token');
+    }
+  } catch (err) {
+    throw new Error('Email verification expired or invalid. Please verify again.');
+  }
+
   const hash = await bcrypt.hash(password);
   const user = await userRepo.createUser(name, email, hash);
   
@@ -56,6 +89,67 @@ exports.login = async ({ email, password }) => {
       created_at: user.created_at,
     },
   };
+};
+
+// ==========================================
+// PASSWORD RESET FLOW
+// ==========================================
+
+exports.sendPasswordResetOtp = async (email) => {
+  const existingUser = await userRepo.findByEmail(email);
+  if (!existingUser) {
+    // Silently succeed to prevent email enumeration, or throw error if preferred.
+    // For a consumer app, UX often prefers an explicit error "No account found", 
+    // but security prefers silence. We will throw for better UX.
+    throw new Error('No account found with that email address.');
+  }
+
+  await otpService.generateAndSendGenericOTP(
+    email,
+    'reset_password',
+    'FaithStream Password Reset',
+    'We received a request to reset the password for your FaithStream account.'
+  );
+};
+
+exports.verifyPasswordResetOtp = async (email, otpCode) => {
+  await otpService.verifyGenericOTP(email, otpCode, 'reset_password');
+  // Return a short-lived reset token
+  return jwt.signPurposeToken({ email }, 'password_reset', '15m');
+};
+
+exports.resetPassword = async (resetToken, newPassword) => {
+  let decoded;
+  try {
+    decoded = jwt.verify(resetToken);
+    if (decoded.purpose !== 'password_reset' || !decoded.email) {
+      throw new Error();
+    }
+  } catch (err) {
+    throw new Error('Reset token is invalid or expired. Please request a new one.');
+  }
+
+  const user = await userRepo.findByEmail(decoded.email);
+  if (!user) throw new Error('User not found.');
+
+  const hash = await bcrypt.hash(newPassword);
+  // We need an update password method in userRepo (will verify or add next)
+  await userRepo.updatePassword(user.id, hash);
+
+  // Clean up any remaining OTP keys for this email (defensive, belt-and-suspenders)
+  await redisClient.del(`otp:reset_password:${decoded.email}`);
+  await redisClient.del(`otp_attempts:reset_password:${decoded.email}`);
+
+  // SECURE: Invalidate ALL active sessions for this user because password changed!
+  // This physically logs out any stolen devices
+  const sessionKey = `user_sessions:${user.id}`;
+  const allSessions = await redisClient.zRange(sessionKey, 0, -1);
+  for (const sessId of allSessions) {
+    await redisClient.set(`bl_session:${sessId}`, '1', { EX: 2592000 });
+  }
+  await redisClient.del(sessionKey);
+
+  return true;
 };
 
 /**

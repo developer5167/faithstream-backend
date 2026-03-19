@@ -2,15 +2,15 @@ const jwtUtil = require('../utils/jwt.util');
 const advertiserRepo = require('../repositories/advertiser.repo');
 
 module.exports = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  // ✅ Prefer HttpOnly cookie (XSS-safe) over Authorization header
+  // The cookie is set by the backend on login/signup and is invisible to JS.
+  // Fallback to Authorization header only for the shared upload route, which
+  // runs its own pre-verification before calling this middleware.
+  const token = req.cookies?.advertiser_token
+    || (req.headers.authorization?.split(' ')[1]);
 
-  if (!authHeader) {
-    return res.status(401).json({ error: 'Authorization header missing' });
-  }
-
-  const token = authHeader.split(' ')[1];
   if (!token) {
-    return res.status(401).json({ error: 'Token missing' });
+    return res.status(401).json({ error: 'Authentication required' });
   }
 
   try {
@@ -21,8 +21,6 @@ module.exports = async (req, res, next) => {
       return res.status(403).json({ error: 'Access denied: Not an advertiser account' });
     }
 
-    // Optional: Check if token exists in database (for logout/revocation support)
-    // For now we just verify ID exists
     const advertiser = await advertiserRepo.findById(decoded.id);
     if (!advertiser) {
       return res.status(401).json({ error: 'Advertiser account not found' });

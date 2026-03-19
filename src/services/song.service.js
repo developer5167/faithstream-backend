@@ -215,9 +215,9 @@ exports.updateSong = async (songId, artistId, isAdmin, data) => {
     throw new Error('You can only update your own songs');
   }
 
-  // Only allow updates if song is in DRAFT or PENDING status, unless admin
-  if (!isAdmin && song.status !== 'DRAFT' && song.status !== 'PENDING') {
-    throw new Error('Cannot update songs that have been approved or rejected');
+  // Only allow updates if song is in DRAFT status, unless admin
+  if (!isAdmin && song.status !== 'DRAFT') {
+    throw new Error('Cannot update songs that have been submitted or approved');
   }
 
   // If updating album_id, validate the album

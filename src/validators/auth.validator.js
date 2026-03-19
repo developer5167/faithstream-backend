@@ -1,6 +1,9 @@
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-exports.validateRegister = ({ name, email, password }) => {
+exports.validateRegister = ({ name, email, password, verified_email_token }) => {
+  if (!verified_email_token) {
+    throw new Error('Email verification token is required. Please verify your email first.');
+  }
   if (!name || typeof name !== 'string' || name.trim().length === 0) {
     throw new Error('Name is required');
   }

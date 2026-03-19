@@ -15,9 +15,6 @@ const songRepo = require('../repositories/song.repo');
 exports.getPresignedUrl = async (req, res) => {
   try {
     const { fileName, contentType, uploadType, resourceId } = req.body;
-
-    console.log('Upload request:', req.body);
-
     // Validate required fields
     if (!fileName || !contentType || !uploadType) {
       return res.status(400).json({ 
@@ -37,6 +34,34 @@ exports.getPresignedUrl = async (req, res) => {
     if (!validUploadTypes.includes(uploadType)) {
       return res.status(400).json({
         error: `Invalid uploadType: "${uploadType}". Valid types are: ${validUploadTypes.join(', ')}`
+      });
+    }
+
+    // ✅ Content-Type whitelist — prevents attackers uploading HTML/JS phishing files to our S3 bucket.
+    // This list exactly matches what the Flutter app and Advertiser Web legitimately upload.
+    const ALLOWED_CONTENT_TYPES = [
+      // Images
+      'image/jpeg', 'image/png', 'image/webp', 'image/gif',
+      // Audio
+      'audio/mpeg',       // .mp3
+      'audio/wav',        // .wav
+      'audio/flac',       // .flac
+      'audio/mp4',        // .m4a
+      'audio/aac',        // .aac
+      'audio/x-m4a',      // .m4a (iOS variant)
+      'audio/ogg',        // .ogg
+      // Video
+      'video/mp4',        // .mp4
+      'video/quicktime',  // .mov (iOS)
+      'video/x-msvideo',  // .avi
+      'video/webm',       // .webm
+      // Generic binary (fallback used by Flutter for unrecognised extensions)
+      'application/octet-stream',
+    ];
+
+    if (!ALLOWED_CONTENT_TYPES.includes(contentType)) {
+      return res.status(400).json({
+        error: `File type "${contentType}" is not allowed. Only images, audio, and video files are accepted.`
       });
     }
 

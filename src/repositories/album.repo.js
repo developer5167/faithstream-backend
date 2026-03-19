@@ -179,3 +179,13 @@ exports.getRecentApproved = async (limit = 10) => {
   );
   return res.rows;
 };
+
+exports.findDraftsOlderThan = async (days) => {
+  const res = await db.query(
+    `SELECT * FROM albums 
+     WHERE status = 'DRAFT' 
+     AND created_at < NOW() - ($1 * INTERVAL '1 day')`,
+    [days]
+  );
+  return res.rows;
+};

@@ -1,8 +1,9 @@
-require('dotenv').config();
+require('./config/env');
 const app = require('./app');
+const logger = require('./config/logger');
 
 app.listen(process.env.PORT, () => {
-  console.log(`FaithStream backend running on port ${process.env.PORT}`);
+  logger.info(`🚀 FaithStream backend running on port ${process.env.PORT}`);
   _startCronJobs();
 });
 
@@ -20,12 +21,12 @@ function _startCronJobs() {
       console.log(`[Cron] Running monthly payout job for ${month}`);
       try {
         const result = await payoutJob.runMonthlyPayout(month);
-        console.log('[Cron] Monthly payout complete:', result);
+        logger.info('[Cron] Monthly payout complete', result);
       } catch (err) {
-        console.error('[Cron] Monthly payout failed:', err.message);
+        logger.error('[Cron] Monthly payout failed', { error: err.message });
       }
     });
-    console.log('[Cron] Monthly payout job scheduled (1st of every month @ 02:00 AM)');
+    logger.info('[Cron] Monthly payout job scheduled (1st of every month @ 02:00 AM)');
 
     // Daily subscription expiry: 02:00 AM every day
     expiryJob();
@@ -34,7 +35,11 @@ function _startCronJobs() {
     const adCleanup = require('./jobs/ad_cleanup.job');
     adCleanup.startAdCleanupJob();
 
+    // Daily draft cleanup: 03:00 AM every day
+    const draftCleanup = require('./jobs/draft-cleanup.job');
+    draftCleanup();
+
   } catch (err) {
-    console.warn('[Cron] node-cron not installed — cron jobs will not auto-run. Run: npm install node-cron');
+    logger.warn('[Cron] node-cron not installed — cron jobs will not auto-run. Run: npm install node-cron');
   }
 }

@@ -31,6 +31,13 @@ exports.findById = async (id) => {
   return res.rows[0];
 };
 
+exports.updatePassword = async (userId, hash) => {
+  await db.query(
+    `UPDATE users SET password_hash = $2, updated_at = NOW() WHERE id = $1`,
+    [userId, hash]
+  );
+};
+
 // (Phase 4): JWTs are now purely cryptographic + Redis Blocklist managed
 // exports.saveToken and exports.removeToken have been dropped to save Database write-cycles.
 

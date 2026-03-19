@@ -5,7 +5,7 @@ const util = require('util');
 const AWS = require('aws-sdk');
 const redisClient = require('../config/redis');
 const pool = require('../config/db');
-require('dotenv').config();
+require('../config/env');
 
 const execPromise = util.promisify(exec);
 
@@ -110,7 +110,10 @@ const processFfmpegJob = async () => {
             // Read the generated files (1 m3u8 and N ts files)
             const files = fs.readdirSync(jobTmpDir);
             const uploadPromises = [];
-            const s3BaseFolder = `songs/${songId}/hls_${Date.now()}`;
+            
+            // Generate standard environment prefix using NODE_ENV
+            const envPrefix = process.env.NODE_ENV === 'development' ? 'development' : 'live';
+            const s3BaseFolder = `${envPrefix}/songs/${songId}/hls_${Date.now()}`;
             const m3u8S3Key = `${s3BaseFolder}/${m3u8Filename}`;
 
             for (const file of files) {

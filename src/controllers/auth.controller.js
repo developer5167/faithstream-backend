@@ -14,6 +14,63 @@ exports.register = async (req, res) => {
   }
 };
 
+exports.sendRegistrationOtp = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) throw new Error('Email is required');
+    await authService.sendRegistrationOtp(email);
+    res.json({ message: 'Registration OTP sent successfully' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+exports.verifyRegistrationOtp = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+    if (!email || !otp) throw new Error('Email and OTP are required');
+    const token = await authService.verifyRegistrationOtp(email, otp);
+    res.json({ verified_email_token: token, message: 'Email verified successfully' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+exports.sendPasswordResetOtp = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) throw new Error('Email is required');
+    await authService.sendPasswordResetOtp(email);
+    res.json({ message: 'Password reset OTP sent successfully' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+exports.verifyPasswordResetOtp = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+    if (!email || !otp) throw new Error('Email and OTP are required');
+    const token = await authService.verifyPasswordResetOtp(email, otp);
+    res.json({ reset_token: token, message: 'OTP verified successfully' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+exports.resetPassword = async (req, res) => {
+  try {
+    const { reset_token, new_password } = req.body;
+    if (!reset_token || !new_password) throw new Error('Reset token and new password are required');
+    if (new_password.length < 8) throw new Error('Password must be at least 8 characters long');
+    
+    await authService.resetPassword(reset_token, new_password);
+    res.json({ message: 'Password reset successfully. You can now log in with your new password.' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 exports.login = async (req, res) => {
   try {
     validateLogin(req.body);

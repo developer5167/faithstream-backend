@@ -38,3 +38,17 @@ exports.removeToken = async (advertiserId, token) => {
     [advertiserId, token]
   );
 };
+
+exports.removeAllTokens = async (advertiserId) => {
+  await db.query(
+    `DELETE FROM advertiser_tokens WHERE advertiser_id=$1`,
+    [advertiserId]
+  );
+};
+
+exports.updatePassword = async (advertiserId, hash) => {
+  await db.query(
+    `UPDATE advertisers SET password_hash = $2, updated_at = NOW() WHERE id = $1`,
+    [advertiserId, hash]
+  );
+};

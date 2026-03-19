@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 const db = require('../config/db');
+const redisClient = require('../config/redis');
+const { randomInt } = require('crypto');
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -12,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.generateAndSendOTP = async (email) => {
-  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const otp = randomInt(100000, 1000000).toString();
   const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
   await db.query(
@@ -142,5 +144,89 @@ exports.sendArtistCredentials = async ({ name, email, password }) => {
   };
 
   await transporter.sendMail(mailOptions);
+};
+
+// =========================================================================
+// Generic OTP Services (Redis-backed for general app users / artists / reset)
+// =========================================================================
+
+/**
+ * Generates an OTP, stores it in Redis with a 10-minute expiry, and emails the user.
+ * @param {string} email - The target email address
+ * @param {string} purpose - A namespace string (e.g., 'register', 'reset_password')
+ * @param {string} title - The email subject title
+ * @param {string} description - The descriptive text explaining the purpose
+ */
+exports.generateAndSendGenericOTP = async (email, purpose, title, description) => {
+  const otp = randomInt(100000, 1000000).toString();
+  
+  // Store OTP in Redis (10 mins = 600 seconds)
+  const redisKey = `otp:${purpose}:${email}`;
+  await redisClient.setEx(redisKey, 600, otp);
+  
+  // Maintain a rate-limit counter to prevent abuse (optional but good practice)
+  const attemptsKey = `otp_attempts:${purpose}:${email}`;
+  await redisClient.setEx(attemptsKey, 600, "0"); // Reset failed attempts
+
+  const mailOptions = {
+    from: `"FaithStream Support" <${process.env.SMTP_USER}>`,
+    to: email,
+    subject: title,
+    text: `${description} Your OTP is: ${otp}. It expires in 10 minutes.`,
+    html: `
+      <div style="font-family: sans-serif; padding: 20px; color: #333; max-width: 500px; margin: 0 auto; border: 1px solid #eaeaea; border-radius: 8px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+           <h1 style="color: #e8960c; margin: 0;">FaithStream</h1>
+        </div>
+        <h2 style="font-size: 20px;">${title}</h2>
+        <p style="font-size: 16px;">${description}</p>
+        <div style="background: #f4f4f4; padding: 20px; text-align: center; border-radius: 8px; margin: 24px 0;">
+          <h1 style="color: #388bfd; margin: 0; font-size: 40px; letter-spacing: 5px;">${otp}</h1>
+        </div>
+        <p style="font-size: 14px;">This code expires in 10 minutes.</p>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
+        <p style="font-size: 12px; color: #999;">If you didn't request this code, you can safely ignore this email.</p>
+      </div>
+    `,
+  };
+
+  await transporter.sendMail(mailOptions);
+  return true;
+};
+
+/**
+ * Verifies a Redis-backed generic OTP. Automatically deletes it upon successful verification.
+ * @param {string} email - The target email address
+ * @param {string} otp - The 6-digit OTP code provided by the user
+ * @param {string} purpose - A namespace string (e.g., 'register', 'reset_password')
+ * @returns {boolean} - True if valid, throws error otherwise
+ */
+exports.verifyGenericOTP = async (email, otp, purpose) => {
+  const redisKey = `otp:${purpose}:${email}`;
+  const attemptsKey = `otp_attempts:${purpose}:${email}`;
+
+  const storedOtp = await redisClient.get(redisKey);
+  
+  if (!storedOtp) {
+    throw new Error('OTP has expired or does not exist. Please request a new one.');
+  }
+
+  // Check rate limits
+  const attempts = await redisClient.incr(attemptsKey);
+  if (attempts > 5) {
+    // Lock them out of this specific OTP after 5 fails to prevent brute force
+    await redisClient.del(redisKey);
+    throw new Error('Too many failed attempts. OTP invalidated. Please request a new one.');
+  }
+
+  if (storedOtp !== otp) {
+    throw new Error('Invalid OTP code.');
+  }
+
+  // OTP verified successfully! Clean it up so it can't be reused.
+  await redisClient.del(redisKey);
+  await redisClient.del(attemptsKey);
+  
+  return true;
 };
 

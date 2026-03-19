@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-require('dotenv').config();
+require('../config/env');
 
 const s3 = new AWS.S3({
   region: process.env.AWS_REGION,
@@ -58,6 +58,13 @@ exports.getPresignedUploadUrl = (key, contentType) => {
     Bucket: process.env.AWS_BUCKET,
     Key: key,
     ContentType: contentType,
+    // ✅ SECURITY: Store Content-Disposition on the S3 object permanently.
+    // When a browser loads this file (e.g. in an <img> tag), S3 returns:
+    //   Content-Disposition: inline
+    //   Content-Type: image/jpeg  (<-- exactly what we set)
+    // This tells the browser to render it as the declared type, NOT sniff the bytes.
+    // Without this, a browser could misinterpret file contents and execute injected scripts.
+    ContentDisposition: 'inline',
     Expires: 60 * 5, // 5 minutes
   });
 };

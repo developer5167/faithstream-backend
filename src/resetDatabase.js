@@ -36,7 +36,8 @@ async function resetDatabase() {
       advertiser_otps,
       advertisements,
       admin_actions,
-      ad_analytics
+      ad_analytics,
+      notifications
       RESTART IDENTITY CASCADE;
     `);
 

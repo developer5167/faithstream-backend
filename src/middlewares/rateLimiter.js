@@ -28,11 +28,34 @@ exports.uploadLimiter = rateLimit({
   store: createRedisStore(),
 });
 
-// Loose: For High-Traffic Streams & Feed Data
+// Loose: For High-Traffic Streams & Feed Data (100 req/min)
 exports.looseLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 100, // 100 requests per minute
+  windowMs: 60 * 1000,
+  max: 100,
   message: { error: "Streaming rate limit exceeded, please slow down" },
+  standardHeaders: true,
+  legacyHeaders: false,
+  store: createRedisStore(),
+});
+
+// Content: For song/album/playlist browsing — generous enough that real users never hit it
+// 200 req/min = ~3 requests/sec. A real user browsing the app makes ~10-20/min.
+// Only bots hammering the API at script-speed will be blocked.
+exports.contentLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 200, // 200 requests per minute per IP
+  message: { error: "Too many requests, please slow down" },
+  standardHeaders: true,
+  legacyHeaders: false,
+  store: createRedisStore(),
+});
+
+// Admin: For the admin panel — stricter to slow down enumeration attacks
+// 30 req/min is plenty for a human admin doing their job.
+exports.adminLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 30, // 30 requests per minute per IP
+  message: { error: "Admin rate limit exceeded, please try again shortly" },
   standardHeaders: true,
   legacyHeaders: false,
   store: createRedisStore(),

@@ -91,3 +91,64 @@ exports.me = async (advertiserId) => {
 exports.logout = async (advertiserId, token) => {
   await advertiserRepo.removeToken(advertiserId, token);
 };
+
+// ==========================================
+// Forgot Password Flow
+// ==========================================
+
+exports.sendPasswordResetOtp = async (email) => {
+  const existing = await advertiserRepo.findByEmail(email);
+  if (!existing) {
+    throw new Error('No advertiser account found with this email.');
+  }
+
+  // Use the generic Redis-backed OTP system
+  await otpService.generateAndSendGenericOTP(
+    email,
+    'advertiser_reset_password',
+    'Reset Your Advertiser Password',
+    'You requested a password reset for your FaithStream Advertiser account.'
+  );
+
+  return { message: 'OTP sent successfully' };
+};
+
+exports.verifyPasswordResetOtp = async (email, otp) => {
+  await otpService.verifyGenericOTP(email, otp, 'advertiser_reset_password');
+  
+  // Issue a 15-minute specialized token for the reset operation
+  const resetToken = jwt.signPurposeToken(
+    { email, type: 'advertiser' },
+    'advertiser_reset'
+  );
+
+  return { reset_token: resetToken };
+};
+
+exports.resetPassword = async (resetToken, newPassword) => {
+  // 1. Verify the specific purpose token
+  const payload = jwt.verifyPurposeToken(resetToken, 'advertiser_reset');
+  if (!payload || !payload.email || payload.type !== 'advertiser') {
+    throw new Error('Invalid or expired reset token. Please request a new OTP.');
+  }
+
+  // 2. Locate the user
+  const advertiser = await advertiserRepo.findByEmail(payload.email);
+  if (!advertiser) {
+    throw new Error('Advertiser not found.');
+  }
+
+  // 3. Hash the new password and update the DB
+  const hash = await bcrypt.hash(newPassword);
+  await advertiserRepo.updatePassword(advertiser.id, hash);
+
+  // Clean up any remaining OTP keys for this email (defensive cleanup)
+  const redisClient = require('../config/redis');
+  await redisClient.del(`otp:advertiser_reset_password:${payload.email}`);
+  await redisClient.del(`otp_attempts:advertiser_reset_password:${payload.email}`);
+
+  // 4. Invalidate all existing sessions (security best practice)
+  await advertiserRepo.removeAllTokens(advertiser.id);
+
+  return { message: 'Password updated successfully. All previous sessions have been logged out.' };
+};

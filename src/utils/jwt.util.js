@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-// Using crypto to generate random session IDs and refresh tokens
 const crypto = require('crypto');
-dotenv.config();
+require('../config/env');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = '1h'; // Short-lived access token
@@ -57,5 +55,36 @@ exports.signRefresh = (user, sessionId) => {
 
 exports.verify = (token) => {
   const decoded = jwt.verify(token, JWT_SECRET);
+  return decoded;
+};
+
+/**
+ * Generate a short-lived token for a specific purpose (e.g., password reset, email verification)
+ * @param {Object} payload - Data to embed in the token (like email or userId)
+ * @param {String} purpose - The strict purpose of this token (e.g. 'verification', 'reset_password')
+ * @param {String} expiresIn - Expiration time (default 15 minutes)
+ */
+exports.signPurposeToken = (payload, purpose, expiresIn = '15m') => {
+  return jwt.sign(
+    {
+      ...payload,
+      tokenType: 'purpose',
+      purpose: purpose,
+    },
+    JWT_SECRET,
+    { expiresIn }
+  );
+};
+
+/**
+ * Verify a short-lived purpose token
+ * @param {String} token - The JWT token back from client
+ * @param {String} purpose - The strict purpose of this token for validation
+ */
+exports.verifyPurposeToken = (token, purpose) => {
+  const decoded = jwt.verify(token, JWT_SECRET);
+  if (decoded.tokenType !== 'purpose' || decoded.purpose !== purpose) {
+    throw new Error('Invalid token purpose or type.');
+  }
   return decoded;
 };

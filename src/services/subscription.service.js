@@ -1,7 +1,6 @@
 const axios = require('axios');
 const crypto = require('crypto');
-const dotenv = require('dotenv');
-dotenv.config();
+require('../config/env');
 const subRepo = require('../repositories/subscription.repo');
 const notificationService = require('./notification.service');
 
