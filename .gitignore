@@ -3,3 +3,5 @@
 .DS_Store
 /migrations
 /README.md
+.env.dev
+.env.production
