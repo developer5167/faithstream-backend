@@ -102,6 +102,7 @@ app.use("/api/share",       looseLimiter,   require("./routes/redirect.routes"))
 app.use("/api/ads",         looseLimiter,   require("./routes/ad.routes"));
 app.use("/api/wallet",      contentLimiter, require("./routes/wallet.routes"));
 app.use("/api/app",         looseLimiter,   require("./routes/app.routes"));
+app.use("/api/song-suggestions", contentLimiter, require("./routes/songSuggestion.routes"));
 
 // 🏥 Health check (no rate limiter — must always be reachable for uptime monitors)
 app.use("/api/health", require("./routes/health.routes"));
