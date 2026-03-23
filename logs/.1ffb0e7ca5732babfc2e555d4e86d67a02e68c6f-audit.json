@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/Users/kcs/Documents/MPP/faithstream-backend/faithstream-backend/logs/.1ffb0e7ca5732babfc2e555d4e86d67a02e68c6f-audit.json",
+    "files": [
+        {
+            "date": 1774260198488,
+            "name": "/Users/kcs/Documents/MPP/faithstream-backend/faithstream-backend/logs/error-2026-03-23.log",
+            "hash": "1d95fce2eafc1f541053d94134065e155331b51bb1ace75314021d6714c4b75b"
+        }
+    ],
+    "hashType": "sha256"
+}

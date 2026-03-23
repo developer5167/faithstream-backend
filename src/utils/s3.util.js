@@ -143,3 +143,74 @@ exports.generateS3Key = ({ uploadType, userId, resourceId, fileName, userRole })
 
   return `${envPrefix}/${keyPath}`;
 };
+
+/**
+ * Upload a database backup file to S3
+ * @param {string} filePath - Local path to the backup file
+ * @param {string} fileName - Name of the file
+ * @returns {Promise<string>} - The S3 key of the uploaded backup
+ */
+exports.uploadDatabaseBackup = async (filePath, fileName) => {
+  const fs = require('fs');
+  const key = `backups/production/${fileName}`;
+  const fileStream = fs.createReadStream(filePath);
+
+  const uploadParams = {
+    Bucket: process.env.AWS_BUCKET,
+    Key: key,
+    Body: fileStream,
+  };
+
+  await s3.upload(uploadParams).promise();
+  return key;
+};
+
+/**
+ * List all available database backups in S3
+ * @returns {Promise<Array>} - Array of backup objects containing Key and LastModified
+ */
+exports.listDatabaseBackups = async () => {
+  const params = {
+    Bucket: process.env.AWS_BUCKET,
+    Prefix: 'backups/production/',
+  };
+
+  const data = await s3.listObjectsV2(params).promise();
+  // Sort descending (newest first)
+  const sortedFiles = (data.Contents || [])
+    .filter(obj => obj.Key.endsWith('.backup'))
+    .sort((a, b) => b.LastModified - a.LastModified);
+    
+  return sortedFiles;
+};
+
+/**
+ * Download a database backup from S3
+ * @param {string} key - S3 Key of the backup file
+ * @param {string} destinationPath - Local path to save the downloaded file
+ * @returns {Promise<void>}
+ */
+exports.downloadDatabaseBackup = (key, destinationPath) => {
+  return new Promise((resolve, reject) => {
+    const fs = require('fs');
+    const params = {
+      Bucket: process.env.AWS_BUCKET,
+      Key: key,
+    };
+
+    const fileStream = fs.createWriteStream(destinationPath);
+    const s3Stream = s3.getObject(params).createReadStream();
+
+    s3Stream.on('error', (err) => {
+      reject(err);
+    });
+
+    s3Stream.pipe(fileStream)
+      .on('error', (err) => {
+        reject(err);
+      })
+      .on('close', () => {
+        resolve();
+      });
+  });
+};

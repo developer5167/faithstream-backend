@@ -3,13 +3,17 @@
     "start": "NODE_ENV=production node src/server.js",
     "dev": "NODE_ENV=development nodemon src/server.js",
     "createadmin": "nodemon scripts/create-admin.js",
-    "resetdb": "node src/resetDatabase.js"
+    "resetdb": "node src/resetDatabase.js",
+    "backup:dev": "NODE_ENV=development node -r dotenv/config -e \"require('./src/services/backup.service').runBackup().then(() => console.log('✅ Local Backup Finished')).catch(console.error)\"",
+    "backup:prod": "NODE_ENV=production node -r dotenv/config -e \"require('./src/services/backup.service').runBackup().then(() => console.log('✅ AWS S3 Backup Finished')).catch(console.error)\"",
+    "restore:dev": "NODE_ENV=development node scripts/restore-backup.js",
+    "restore:prod": "NODE_ENV=production node scripts/restore-from-s3.js"
   },
   "name": "faithstream-backend",
   "version": "1.0.0",
   "main": "src/server.js",
-  "license": "MIT",
-  "author": "KCS",
+  "license": "",
+  "author": "",
   "type": "commonjs",
   "description": "Backend for FaithStream music streaming platform",
   "keywords": [

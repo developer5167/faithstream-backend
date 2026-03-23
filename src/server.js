@@ -39,6 +39,10 @@ function _startCronJobs() {
     const draftCleanup = require('./jobs/draft-cleanup.job');
     draftCleanup();
 
+    // Daily database backup: 03:00 AM every day
+    const backupService = require('./services/backup.service');
+    backupService.initBackupCron();
+
   } catch (err) {
     logger.warn('[Cron] node-cron not installed — cron jobs will not auto-run. Run: npm install node-cron');
   }

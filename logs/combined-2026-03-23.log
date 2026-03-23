@@ -1,0 +1,12 @@
+[2026-03-23 15:33:18] info: [BackupService] Starting database backup: faithstream_backup_2026-03-23T10-03-18-489Z.backup {"service":"faithstream-api"}
+[2026-03-23 15:33:18] info: [BackupService] Local backup successful: /Users/kcs/Documents/MPP/faithstream-backend/faithstream-backend/backups/faithstream_backup_2026-03-23T10-03-18-489Z.backup {"service":"faithstream-api"}
+[2026-03-23 15:33:19] info: [BackupService] Uploading backup to S3... {"service":"faithstream-api"}
+[2026-03-23 15:33:20] info: [BackupService] Successfully uploaded backup to S3 at: backups/production/faithstream_backup_2026-03-23T10-03-18-489Z.backup {"service":"faithstream-api"}
+[2026-03-23 15:33:20] info: [BackupService] Cleaned up local backup file from server. {"service":"faithstream-api"}
+[2026-03-23 15:33:23] info: [BackupService] Email notification sent (Success) {"service":"faithstream-api"}
+[2026-03-23 15:49:43] info: [BackupService] Starting database backup: faithstream_backup_2026-03-23T10-19-43-158Z.backup {"service":"faithstream-api"}
+[2026-03-23 15:49:43] info: [BackupService] Local backup successful: /Users/kcs/Documents/MPP/faithstream-backend/faithstream-backend/backups/faithstream_backup_2026-03-23T10-19-43-158Z.backup {"service":"faithstream-api"}
+[2026-03-23 15:49:43] info: [BackupService] Uploading backup to S3... {"service":"faithstream-api"}
+[2026-03-23 15:49:44] info: [BackupService] Successfully uploaded backup to S3 at: backups/production/faithstream_backup_2026-03-23T10-19-43-158Z.backup {"service":"faithstream-api"}
+[2026-03-23 15:49:44] info: [BackupService] Cleaned up local backup file from server. {"service":"faithstream-api"}
+[2026-03-23 15:49:47] info: [BackupService] Email notification sent (Success) {"service":"faithstream-api"}
