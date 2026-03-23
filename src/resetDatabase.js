@@ -1,58 +1,47 @@
 
-const pool =require("./config/db")
+const client =require("./config/db")
+const SAFE_USER_ID = 'f843d0ac-b189-4d19-aee4-5b07c8262001';
+
 async function resetDatabase() {
   try {
-    await pool.connect();
+    await client.connect();
+    console.log("Connected to DB");
 
-    console.log("⚠️ Deleting all data from tables...");
-
-    await pool.query(`
-      TRUNCATE TABLE
-      wallet_transactions,
-      user_fcm_tokens,
-      user_follows,
-      user_tokens,
-      support_tickets,
-      subscriptions,
-      streams,
-      songs,
-      song_fingerprints,
-      song_disputes,
-      recently_played,
-      playlists,
-      playlist_songs,
-      favorites,
-      favorite_albums,
-      complaints,
-      artist_wallets,
-      artist_profiles_supportings,
-      artist_profiles,
-      artist_payout_requests,
-      artist_earnings,
-      artist_bank_details,
-      albums,
-      advertisers,
-      advertiser_tokens,
-      advertiser_otps,
-      advertisements,
-      admin_actions,
-      ad_analytics,
-      notifications
-      RESTART IDENTITY CASCADE;
+    // Get all tables
+    const res = await client.query(`
+      SELECT tablename 
+      FROM pg_tables 
+      WHERE schemaname = 'public';
     `);
 
-    console.log("✅ Database reset successful");
+    const tables = res.rows.map(row => row.tablename);
 
-    await pool.query(`
-      DELETE FROM users 
-      WHERE id != 'f843d0ac-b189-4d19-aee4-5b07c8262001';
-    `);
-    console.log("🧹 Cleared users except admin...");
+    for (const table of tables) {
+      if (table === 'users') {
+        // Special condition for users table
+        console.log("Cleaning users table (keeping one user)");
 
+        await client.query(`
+          DELETE FROM public.users 
+          WHERE id <> $1;
+        `, [SAFE_USER_ID]);
+
+      } else {
+        // Truncate other tables
+        console.log(`Truncating table: ${table}`);
+
+        await client.query(`
+          TRUNCATE TABLE public."${table}" 
+          RESTART IDENTITY CASCADE;
+        `);
+      }
+    }
+    console.log("✅ Database cleaned successfully");
   } catch (err) {
-    console.error("❌ Error resetting database:", err);
+    console.error("❌ Error:", err);
   } finally {
-    await pool.end();
+    await client.end();
+    console.log("Disconnected");
   }
 }
 

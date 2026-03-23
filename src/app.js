@@ -18,9 +18,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:8080",
-      "https://soter-admin.web.app",
-      "http://localhost:5173",  
-      "https://soter-ads.web.app",
+      "https://faithstream.admin.sotersystems.in",
+      "http://localhost:5173",
+      "https://faithstream.ads.sotersystems.in",
       "http://192.168.15.165:5173"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
