@@ -110,8 +110,8 @@ app.use("/api/health", require("./routes/health.routes"));
 /* -------------------- BACKGROUND WORKERS -------------------- */
 const streamBatchWorker = require('./workers/streamBatchWorker');
 streamBatchWorker.start();
-const ffmpegWorker = require('./workers/ffmpegWorker');
-ffmpegWorker.start();
+// const ffmpegWorker = require('./workers/ffmpegWorker');
+// ffmpegWorker.start(); // FFMPEG worker runs on a separate dedicated Render server
 
 /* -------------------- ERROR HANDLER -------------------- */
 

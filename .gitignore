@@ -5,3 +5,4 @@
 /README.md
 .env.dev
 .env.production
+/backups
