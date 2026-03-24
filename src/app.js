@@ -30,6 +30,11 @@ app.use(
   }),
 );
 
+/* -------------------- OBSERVABILITY -------------------- */
+// Request logger — logs every API call. Placed FIRST so webhooks are properly logged.
+const requestLogger = require("./middlewares/requestLogger");
+app.use(requestLogger);
+
 /* -------------------- WEBHOOK (must be before express.json!) -------------------- */
 
 // 💳 Webhook — registered FIRST so express.json() never touches this body
@@ -52,10 +57,6 @@ app.use(cookieParser());
 app.use(express.json({ limit: '1mb' }));
 
 /* -------------------- OBSERVABILITY -------------------- */
-
-// Request logger — logs every API call with method, URL, status, duration
-const requestLogger = require("./middlewares/requestLogger");
-app.use(requestLogger);
 
 // Active user tracker — sets a Redis key per authenticated user (5 min TTL)
 const activeUsers = require("./middlewares/activeUsers");

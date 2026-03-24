@@ -8,7 +8,7 @@ const RAZORPAY_KEY_ID     = process.env.RAZORPAY_KEY_ID;
 const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET;
 const WEBHOOK_SECRET      = process.env.RAZORPAY_WEBHOOK_SECRET;
 const PREMIUM_AMOUNT      = parseInt(process.env.RAZORPAY_PREMIUM_AMOUNT || '9900'); // paise
-const APP_BASE_URL        = process.env.APP_BASE_URL || 'https://faithstream-backend.onrender.com';
+const APP_BASE_URL        = process.env.APP_BASE_URL || 'https://api.faithstream.sotersystems.in';
 
 // ── Create a Razorpay Order (for razorpay_flutter plugin) ───────────────────
 
