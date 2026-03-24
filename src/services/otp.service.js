@@ -4,13 +4,14 @@ const redisClient = require('../config/redis');
 const { randomInt } = require('crypto');
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT),
-  secure: process.env.SMTP_PORT === '465', // true for 465
+  host: "smtpout.secureserver.net",
+  port: 465,
+  secure: true, // true for 465
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: "support@sotersystems.in",
+    pass: "Sam@#)*&&$$516777",
   },
+  requireTLS: true,
 });
 
 exports.generateAndSendOTP = async (email) => {
