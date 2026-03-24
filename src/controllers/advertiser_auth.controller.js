@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
     // ✅ Set HttpOnly cookie on successful registration too
     res.cookie('advertiser_token', result.token, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'none',
       secure: process.env.NODE_ENV === 'production',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
     // ✅ Set as HttpOnly cookie — JS on the page CANNOT read this token
     res.cookie('advertiser_token', result.token, {
       httpOnly: true,          // Block JS access entirely
-      sameSite: 'strict',      // Prevents CSRF from cross-site requests
+      sameSite: 'none',      // Must be none for cross-subdomain API usage
       secure: process.env.NODE_ENV === 'production', // HTTPS only in prod
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
@@ -98,7 +98,7 @@ exports.logout = async (req, res) => {
       await advertiserAuthService.logout(req.user.id, token);
     }
     // ✅ Clear the cookie — browser discards it immediately
-    res.clearCookie('advertiser_token', { httpOnly: true, sameSite: 'strict' });
+    res.clearCookie('advertiser_token', { httpOnly: true, sameSite: 'none', secure: process.env.NODE_ENV === 'production' });
     res.json({ message: 'Logged out successfully' });
   } catch (err) {
     res.status(400).json({ error: err.message });
