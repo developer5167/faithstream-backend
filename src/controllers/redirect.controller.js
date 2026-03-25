@@ -16,7 +16,7 @@ const handleRedirect = (req, res, deepLinkPath, metadata = {}) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
   
   // Custom Scheme URL for opening the app directly
-  const appDeepLink = `faithstream:/${deepLinkPath}`;
+  const appDeepLink = `faithstream:///${deepLinkPath.startsWith('/') ? deepLinkPath.substring(1) : deepLinkPath}`;
   
   // Store links (Placeholders - updated to search for better UX)
   const APPLE_STORE = 'https://apps.apple.com/app/faithstream/id123456789'; 
