@@ -23,7 +23,7 @@ exports.createOrder = async (userId) => {
         currency: 'INR',
         receipt: `sub_${userId.slice(0, 8)}_${Date.now()}`,
         notes: { user_id: userId, plan: 'PREMIUM' },
-        checkout_config_id: 'config_SVPtkJbUplR7sZ',
+        // checkout_config_id: 'config_SVPtkJbUplR7sZ',
       },
       { headers: { Authorization: `Basic ${auth}`, 'Content-Type': 'application/json' } }
     );
@@ -87,7 +87,7 @@ exports.createPaymentLink = async (userId) => {
     notify: { sms: true, email: true },
     callback_url: `${APP_BASE_URL}/api/subscriptions/payment/success`,
     callback_method: 'get',
-    checkout_config_id: 'config_SVPtkJbUplR7sZ',
+    // checkout_config_id: 'config_SVPtkJbUplR7sZ',
   };
 
   try {
