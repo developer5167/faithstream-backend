@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:8080",
-      "http://localhost:3000"
+      "http://localhost:3000",
       "https://faithstream.admin.sotersystems.in",
       "http://localhost:5173",
       "https://faithstream.ads.sotersystems.in",
