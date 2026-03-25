@@ -21,6 +21,7 @@ app.use(
       "http://localhost:3000",
       "https://faithstream.admin.sotersystems.in",
       "http://localhost:5173",
+      "https://faithstream.sotersystems.in",
       "https://faithstream.ads.sotersystems.in",
       "http://192.168.15.165:5173"
     ],
