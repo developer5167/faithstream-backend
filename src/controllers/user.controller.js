@@ -47,6 +47,24 @@ class UserController {
       });
     }
   }
+
+  async deleteAccount(req, res) {
+    try {
+      const userId = req.user.id;
+      await userService.deleteUserAccount(userId);
+      res.json({
+        success: true,
+        message: 'Account deleted successfully. We are sorry to see you go.',
+      });
+    } catch (error) {
+      console.error('Error deleting account:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Failed to delete account',
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = new UserController();
