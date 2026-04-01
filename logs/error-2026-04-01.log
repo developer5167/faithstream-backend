@@ -1,0 +1,4 @@
+[2026-04-01 15:12:17] error: GET /api/users/profile 500 — 204ms {"service":"faithstream-api","method":"GET","url":"/api/users/profile","status":500,"duration":"204ms","ip":"::ffff:192.168.15.187","userId":"23271cc7-41bf-4cad-88b9-7fb4eba5f8d3"}
+[2026-04-01 15:12:18] error: GET /api/users/profile 500 — 301ms {"service":"faithstream-api","method":"GET","url":"/api/users/profile","status":500,"duration":"301ms","ip":"::ffff:192.168.15.187","userId":"23271cc7-41bf-4cad-88b9-7fb4eba5f8d3"}
+[2026-04-01 15:12:19] error: GET /api/users/profile 500 — 114ms {"service":"faithstream-api","method":"GET","url":"/api/users/profile","status":500,"duration":"114ms","ip":"::ffff:192.168.15.187","userId":"23271cc7-41bf-4cad-88b9-7fb4eba5f8d3"}
+[2026-04-01 15:12:20] error: GET /api/users/profile 500 — 106ms {"service":"faithstream-api","method":"GET","url":"/api/users/profile","status":500,"duration":"106ms","ip":"::ffff:192.168.15.187","userId":"23271cc7-41bf-4cad-88b9-7fb4eba5f8d3"}

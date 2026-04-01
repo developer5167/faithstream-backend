@@ -2,15 +2,11 @@ const jwtUtil = require('../utils/jwt.util');
 const redisClient = require('../config/redis');
 
 module.exports = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  // ✅ SUPPORT: Both Mobile (Authorization Header) and Web (HttpOnly 'token' cookie)
+  const token = (req.headers.authorization?.split(' ')[1]) || req.cookies?.token;
 
-  if (!authHeader) {
-    return res.status(401).json({ error: 'Authorization header missing' });
-  }
-
-  const token = authHeader.split(' ')[1];
   if (!token) {
-    return res.status(401).json({ error: 'Token missing' });
+    return res.status(401).json({ error: 'Authentication required' });
   }
 
   try {

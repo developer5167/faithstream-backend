@@ -11,11 +11,18 @@ const jwtUtil = require('../utils/jwt.util');
 // Previously this was done by decoding Base64 WITHOUT verifying the signature — 
 // which allowed an attacker to forge `"type":"advertiser"` in the JWT payload.
 router.post('/presigned-url', uploadLimiter, async (req, res, next) => {
+    // 🛡️ SECURITY: Find the token in either the header (Mobile App) or HttpOnly cookies (Web Portals)
     const authHeader = req.headers.authorization;
-    if (!authHeader) return res.status(401).json({ error: 'Authorization header missing' });
+    let token = authHeader?.split(' ')[1];
 
-    const token = authHeader.split(' ')[1];
-    if (!token) return res.status(401).json({ error: 'Token missing' });
+    if (!token) {
+        // Fallback to cookies for Advertiser/Admin portals
+        token = req.cookies?.advertiser_token || req.cookies?.token;
+    }
+
+    if (!token) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
 
     try {
         // ✅ SECURE: Verify cryptographic signature FIRST — forged payloads will throw here

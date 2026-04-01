@@ -14,6 +14,11 @@
             "date": 1774353405794,
             "name": "/Users/kcs/Documents/MPP/faithstream-backend/faithstream-backend/logs/error-2026-03-24.log",
             "hash": "8650cde0762f0cf6e12d20e740a4de15bb32e83ac767a222ffe8323670822438"
+        },
+        {
+            "date": 1775042119667,
+            "name": "/Users/kcs/Documents/MPP/faithstream-backend/faithstream-backend/logs/error-2026-04-01.log",
+            "hash": "74615b7ac69bd8432dece946a21e3b82816e3894f868c583fbeb3dee73414f94"
         }
     ],
     "hashType": "sha256"

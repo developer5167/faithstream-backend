@@ -8,11 +8,9 @@ const jwtUtil = require('../utils/jwt.util');
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader) {
-    return next();
-  }
+  // ✅ SUPPORT: Both Mobile (Authorization Header) and Web (HttpOnly 'token' cookie)
+  const token = (req.headers.authorization?.split(' ')[1]) || req.cookies?.token;
 
-  const token = authHeader.split(' ')[1];
   if (!token) {
     return next();
   }

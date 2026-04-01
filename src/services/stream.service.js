@@ -34,8 +34,18 @@ exports.getStreamUrl = async (songId, userId) => {
      return `${appUrl}/api/stream/${song.id}/hls.m3u8?token=${token}`;
   }
 
-  // audio_processed_url stores S3 key, not public URL for legacy files
-  return s3Util.getSignedUrl(song.audio_processed_url);
+  let targetKey = song.audio_processed_url || song.audio_original_url;
+  if (!targetKey) throw new Error('Song audio not found');
+  
+  // Extract key if it's a full URL
+  const bucketUrlBase = `https://${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/`;
+  if (targetKey.startsWith(bucketUrlBase)) {
+     targetKey = targetKey.replace(bucketUrlBase, '');
+  } else if (targetKey.includes('amazonaws.com/')) {
+     targetKey = targetKey.substring(targetKey.indexOf('amazonaws.com/') + 14);
+  }
+
+  return s3Util.getSignedUrl(targetKey);
 };
 
 exports.getHlsPlaylist = async (songId, userId) => {
