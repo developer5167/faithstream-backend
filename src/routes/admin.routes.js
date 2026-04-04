@@ -43,6 +43,11 @@ router.post('/artists/create', auth, admin, controller.createArtistAccount);
 router.get('/songs/potential-duplicates', auth, admin, duplicateController.getPotentialDuplicates);
 router.post('/songs/merge',               auth, admin, duplicateController.mergeSongs);
 
+// ─── App Configuration Management ───────────────────────────────────────────
+const adminConfigCtrl = require('../controllers/adminConfig.controller');
+router.get('/app-configs', auth, admin, adminConfigCtrl.getAllAppConfigs);
+router.put('/app-config',  auth, admin, adminConfigCtrl.updateAppConfig);
+
 module.exports = router;
 
 

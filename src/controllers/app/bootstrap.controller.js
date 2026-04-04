@@ -1,12 +1,19 @@
 const pool = require('../../config/db');
 const homeService = require('../../services/home.service');
 const adService = require('../../services/ad.service');
+const appConfigRepo = require('../../repositories/appConfig.repo');
 
 exports.bootstrap = async (req, res) => {
     try {
         const userId = req.user?.id; // Could be null if unauthenticated
 
-        // If unauthenticated, we just return the public home feed and 0 ads
+        // Always fetch app configuration for version checking
+        const appConfigs = await appConfigRepo.getConfigs([
+            'android_latest_version', 
+            'ios_latest_version'
+        ]);
+
+        // If unauthenticated, we return public home feed, ads, and the config
         if (!userId) {
             const homeFeed = await homeService.getHomeFeed(null);
             return res.json({
@@ -14,7 +21,8 @@ exports.bootstrap = async (req, res) => {
                 data: {
                     user: null,
                     homeFeed: homeFeed,
-                    ads: []
+                    ads: [],
+                    appConfig: appConfigs
                 }
             });
         }
@@ -80,7 +88,8 @@ exports.bootstrap = async (req, res) => {
             data: {
                 user: userData,
                 homeFeed: homeFeed,
-                ads: adsData
+                ads: adsData,
+                appConfig: appConfigs
             }
         });
 
