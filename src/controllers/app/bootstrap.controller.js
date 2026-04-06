@@ -13,6 +13,8 @@ exports.bootstrap = async (req, res) => {
             'ios_latest_version'
         ]);
 
+        console.log('🔍 [Bootstrap] App Configs fetched:', JSON.stringify(appConfigs));
+
         // If unauthenticated, we return public home feed, ads, and the config
         if (!userId) {
             const homeFeed = await homeService.getHomeFeed(null);
