@@ -5,16 +5,24 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 const logger = require('../config/logger');
 
+// Load environment based on NODE_ENV
+const envPath = process.env.NODE_ENV === 'production' 
+  ? path.join(__dirname, '..', '..', '.env.backup.production')
+  : path.join(__dirname, '..', '..', '.env.dev');
+
+if (fs.existsSync(envPath)) {
+  require('dotenv').config({ path: envPath });
+}
+
 function getTransporter() {
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
-    secure: false, // true for 465, false for other ports
+    secure: process.env.SMTP_PORT === '465', // true for 465, false for 587
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
-    requireTLS: true,
   });
 }
 
@@ -64,17 +72,20 @@ function runBackup() {
     const filePath = path.join(backupDir, fileName);
 
     const dbUser = process.env.DB_USER;
-    const dbHost = process.env.DB_HOST || 'localhost';
-    const dbPort = process.env.DB_PORT || '5432';
+    const dbHost = process.env.DB_HOST;
+    const dbPort = process.env.DB_PORT;
     const dbName = process.env.DB_NAME;
-    const dbPassword = process.env.DB_PASSWORD || '';
+    const dbPassword = process.env.DB_PASSWORD;
 
-    // pg_dump command (custom format is recommended for pg_restore)
+    // pg_dump command (using direct connection port 5432 from environment)
     const command = `pg_dump -U ${dbUser} -h ${dbHost} -p ${dbPort} -F c -d ${dbName} -f "${filePath}"`;
 
     logger.info(`[BackupService] Starting database backup: ${fileName}`);
 
-    exec(command, { env: { ...process.env, PGPASSWORD: dbPassword } }, async (error, stdout, stderr) => {
+    // Dynamic SSL: require for Remote (Supabase), disable for Local (localhost)
+    const pgSslMode = (dbHost === 'localhost' || dbHost === '127.0.0.1') ? 'disable' : 'require';
+
+    exec(command, { env: { ...process.env, PGPASSWORD: dbPassword, PGSSLMODE: pgSslMode } }, async (error, stdout, stderr) => {
       if (error) {
         logger.error('[BackupService] Backup failed', { error: error.message, stderr });
         await sendBackupEmail(false, `Error running pg_dump: ${error.message}\n\nStderr: ${stderr}`);
@@ -113,16 +124,16 @@ function runBackup() {
 }
 
 function initBackupCron() {
-  // Schedule to run at 3:00 AM every day
-  cron.schedule('0 3 * * *', async () => {
-    logger.info('[Cron] Triggering daily database backup');
+  // Schedule to run at 09:30 PM UTC (equivalent to 03:00 AM IST)
+  cron.schedule('30 21 * * *', async () => {
+    logger.info('[Cron] Triggering daily database backup (03:00 AM IST)');
     try {
       await runBackup();
     } catch (err) {
       logger.error('[Cron] Database backup failed', { error: err.message });
     }
   });
-  logger.info('[BackupService] Daily backup cron scheduled at 3:00 AM');
+  logger.info('[BackupService] Daily backup cron scheduled at 03:00 AM IST (21:30 UTC)');
 }
 
 module.exports = {
