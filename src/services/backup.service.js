@@ -76,20 +76,37 @@ function runBackup() {
     const dbPort = process.env.DB_PORT;
     const dbName = process.env.DB_NAME;
     const dbPassword = process.env.DB_PASSWORD;
-
-    // pg_dump command (using direct connection port 5432 from environment)
-    const command = `pg_dump -U ${dbUser} -h ${dbHost} -p ${dbPort} -F c -d ${dbName} -f "${filePath}"`;
-
-    logger.info(`[BackupService] Starting database backup: ${fileName}`);
-
-    // Dynamic SSL: require for Remote (Supabase), disable for Local (localhost)
     const pgSslMode = (dbHost === 'localhost' || dbHost === '127.0.0.1') ? 'disable' : 'require';
 
-    exec(command, { env: { ...process.env, PGPASSWORD: dbPassword, PGSSLMODE: pgSslMode } }, async (error, stdout, stderr) => {
-      if (error) {
-        logger.error('[BackupService] Backup failed', { error: error.message, stderr });
-        await sendBackupEmail(false, `Error running pg_dump: ${error.message}\n\nStderr: ${stderr}`);
-        return reject(error);
+    logger.info(`[BackupService] Starting database backup: ${fileName} targeting host ${dbHost}`);
+
+    // Construct URL-Encoded URI for Supavisor Pooler SNI requirements
+    // This avoids shell interpolation bugs with special characters in the password.
+    const encodedPassword = encodeURIComponent(dbPassword);
+    const dbUri = `postgresql://${dbUser}:${encodedPassword}@${dbHost}:${dbPort}/${dbName}?sslmode=${pgSslMode}`;
+
+    const { spawn } = require('child_process');
+
+    const dumpProcess = spawn('pg_dump', [
+      '-F', 'c',
+      '-d', dbUri,
+      '-f', filePath
+    ], {
+      // Pass clean environment, avoiding PGPASSWORD overriding connection string
+      env: { ...process.env, PGPASSWORD: undefined }
+    });
+
+    let stderrData = '';
+
+    dumpProcess.stderr.on('data', (data) => {
+      stderrData += data.toString();
+    });
+
+    dumpProcess.on('close', async (code) => {
+      if (code !== 0) {
+        logger.error('[BackupService] Backup failed', { code, stderr: stderrData });
+        await sendBackupEmail(false, `Error running pg_dump (exit code ${code})\n\nStderr: ${stderrData}`);
+        return reject(new Error(`pg_dump exited with code ${code}`));
       }
 
       logger.info(`[BackupService] Local backup successful: ${filePath}`);
@@ -124,16 +141,19 @@ function runBackup() {
 }
 
 function initBackupCron() {
-  // Schedule to run at 09:30 PM UTC (equivalent to 03:00 AM IST)
-  cron.schedule('30 21 * * *', async () => {
+  // Schedule to run exactly at 03:00 AM IST regardless of server timezone
+  cron.schedule('0 3 * * *', async () => {
     logger.info('[Cron] Triggering daily database backup (03:00 AM IST)');
     try {
       await runBackup();
     } catch (err) {
       logger.error('[Cron] Database backup failed', { error: err.message });
     }
+  }, {
+    scheduled: true,
+    timezone: "Asia/Kolkata"
   });
-  logger.info('[BackupService] Daily backup cron scheduled at 03:00 AM IST (21:30 UTC)');
+  logger.info('[BackupService] Daily backup cron scheduled at 03:00 AM IST');
 }
 
 module.exports = {

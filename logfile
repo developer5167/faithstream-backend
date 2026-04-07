@@ -2678,3 +2678,5 @@
 2026-03-11 01:46:23.440 IST [5737] LOG:  database system is shut down
 2026-03-19 16:37:21.921 IST [52210] FATAL:  lock file "postmaster.pid" already exists
 2026-03-19 16:37:21.921 IST [52210] HINT:  Is another postmaster (PID 16066) running in data directory "/usr/local/var/postgres@14"?
+2026-04-07 15:12:24.346 IST [14051] FATAL:  lock file "postmaster.pid" already exists
+2026-04-07 15:12:24.346 IST [14051] HINT:  Is another postmaster (PID 60456) running in data directory "/usr/local/var/postgres@14"?
